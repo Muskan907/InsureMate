@@ -62,3 +62,12 @@ User Question
            │
            ▼
       Final Answer
+
+
+## 🤖 Models Used
+
+| Model | Purpose |
+|-------|---------|
+| **Qwen 2.5 1.5B** | Analyzes question complexity and generates answers for simple queries |
+| **CodeLlama 7B Instruct** | Handles complex insurance policy questions and generates detailed responses |
+| **Phi-3 Mini** | Validates whether generated answers are grounded in the retrieved policy evidence |
