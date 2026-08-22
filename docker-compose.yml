@@ -1,0 +1,20 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: insuremate-backend
+    network_mode: host
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: insuremate-frontend
+    ports:
+      - "5173:80"
+    restart: unless-stopped
