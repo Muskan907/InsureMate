@@ -1,0 +1,152 @@
+[
+  {
+    "id": "Q01",
+    "category": "Waiting Period",
+    "question": "What is the waiting period for pre-existing diseases?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q02",
+    "category": "Waiting Period",
+    "question": "What is the waiting period for cataract treatment?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q03",
+    "category": "Waiting Period",
+    "question": "Are stones in the biliary system covered immediately?",
+    "type": "specific_policy_lookup"
+  },
+  {
+    "id": "Q04",
+    "category": "Waiting Period",
+    "question": "What is the waiting period for stones in the urinary system?",
+    "type": "specific_policy_lookup"
+  },
+  {
+    "id": "Q05",
+    "category": "Exclusions",
+    "question": "What medical conditions or treatments are excluded from coverage?",
+    "type": "broad_retrieval"
+  },
+  {
+    "id": "Q06",
+    "category": "Coverage",
+    "question": "Does the policy cover hospitalization expenses?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q07",
+    "category": "Coverage",
+    "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q08",
+    "category": "Specific Clause",
+    "question": "What does the policy say about spondylosis or spondylitis?",
+    "type": "specific_policy_lookup"
+  },
+  {
+    "id": "Q09",
+    "category": "Numerical Policy Information",
+    "question": "What percentage of eligible expenses is covered under the policy?",
+    "type": "numerical"
+  },
+  {
+    "id": "Q10",
+    "category": "Numerical Policy Information",
+    "question": "What are the important waiting periods mentioned in the policy documents?",
+    "type": "multi_fact_retrieval"
+  },
+  {
+    "id": "Q11",
+    "category": "Document Comparison",
+    "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+    "type": "cross_document"
+  },
+  {
+    "id": "Q12",
+    "category": "Document Comparison",
+    "question": "Which health insurance policy documents mention coverage for hospitalization?",
+    "type": "cross_document"
+  },
+  {
+    "id": "Q13",
+    "category": "Travel Insurance",
+    "question": "What types of situations are covered under the travel insurance policies?",
+    "type": "broad_retrieval"
+  },
+  {
+    "id": "Q14",
+    "category": "Travel Insurance",
+    "question": "Does travel insurance cover medical emergencies during a trip?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q15",
+    "category": "Accident Insurance",
+    "question": "What benefits are provided under the accident insurance policy?",
+    "type": "direct_retrieval"
+  },
+  {
+    "id": "Q16",
+    "category": "Multi-hop Reasoning",
+    "question": "If a person has a pre-existing disease and also requires treatment for cataract, what waiting periods may apply?",
+    "type": "multi_hop"
+  },
+  {
+    "id": "Q17",
+    "category": "Multi-hop Reasoning",
+    "question": "Based on the policy documents, what factors could affect whether a hospitalization claim is approved?",
+    "type": "reasoning"
+  },
+  {
+    "id": "Q18",
+    "category": "Ambiguous Query",
+    "question": "Will my treatment be covered?",
+    "type": "ambiguous"
+  },
+  {
+    "id": "Q19",
+    "category": "Ambiguous Query",
+    "question": "Can I claim this expense?",
+    "type": "ambiguous"
+  },
+  {
+    "id": "Q20",
+    "category": "Out of Knowledge Base",
+    "question": "What is the current price of Bitcoin?",
+    "type": "out_of_scope"
+  },
+  {
+    "id": "Q21",
+    "category": "Out of Knowledge Base",
+    "question": "Who will win the next Cricket World Cup?",
+    "type": "out_of_scope"
+  },
+  {
+    "id": "Q22",
+    "category": "Hallucination Resistance",
+    "question": "Does the insurance policy cover cosmetic surgery?",
+    "type": "hallucination_test"
+  },
+  {
+    "id": "Q23",
+    "category": "Hallucination Resistance",
+    "question": "Does the policy provide unlimited coverage for every medical treatment?",
+    "type": "hallucination_test"
+  },
+  {
+    "id": "Q24",
+    "category": "Evidence Precision",
+    "question": "Which document contains information about LIC's Jan Suraksha policy?",
+    "type": "document_identification"
+  },
+  {
+    "id": "Q25",
+    "category": "Evidence Precision",
+    "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+    "type": "document_identification"
+  }
+]

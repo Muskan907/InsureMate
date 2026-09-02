@@ -1,0 +1,348 @@
+{
+  "questions": [
+    {
+      "id": "Q01",
+      "category": "Waiting Period",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q02",
+      "category": "Waiting Period",
+      "question": "What is the waiting period for cataract treatment?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q03",
+      "category": "Waiting Period",
+      "question": "Are stones in the biliary system covered immediately?",
+      "type": "specific_policy_lookup"
+    },
+    {
+      "id": "Q04",
+      "category": "Waiting Period",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "type": "specific_policy_lookup"
+    },
+    {
+      "id": "Q05",
+      "category": "Exclusions",
+      "question": "What medical conditions or treatments are excluded from coverage?",
+      "type": "broad_retrieval"
+    },
+    {
+      "id": "Q06",
+      "category": "Coverage",
+      "question": "Does the policy cover hospitalization expenses?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q07",
+      "category": "Coverage",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q08",
+      "category": "Specific Clause",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "type": "specific_policy_lookup"
+    },
+    {
+      "id": "Q09",
+      "category": "Numerical Policy Information",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "type": "numerical"
+    },
+    {
+      "id": "Q10",
+      "category": "Numerical Policy Information",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "type": "multi_fact_retrieval"
+    },
+    {
+      "id": "Q11",
+      "category": "Document Comparison",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "type": "cross_document"
+    },
+    {
+      "id": "Q12",
+      "category": "Document Comparison",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "type": "cross_document"
+    },
+    {
+      "id": "Q13",
+      "category": "Travel Insurance",
+      "question": "What types of situations are covered under the travel insurance policies?",
+      "type": "broad_retrieval"
+    },
+    {
+      "id": "Q14",
+      "category": "Travel Insurance",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q15",
+      "category": "Accident Insurance",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "type": "direct_retrieval"
+    },
+    {
+      "id": "Q16",
+      "category": "Multi-hop Reasoning",
+      "question": "If a person has a pre-existing disease and also requires treatment for cataract, what waiting periods may apply?",
+      "type": "multi_hop"
+    },
+    {
+      "id": "Q17",
+      "category": "Multi-hop Reasoning",
+      "question": "Based on the policy documents, what factors could affect whether a hospitalization claim is approved?",
+      "type": "reasoning"
+    },
+    {
+      "id": "Q18",
+      "category": "Ambiguous Query",
+      "question": "Will my treatment be covered?",
+      "type": "ambiguous"
+    },
+    {
+      "id": "Q19",
+      "category": "Ambiguous Query",
+      "question": "Can I claim this expense?",
+      "type": "ambiguous"
+    },
+    {
+      "id": "Q20",
+      "category": "Out of Knowledge Base",
+      "question": "What is the current price of Bitcoin?",
+      "type": "out_of_scope"
+    },
+    {
+      "id": "Q21",
+      "category": "Out of Knowledge Base",
+      "question": "Who will win the next Cricket World Cup?",
+      "type": "out_of_scope"
+    },
+    {
+      "id": "Q22",
+      "category": "Hallucination Resistance",
+      "question": "Does the insurance policy cover cosmetic surgery?",
+      "type": "hallucination_test"
+    },
+    {
+      "id": "Q23",
+      "category": "Hallucination Resistance",
+      "question": "Does the policy provide unlimited coverage for every medical treatment?",
+      "type": "hallucination_test"
+    },
+    {
+      "id": "Q24",
+      "category": "Evidence Precision",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "type": "document_identification"
+    },
+    {
+      "id": "Q25",
+      "category": "Evidence Precision",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "type": "document_identification"
+    }
+  ],
+  "rubric": {
+    "Q01": {
+      "mode": "manual_review",
+      "note": "48 months in the retrieved text is the definition/look-back period for pre-existing disease, not clearly a waiting period."
+    },
+    "Q02": {
+      "mode": "manual_review",
+      "note": "Retrieved chunks list cataract but do not establish its waiting period."
+    },
+    "Q03": {
+      "mode": "keywords",
+      "required_any": [
+        "24 months",
+        "third policy year",
+        "not covered immediately"
+      ],
+      "required_all": []
+    },
+    "Q04": {
+      "mode": "keywords",
+      "required_any": [
+        "24 months"
+      ],
+      "required_all": []
+    },
+    "Q05": {
+      "mode": "keywords",
+      "required_any": [
+        "psychiatric",
+        "psychosomatic",
+        "obesity",
+        "refractive",
+        "sexually transmitted",
+        "donor screening",
+        "admission/registration",
+        "diagnostic",
+        "hiv",
+        "stem cell"
+      ],
+      "required_all": []
+    },
+    "Q06": {
+      "mode": "yes_no",
+      "expected": "yes",
+      "required_any": [
+        "hospitalization",
+        "inpatient"
+      ]
+    },
+    "Q07": {
+      "mode": "keywords",
+      "required_any": [
+        "pre-hospital",
+        "post-hospital",
+        "60 days",
+        "reimbursement"
+      ],
+      "required_all": [
+        "hospital"
+      ]
+    },
+    "Q08": {
+      "mode": "keywords",
+      "required_any": [
+        "spondylosis",
+        "spondylitis"
+      ],
+      "required_all": []
+    },
+    "Q09": {
+      "mode": "manual_review",
+      "note": "The retrieved evidence does not clearly support a percentage for eligible medical expenses. Do not accept 100% from unrelated loss-benefit percentages."
+    },
+    "Q10": {
+      "mode": "keywords",
+      "required_any": [
+        "7 days",
+        "24 months",
+        "15 days"
+      ],
+      "required_all": []
+    },
+    "Q11": {
+      "mode": "keywords",
+      "required_any": [
+        "group health insurance",
+        "24 months",
+        "health assurance",
+        "health companion"
+      ],
+      "required_all": [
+        "24 months"
+      ]
+    },
+    "Q12": {
+      "mode": "documents",
+      "required_docs": [
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf"
+      ]
+    },
+    "Q13": {
+      "mode": "keywords",
+      "required_any": [
+        "one-way",
+        "round-trip",
+        "terrorist",
+        "pre-paid",
+        "eligible card"
+      ],
+      "required_all": []
+    },
+    "Q14": {
+      "mode": "yes_no",
+      "expected": "yes",
+      "required_any": [
+        "covered medical expenses",
+        "emergency medical evacuation",
+        "injury",
+        "sickness"
+      ]
+    },
+    "Q15": {
+      "mode": "keywords",
+      "required_any": [
+        "accidental death",
+        "dismemberment",
+        "bodily injury",
+        "accidentcare",
+        "personal accident"
+      ],
+      "required_all": []
+    },
+    "Q16": {
+      "mode": "refusal",
+      "note": "The supplied retrieval context does not establish a cataract waiting period or a definite pre-existing-disease waiting period for this combined scenario."
+    },
+    "Q17": {
+      "mode": "keywords",
+      "required_any": [
+        "claim form",
+        "kyc",
+        "discharge summary",
+        "hospital bill",
+        "consultation",
+        "investigation",
+        "fir",
+        "medico legal"
+      ],
+      "required_all": []
+    },
+    "Q18": {
+      "mode": "refusal",
+      "note": "Question is underspecified. A safe answer should ask for the treatment/condition or explain that coverage cannot be determined from the query alone."
+    },
+    "Q19": {
+      "mode": "refusal",
+      "note": "Expense and policy context are unspecified. A safe answer should ask for the expense/claim details."
+    },
+    "Q20": {
+      "mode": "refusal"
+    },
+    "Q21": {
+      "mode": "refusal"
+    },
+    "Q22": {
+      "mode": "refusal",
+      "note": "No evidence in the supplied evaluation context establishes cosmetic-surgery coverage."
+    },
+    "Q23": {
+      "mode": "negative_claim",
+      "required_any": [
+        "no",
+        "not unlimited",
+        "limits",
+        "maximum",
+        "sum insured",
+        "policy schedule"
+      ]
+    },
+    "Q24": {
+      "mode": "documents",
+      "required_docs": [
+        "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf"
+      ]
+    },
+    "Q25": {
+      "mode": "documents",
+      "required_docs": [
+        "AccidentCare_Insurance.pdf"
+      ]
+    }
+  },
+  "version": "corrected-v1"
+}

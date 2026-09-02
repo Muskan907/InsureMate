@@ -1,0 +1,62 @@
+[
+  {
+    "id": "Q04",
+    "question": "What is the waiting period for stones in the urinary system?",
+    "expected": "24 months",
+    "type": "policy_fact"
+  },
+  {
+    "id": "Q06",
+    "question": "Does the policy cover hospitalization expenses?",
+    "expected": "hospitalization coverage",
+    "type": "policy_fact"
+  },
+  {
+    "id": "Q08",
+    "question": "What does the policy say about spondylosis or spondylitis?",
+    "expected": "specific policy condition",
+    "type": "policy_fact"
+  },
+  {
+    "id": "Q10",
+    "question": "What are the important waiting periods mentioned in the policy documents?",
+    "expected": "waiting periods",
+    "type": "multi_fact"
+  },
+  {
+    "id": "Q11",
+    "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+    "expected": "comparison using policy documents",
+    "type": "cross_document"
+  },
+  {
+    "id": "Q12",
+    "question": "Which health insurance policy documents mention coverage for hospitalization?",
+    "expected": "document identification",
+    "type": "cross_document"
+  },
+  {
+    "id": "Q15",
+    "question": "What benefits are provided under the accident insurance policy?",
+    "expected": "accident policy benefits",
+    "type": "policy_fact"
+  },
+  {
+    "id": "Q24",
+    "question": "Which document contains information about LIC's Jan Suraksha policy?",
+    "expected": "LIC Jan Suraksha document",
+    "type": "document_identification"
+  },
+  {
+    "id": "Q25",
+    "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+    "expected": "accident insurance document",
+    "type": "document_identification"
+  },
+  {
+    "id": "Q20",
+    "question": "What is the current price of Bitcoin?",
+    "expected": "refusal",
+    "type": "out_of_scope"
+  }
+]

@@ -1,0 +1,525 @@
+{
+  "metadata": {
+    "evaluation": "Repository-level RAG",
+    "generation_model": "codellama:7b-instruct",
+    "embedding_model": "nomic-embed-text",
+    "source_files": [
+      "backend/app/api/knowledge.py",
+      "backend/app/api/retrieval.py",
+      "backend/app/api/upload.py",
+      "backend/app/main.py",
+      "backend/app/services/document_processor.py",
+      "backend/app/services/embedding_service.py",
+      "backend/app/services/retrieval_service.py",
+      "backend/app/services/upload_rag_service.py",
+      "backend/create_embeddings.py",
+      "backend/test_documents.py",
+      "backend/requirements.txt",
+      "docker-compose.yml",
+      "docker/Dockerfile.backend",
+      "docker/Dockerfile.frontend",
+      "frontend/src/App.jsx",
+      "frontend/src/App.css",
+      "frontend/src/index.css",
+      "frontend/src/main.jsx",
+      "frontend/package.json",
+      "frontend/vite.config.js",
+      "README.md"
+    ],
+    "questions": [
+      {
+        "id": "R01",
+        "question": "What happens after a user uploads a policy PDF?"
+      },
+      {
+        "id": "R02",
+        "question": "Which backend components are involved in processing an uploaded PDF?"
+      },
+      {
+        "id": "R03",
+        "question": "How does InsureMate convert policy documents into embeddings?"
+      },
+      {
+        "id": "R04",
+        "question": "How does the retrieval system find the most relevant chunks?"
+      },
+      {
+        "id": "R05",
+        "question": "Which endpoint is used to retrieve policy evidence?"
+      },
+      {
+        "id": "R06",
+        "question": "Trace the flow of a user question from the frontend to the final answer."
+      },
+      {
+        "id": "R07",
+        "question": "Which files are involved in the RAG pipeline?"
+      },
+      {
+        "id": "R08",
+        "question": "What happens when a PDF is uploaded that already exists in the knowledge base?"
+      },
+      {
+        "id": "R09",
+        "question": "How are uploaded documents kept separate using upload sessions?"
+      },
+      {
+        "id": "R10",
+        "question": "Which components would need to change if the embedding model were replaced?"
+      }
+    ],
+    "chunk_count": 275
+  },
+  "results": [
+    {
+      "question_id": "R01",
+      "question": "What happens after a user uploads a policy PDF?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.07,
+      "generation_latency_seconds": 127.582,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 262,
+          "end_line": 289,
+          "score": 0.6228,
+          "text": "6. Preserve important numbers, conditions, limits and requirements.\n7. Pay close attention to the exact policy condition mentioned in the question.\n8. If the question refers to an in-force policy, use only rules applicable to an in-force policy.\n9. Do not use paid-up, Auto Cover, revival, surrender or other policy-state rules unless the question explicitly asks about that state.\n10. When multiple chunks contain related information, prioritize the chunk that directly answers the question and matches its policy condition.\n11. Do not combine rules from different policy states.\n7. If the evidence genuinely does not contain enough information,\n   say:\n\"The available uploaded document does not contain enough information to answer this question.\"\n8. Do not repeat the question.\n9. Do not mention chunks, retrieval, embeddings, sources or the model.\n10. Do not copy large portions of the policy.\n11. Keep the answer concise, preferably 1 to 3 sentences.\n12. Return only the final answer.\n\nANSWER:\n\"\"\"\n\n        answer = call_uploaded_ollama(\n            request.model,\n            prompt\n        )\n\n        answer = (answer or \"\").strip()\n\n        if not answer:\n            answer = (\n                \"The available uploaded document does not contain \""
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 181,
+          "end_line": 237,
+          "score": 0.6111,
+          "text": "content:\n            \"Sorry, I couldn't process that question.\",\n          error: true\n        }\n      ]);\n\n    } finally {\n      setLoading(false);\n    }\n  };\n\n\n\n\nconst resetUpload = () => {\n  setFile(null);\n  setSession(null);\n  setQuestion(\"\");\n  setAnswer(\"\");\n  setResults([]);\n  setChunks([]);\n  setUploadedEmbeddings([]);\n  setChatMessages([]);\n  setShowChunkInspector(false);\n  setShowEmbeddingInspector(false);\n  setSelectedEmbeddingChunk(0);\n  setError(\"\");\n\n  localStorage.removeItem(\n    \"insuremate_upload_session\"\n  );\n};\n\n  return (\n    <section>\n      <header className=\"topbar\">\n        <div>\n          <p className=\"eyebrow\">MODE 2</p>\n          <h1>Upload Your Own Policy</h1>\n          <p className=\"subtitle\">\n            Upload any insurance policy PDF and ask questions using RAG.\n          </p>\n        </div>\n      </header>\n\n      <section className=\"chat-card\">\n        <div className=\"chat-header\">\n          <div>\n            <h2>Upload Policy Document</h2>\n            <p>\n              The uploaded document is independently chunked, embedded and\n              searched before generating an answer.\n            </p>\n          </div>\n        </div>\n\n        <div style={{"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 230,
+          "end_line": 272,
+          "score": 0.6082,
+          "text": "<p>\n              The uploaded document is independently chunked, embedded and\n              searched before generating an answer.\n            </p>\n          </div>\n        </div>\n\n        <div style={{\n          padding: \"24px\",\n          border: \"2px dashed #d1d5db\",\n          borderRadius: \"12px\",\n          marginTop: \"20px\",\n          background: \"#fafafa\"\n        }}>\n          <input\n            type=\"file\"\n            accept=\".pdf,application/pdf\"\n            onChange={(e) => {\n              setFile(e.target.files?.[0] || null);\n              setError(\"\");\n            }}\n          />\n\n          {file && (\n            <p style={{ marginTop: \"12px\" }}>\n              Selected: <strong>{file.name}</strong>\n            </p>\n          )}\n\n          <div style={{ marginTop: \"16px\" }}>\n            <button\n              className=\"ask-button\"\n              onClick={uploadPDF}\n              disabled={uploading || !file}\n            >\n              {uploading ? \"Processing PDF...\" : \"Upload & Process PDF →\"}\n            </button>\n\n            {session && (\n              <button\n                className=\"clear-chat-button\"\n                onClick={resetUpload}\n                style={{ marginLeft: \"10px\" }}"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 400,
+          "end_line": 445,
+          "score": 0.607,
+          "text": "RULES:\n1. Use only the supplied policy evidence.\n2. Do not use outside knowledge.\n3. Do not invent policy facts.\n4. Preserve important numbers, conditions and limits.\n5. Answer clearly and concisely.\n6. If the evidence genuinely does not answer the question,\n   say:\n\n\"The available uploaded document does not contain enough\ninformation to answer this question.\"\n\nUSER QUESTION:\n{request.question}\n\nPOLICY EVIDENCE:\n{context}\n\nANSWER:\n\"\"\"\n\n        rag_answer = call_uploaded_ollama(\n            request.model,\n            rag_prompt\n        )\n\n        return {\n            \"session_id\": request.session_id,\n            \"question\": request.question,\n            \"model\": request.model,\n\n            \"no_rag\": {\n                \"answer\": (no_rag_answer or \"\").strip(),\n                \"sources\": []\n            },\n\n            \"rag\": {\n                \"answer\": (rag_answer or \"\").strip(),\n                \"sources\": [\n                    {\n                        \"document\": item.get(\"document\"),\n                        \"page\": item.get(\"page\"),\n                        \"chunk_id\": item.get(\"chunk_id\"),\n                        \"score\": item.get(\"score\")\n                    }\n                    for item in results"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 1,
+          "end_line": 47,
+          "score": 0.6036,
+          "text": "function UploadPolicyPage() {\n  const [file, setFile] = React.useState(null);\n\n  const [session, setSession] = React.useState(() => {\n    try {\n      const savedSession = localStorage.getItem(\n        \"insuremate_upload_session\"\n      );\n\n      return savedSession\n        ? JSON.parse(savedSession)\n        : null;\n    } catch (error) {\n      console.error(\n        \"Failed to restore upload session:\",\n        error\n      );\n\n      return null;\n    }\n  });\n\n  const [question, setQuestion] = React.useState(\"\");\n  const [answer, setAnswer] = React.useState(\"\");\n  const [results, setResults] = React.useState([]);\n  const [chunks, setChunks] = React.useState([]);\n  const [showChunkInspector, setShowChunkInspector] =\n    React.useState(false);\n\n  const [showEmbeddingInspector, setShowEmbeddingInspector] =\n    React.useState(false);\n\n  const [uploadedEmbeddings, setUploadedEmbeddings] =\n    React.useState([]);\n\n  const [selectedEmbeddingChunk, setSelectedEmbeddingChunk] =\n    React.useState(0);\n\n  const [embeddingLoading, setEmbeddingLoading] =\n    React.useState(false);\n\n  const [loading, setLoading] = React.useState(false);\n  const [uploading, setUploading] = React.useState(false);\n\n  // Mode 2 AI Assistant conversation"
+        }
+      ],
+      "answer": "The answer to the user question \"What happens after a user uploads a policy PDF?\" is that the uploaded document is independently chunked, embedded and searched before generating an answer."
+    },
+    {
+      "question_id": "R02",
+      "question": "Which backend components are involved in processing an uploaded PDF?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 3.836,
+      "generation_latency_seconds": 152.293,
+      "retrieved_chunks": [
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 230,
+          "end_line": 272,
+          "score": 0.6441,
+          "text": "<p>\n              The uploaded document is independently chunked, embedded and\n              searched before generating an answer.\n            </p>\n          </div>\n        </div>\n\n        <div style={{\n          padding: \"24px\",\n          border: \"2px dashed #d1d5db\",\n          borderRadius: \"12px\",\n          marginTop: \"20px\",\n          background: \"#fafafa\"\n        }}>\n          <input\n            type=\"file\"\n            accept=\".pdf,application/pdf\"\n            onChange={(e) => {\n              setFile(e.target.files?.[0] || null);\n              setError(\"\");\n            }}\n          />\n\n          {file && (\n            <p style={{ marginTop: \"12px\" }}>\n              Selected: <strong>{file.name}</strong>\n            </p>\n          )}\n\n          <div style={{ marginTop: \"16px\" }}>\n            <button\n              className=\"ask-button\"\n              onClick={uploadPDF}\n              disabled={uploading || !file}\n            >\n              {uploading ? \"Processing PDF...\" : \"Upload & Process PDF →\"}\n            </button>\n\n            {session && (\n              <button\n                className=\"clear-chat-button\"\n                onClick={resetUpload}\n                style={{ marginLeft: \"10px\" }}"
+        },
+        {
+          "file": "backend/app/services/document_processor.py",
+          "start_line": 114,
+          "end_line": 127,
+          "score": 0.6101,
+          "text": "return all_chunks\n\n\ndef process_all_documents():\n\n    documents = []\n\n    for pdf in DOCUMENTS_DIR.glob(\"*.pdf\"):\n\n        chunks = process_pdf(pdf)\n\n        documents.extend(chunks)\n\n    return documents"
+        },
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 91,
+          "end_line": 137,
+          "score": 0.6098,
+          "text": "if pdf_path.resolve() != saved_pdf.resolve():\n        saved_pdf.write_bytes(pdf_path.read_bytes())\n\n    chunks = process_pdf(saved_pdf)\n\n    embedded_chunks = []\n\n    for i, chunk in enumerate(chunks):\n        embedding = generate_embedding(chunk[\"text\"])\n\n        embedded_chunks.append({\n            **chunk,\n            \"embedding\": embedding\n        })\n\n        print(\n            f\"Uploaded PDF embedding \"\n            f\"{i + 1}/{len(chunks)} | Chunk {chunk['chunk_id']}\"\n        )\n\n    embeddings_file = session_dir / \"embeddings.json\"\n\n    with open(embeddings_file, \"w\", encoding=\"utf-8\") as f:\n        json.dump(\n            embedded_chunks,\n            f,\n            ensure_ascii=False\n        )\n        \n    # Add uploaded PDF to the main knowledge base\n    add_to_main_knowledge_base(embedded_chunks)    \n\n    return {\n        \"session_id\": session_id,\n        \"document\": saved_pdf.name,\n        \"chunks\": len(embedded_chunks),\n        \"embedding_dimensions\": (\n            len(embedded_chunks[0][\"embedding\"])\n            if embedded_chunks\n            else 0\n        )\n    }\n\n\ndef retrieve_uploaded(session_id: str, question: str, top_k: int = 3):\n    embeddings_file = (\n        UPLOAD_DIR"
+        },
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 47,
+          "end_line": 98,
+          "score": 0.606,
+          "text": "f\"Document already exists in knowledge base: \"\n            f\"{uploaded_document}\"\n        )\n        return\n\n    main_embeddings.extend(embedded_chunks)\n\n    with open(\n        MAIN_EMBEDDINGS_FILE,\n        \"w\",\n        encoding=\"utf-8\"\n    ) as f:\n        json.dump(\n            main_embeddings,\n            f,\n            ensure_ascii=False\n        )\n\n    print(\n        f\"Added {len(embedded_chunks)} chunks \"\n        f\"to main knowledge base\"\n    )\n\n\ndef cosine_similarity(a, b):\n    dot = sum(x * y for x, y in zip(a, b))\n\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n    magnitude_b = math.sqrt(sum(y * y for y in b))\n\n    if magnitude_a == 0 or magnitude_b == 0:\n        return 0.0\n\n    return dot / (magnitude_a * magnitude_b)\n\n\ndef create_upload_session(pdf_path: Path, original_filename: str = None):\n    session_id = uuid.uuid4().hex\n\n    session_dir = UPLOAD_DIR / session_id\n    session_dir.mkdir(parents=True, exist_ok=True)\n\n    saved_pdf = session_dir / (original_filename or pdf_path.name)\n\n    if pdf_path.resolve() != saved_pdf.resolve():\n        saved_pdf.write_bytes(pdf_path.read_bytes())\n\n    chunks = process_pdf(saved_pdf)\n\n    embedded_chunks = []\n\n    for i, chunk in enumerate(chunks):"
+        },
+        {
+          "file": "backend/app/services/document_processor.py",
+          "start_line": 88,
+          "end_line": 127,
+          "score": 0.6011,
+          "text": "return chunks\n\n\ndef process_pdf(pdf_path: Path):\n\n    pages = extract_text_from_pdf(pdf_path)\n\n    all_chunks = []\n\n    chunk_id = 0\n\n    for page in pages:\n\n        page_chunks = chunk_text(page[\"text\"])\n\n        for chunk in page_chunks:\n\n            all_chunks.append({\n                \"chunk_id\": chunk_id,\n                \"document\": pdf_path.name,\n                \"page\": page[\"page\"],\n                \"text\": chunk\n            })\n\n            chunk_id += 1\n\n    return all_chunks\n\n\ndef process_all_documents():\n\n    documents = []\n\n    for pdf in DOCUMENTS_DIR.glob(\"*.pdf\"):\n\n        chunks = process_pdf(pdf)\n\n        documents.extend(chunks)\n\n    return documents"
+        }
+      ],
+      "answer": "The backend components involved in processing an uploaded PDF are:\n\n1. `document_processor.py`: This file contains the `process_pdf()` function, which is responsible for extracting text from a PDF document and chunking it into smaller pieces. The `process_all_documents()` function also calls this function to process all PDF documents in the repository.\n2. `upload_rag_service.py`: This file contains the `create_upload_session()` function, which creates an upload session for a new PDF document and saves it to the repository. The `retrieve_uploaded()` function also calls this function to retrieve the uploaded PDF document from the repository.\n3. `services/document_processor.py`: This file contains the `process_all_documents()` function, which processes all PDF documents in the repository and returns a list of chunks for each document.\n4. `services/upload_rag_service.py`: This file contains the `create_upload_session()` function, which creates an upload session for a new PDF document and saves it to the repository. The `retrieve_uploaded()` function also calls this function to retrieve the uploaded PDF document from the repository."
+    },
+    {
+      "question_id": "R03",
+      "question": "How does InsureMate convert policy documents into embeddings?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.497,
+      "generation_latency_seconds": 157.97,
+      "retrieved_chunks": [
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 3528,
+          "end_line": 3598,
+          "score": 0.655,
+          "text": "</section>\n\n\n      {/* PIPELINE */}\n\n      <section className=\"pipeline-card\">\n\n        <div className=\"pipeline-title\">\n\n          <div>\n            <h2>\n              Embedding Pipeline\n            </h2>\n\n            <p>\n              How InsureMate converts text into vectors.\n            </p>\n          </div>\n\n        </div>\n\n\n        <div className=\"pipeline\">\n\n          <div className=\"pipeline-step\">\n            <div className=\"step-number\">\n              01\n            </div>\n\n            <strong>\n              Document\n            </strong>\n\n            <span>\n              PDF policy\n            </span>\n          </div>\n\n\n          <div className=\"arrow\">\n            →\n          </div>\n\n\n          <div className=\"pipeline-step\">\n            <div className=\"step-number\">\n              02\n            </div>\n\n            <strong>\n              Chunk\n            </strong>\n\n            <span>\n              Text segment\n            </span>\n          </div>\n\n\n          <div className=\"arrow\">\n            →\n          </div>\n\n\n          <div className=\"pipeline-step\">\n            <div className=\"step-number\">\n              03\n            </div>\n\n            <strong>\n              Nomic Embed"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 788,
+          "end_line": 826,
+          "score": 0.6505,
+          "text": "You are InsureMate, an insurance policy assistant.\n\nYour job is to answer the user's question using ONLY the information\nprovided in POLICY EVIDENCE.\n\nIMPORTANT:\n- Do NOT use any outside knowledge.\n- Do NOT invent information.\n- Do NOT add conditions, limits, waiting periods, or exclusions unless\n  they are explicitly present in the evidence.\n- Combine information from multiple evidence sections when relevant.\n- If the question asks about multiple things, answer every part that is\n  supported by the evidence.\n- You may summarize and paraphrase the policy text.\n- Preserve important numbers, durations, percentages and conditions.\n- Do NOT mention \"source\", \"chunk\", \"retrieval\", \"policy evidence\",\n  \"document\", or model names.\n- Do NOT explain your reasoning.\n- Return ONLY the final answer.\n\nIf some parts of the question are supported and some are not, answer the\nsupported parts. Do NOT reject the entire question.\n\nOnly if NONE of the evidence can answer the question, return exactly:\n\nThe available insurance documents do not contain enough information to answer this question.\n\nCURRENT USER QUESTION:\n{question}\n\nPOLICY EVIDENCE:\n{context}\n\nFINAL ANSWER:\n\"\"\"\n\n    try:\n\n        answer = call_ollama("
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 229,
+          "end_line": 264,
+          "score": 0.6437,
+          "text": "\"session_id\": request.session_id,\n                \"question\": request.question,\n                \"model\": request.model,\n                \"answer\": (\n                    \"The uploaded document does not contain \"\n                    \"enough information to answer this question.\"\n                ),\n                \"sources\": [],\n                \"retrieved_chunks\": []\n            }\n\n        context = \"\\n\\n\".join(\n            item.get(\"text\", \"\")\n            for item in results\n        )\n\n        prompt = f\"\"\"\nYou are InsureMate, an AI assistant for an uploaded insurance policy document.\n\nAnswer the CURRENT USER QUESTION using ONLY the POLICY EVIDENCE below.\n\nCURRENT USER QUESTION:\n{request.question}\n\nPOLICY EVIDENCE:\n{context}\n\nRULES:\n1. Answer the current question directly.\n2. Use only facts supported by the policy evidence.\n3. Do not use outside knowledge.\n4. Do not invent or assume information.\n5. Recognize normal paraphrases and equivalent terminology.\n6. Preserve important numbers, conditions, limits and requirements.\n7. Pay close attention to the exact policy condition mentioned in the question.\n8. If the question refers to an in-force policy, use only rules applicable to an in-force policy."
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 1052,
+          "end_line": 1090,
+          "score": 0.6328,
+          "text": ": \"INSUREMATE AI\"}\n                    </div>\n\n                    <div\n                      style={{\n                        lineHeight: \"1.6\",\n                        whiteSpace: \"pre-wrap\"\n                      }}\n                    >\n                      {message.content}\n                    </div>\n\n\n                    {/* RETRIEVED EVIDENCE */}\n\n                    {message.role === \"assistant\" &&\n                      message.sources &&\n                      message.sources.length > 0 && (\n\n                      <details\n                        style={{\n                          marginTop: \"15px\",\n                          borderTop:\n                            \"1px solid rgba(107,114,128,0.25)\",\n                          paddingTop: \"10px\"\n                        }}\n                      >\n\n                        <summary\n                          style={{\n                            cursor: \"pointer\",\n                            fontWeight: \"600\",\n                            fontSize: \"13px\"\n                          }}\n                        >\n                          View Retrieved Evidence\n                        </summary>\n\n                        <div"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 262,
+          "end_line": 289,
+          "score": 0.621,
+          "text": "6. Preserve important numbers, conditions, limits and requirements.\n7. Pay close attention to the exact policy condition mentioned in the question.\n8. If the question refers to an in-force policy, use only rules applicable to an in-force policy.\n9. Do not use paid-up, Auto Cover, revival, surrender or other policy-state rules unless the question explicitly asks about that state.\n10. When multiple chunks contain related information, prioritize the chunk that directly answers the question and matches its policy condition.\n11. Do not combine rules from different policy states.\n7. If the evidence genuinely does not contain enough information,\n   say:\n\"The available uploaded document does not contain enough information to answer this question.\"\n8. Do not repeat the question.\n9. Do not mention chunks, retrieval, embeddings, sources or the model.\n10. Do not copy large portions of the policy.\n11. Keep the answer concise, preferably 1 to 3 sentences.\n12. Return only the final answer.\n\nANSWER:\n\"\"\"\n\n        answer = call_uploaded_ollama(\n            request.model,\n            prompt\n        )\n\n        answer = (answer or \"\").strip()\n\n        if not answer:\n            answer = (\n                \"The available uploaded document does not contain \""
+        }
+      ],
+      "answer": "It appears that InsureMate uses a combination of natural language processing and machine learning techniques to convert policy documents into embeddings. The evidence suggests that the frontend application sends a question to the backend API, which then calls an Ollama model to generate an answer based on the provided policy evidence. The Ollama model is trained on a large corpus of text data and can understand natural language queries, allowing it to generate answers based on the information present in the policy documents.\n\nThe process of converting policy documents into embeddings appears to involve several steps:\n\n1. Document processing: The frontend application sends the policy document to the backend API for processing.\n2. Chunking: The backend API breaks down the policy document into smaller chunks, which are then sent to the Ollama model for analysis.\n3. Nomic Embedding: The Ollama model generates an embedding for each chunk of text, which represents the information present in that chunk.\n4. Answer generation: The backend API combines the embeddings generated by the Ollama model to generate an answer to the user's question.\n\nOverall, it seems that InsureMate uses a combination of natural language processing and machine learning techniques to convert policy documents into embeddings, which can then be used to generate answers to user questions."
+    },
+    {
+      "question_id": "R04",
+      "question": "How does the retrieval system find the most relevant chunks?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.455,
+      "generation_latency_seconds": 130.976,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/main.py",
+          "start_line": 520,
+          "end_line": 561,
+          "score": 0.674,
+          "text": "\"sources\": [],\n            \"retrieved_chunks\": []\n        }\n\n    # =====================================================\n    # MULTI-MODEL PIPELINE LOG\n    # =====================================================\n\n    print(\"\\n\" + \"=\" * 65)\n    print(\"INSUREMATE MULTI-MODEL PIPELINE\")\n    print(\"=\" * 65)\n    print(f\"Question: {question}\")\n\n    # =====================================================\n    # 1. RETRIEVAL\n    # =====================================================\n\n    print(\"\\nStage 0: RAG → Retrieving relevant policy evidence\")\n\n    retrieval_question = question\n    q_lower = question.lower().strip()\n\n    # Follow-up question handling\n    if history and len(q_lower.split()) <= 6:\n\n        previous_user_questions = [\n            message.get(\"content\", \"\").strip()\n            for message in history\n            if message.get(\"role\") == \"user\"\n            and message.get(\"content\", \"\").strip()\n        ]\n\n        if previous_user_questions:\n            retrieval_question = (\n                previous_user_questions[-1]\n                + \" \"\n                + question\n            )\n\n    try:\n        retrieval_response = requests.post(\n            \"http://localhost:8000/api/retrieval/search\","
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 3827,
+          "end_line": 3892,
+          "score": 0.674,
+          "text": "uses these representations during semantic\n                  retrieval to find relevant policy chunks.\n                </p>\n\n              </div>\n\n            </div>\n\n          </section>\n\n        </>\n\n      )}\n\n\n      {!loading && !embeddingData && !embeddingDocument && (\n\n        <section className=\"documents-card\">\n\n          <div className=\"empty-answer\">\n\n            <div className=\"empty-icon\">\n              ✦\n            </div>\n\n            <p>\n              Select a document to inspect embeddings.\n            </p>\n\n            <span>\n              Choose a PDF above to load its vector.\n            </span>\n\n          </div>\n\n        </section>\n\n      )}\n\n    </div>\n  );\n}\n\n\n\n/* =========================================================\n   RETRIEVAL PAGE\n========================================================= */\n\nfunction RetrievalPage() {\n\n  const API_BASE = API_URL;\n\n  const [query, setQuery] = useState(\"\");\n  const [results, setResults] = useState([]);\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n\n  const searchRetrieval = async () => {\n\n    if (!query.trim()) return;\n\n    try {\n\n      setLoading(true);\n      setError(\"\");"
+        },
+        {
+          "file": "backend/app/api/retrieval.py",
+          "start_line": 16,
+          "end_line": 26,
+          "score": 0.6664,
+          "text": "def search_documents(request: RetrievalRequest):\n\n    results = retrieve(\n        request.question,\n        request.top_k\n    )\n\n    return {\n        \"question\": request.question,\n        \"results\": results\n    }"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 990,
+          "end_line": 996,
+          "score": 0.6505,
+          "text": "\"models_used\": models_used,\n        \"answer\": answer,\n        \"validation\": validation,\n        \"sources\": sources,\n        \"retrieved_chunks\": results,\n        \"retrieval_confidence\": best_score\n    }"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 855,
+          "end_line": 916,
+          "score": 0.6463,
+          "text": "\"retrieved_chunks\": results,\n            \"retrieval_confidence\": best_score,\n            \"error\": str(e)\n        }\n\n    answer = (answer or \"\").strip()\n\n    print(f\"\\nGenerated answer from {selected_model}:\")\n    print(answer)\n\n    if not answer:\n        answer = fallback\n\n    # =====================================================\n    # 7. PHI-3 VALIDATION\n    # =====================================================\n\n    print(\"\\nStage 3: Phi-3 Mini → Validating answer grounding\")\n\n    validator_prompt = f\"\"\"\nYou are a binary answer validator.\n\nDetermine whether the ANSWER contains claims that are supported by\nthe POLICY EVIDENCE.\n\nPOLICY EVIDENCE:\n{context}\n\nANSWER:\n{answer}\n\nReturn EXACTLY one word.\n\nReturn:\n\nVALID\n\nif the answer is supported by the policy evidence.\n\nReturn:\n\nINVALID\n\nonly if the answer contains information that is clearly unsupported,\ninvented, or contradicts the policy evidence.\n\nDo not explain your decision.\nDo not write any other words.\n\"\"\"\n\n    try:\n\n        validation_raw = call_ollama(\n            \"phi3:mini\",\n            validator_prompt\n        )\n\n        validation_raw = (\n            validation_raw or \"\"\n        ).strip().upper()\n\n        print(f\"Phi-3 raw validation result: {validation_raw}\")"
+        }
+      ],
+      "answer": "The retrieval system finds the most relevant chunks by using a combination of natural language processing (NLP) techniques and machine learning algorithms. The specific approach used in InsureMate is not publicly available, but it involves several steps:\n\n1. Tokenization: The input question is broken down into individual words or tokens.\n2. Stopword removal: Common words like \"the,\" \"a,\" \"and,\" etc. are removed from the tokenized text.\n3. Stemming or Lemmatization: The remaining words are reduced to their base form using a stemming or lemmatization algorithm.\n4. Vectorization: The resulting tokens are then converted into numerical vectors that can be processed by machine learning algorithms.\n5. Querying the retrieval model: The vectorized question is passed to the retrieval model, which returns a list of relevant chunks from the policy evidence.\n6. Ranking the chunks: The retrieved chunks are ranked based on their relevance to the input question using a ranking algorithm.\n7. Selecting the top chunks: The top-ranked chunks are selected as the most relevant chunks for the input question.\n\nThe retrieval system uses a combination of natural language processing (NLP) techniques and machine learning algorithms to find the most relevant chunks in the policy evidence for a given input question."
+    },
+    {
+      "question_id": "R05",
+      "question": "Which endpoint is used to retrieve policy evidence?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.466,
+      "generation_latency_seconds": 144.919,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 400,
+          "end_line": 445,
+          "score": 0.64,
+          "text": "RULES:\n1. Use only the supplied policy evidence.\n2. Do not use outside knowledge.\n3. Do not invent policy facts.\n4. Preserve important numbers, conditions and limits.\n5. Answer clearly and concisely.\n6. If the evidence genuinely does not answer the question,\n   say:\n\n\"The available uploaded document does not contain enough\ninformation to answer this question.\"\n\nUSER QUESTION:\n{request.question}\n\nPOLICY EVIDENCE:\n{context}\n\nANSWER:\n\"\"\"\n\n        rag_answer = call_uploaded_ollama(\n            request.model,\n            rag_prompt\n        )\n\n        return {\n            \"session_id\": request.session_id,\n            \"question\": request.question,\n            \"model\": request.model,\n\n            \"no_rag\": {\n                \"answer\": (no_rag_answer or \"\").strip(),\n                \"sources\": []\n            },\n\n            \"rag\": {\n                \"answer\": (rag_answer or \"\").strip(),\n                \"sources\": [\n                    {\n                        \"document\": item.get(\"document\"),\n                        \"page\": item.get(\"page\"),\n                        \"chunk_id\": item.get(\"chunk_id\"),\n                        \"score\": item.get(\"score\")\n                    }\n                    for item in results"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 5634,
+          "end_line": 5681,
+          "score": 0.6308,
+          "text": "}}\n            >\n              Ask a policy question and evaluate how\n              well the generated answer is supported\n              by evidence.\n            </p>\n\n\n            <div\n              style={{\n                display: \"grid\",\n                gap: \"14px\"\n              }}\n            >\n\n              <textarea\n                value={\n                  hallucinationQuestion\n                }\n                onChange={(event) =>\n                  setHallucinationQuestion(\n                    event.target.value\n                  )\n                }\n                placeholder=\"Ask a policy question...\"\n                rows={4}\n                style={{\n                  width: \"100%\",\n                  padding: \"14px\",\n                  border:\n                    \"1px solid #d1d5db\",\n                  borderRadius: \"10px\",\n                  resize: \"vertical\",\n                  fontFamily:\n                    \"inherit\"\n                }}\n              />\n\n\n              <div\n                style={{\n                  display: \"flex\",\n                  gap: \"12px\",\n                  flexWrap: \"wrap\"\n                }}\n              >\n\n                <select"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 788,
+          "end_line": 826,
+          "score": 0.6213,
+          "text": "You are InsureMate, an insurance policy assistant.\n\nYour job is to answer the user's question using ONLY the information\nprovided in POLICY EVIDENCE.\n\nIMPORTANT:\n- Do NOT use any outside knowledge.\n- Do NOT invent information.\n- Do NOT add conditions, limits, waiting periods, or exclusions unless\n  they are explicitly present in the evidence.\n- Combine information from multiple evidence sections when relevant.\n- If the question asks about multiple things, answer every part that is\n  supported by the evidence.\n- You may summarize and paraphrase the policy text.\n- Preserve important numbers, durations, percentages and conditions.\n- Do NOT mention \"source\", \"chunk\", \"retrieval\", \"policy evidence\",\n  \"document\", or model names.\n- Do NOT explain your reasoning.\n- Return ONLY the final answer.\n\nIf some parts of the question are supported and some are not, answer the\nsupported parts. Do NOT reject the entire question.\n\nOnly if NONE of the evidence can answer the question, return exactly:\n\nThe available insurance documents do not contain enough information to answer this question.\n\nCURRENT USER QUESTION:\n{question}\n\nPOLICY EVIDENCE:\n{context}\n\nFINAL ANSWER:\n\"\"\"\n\n    try:\n\n        answer = call_ollama("
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 229,
+          "end_line": 264,
+          "score": 0.6201,
+          "text": "\"session_id\": request.session_id,\n                \"question\": request.question,\n                \"model\": request.model,\n                \"answer\": (\n                    \"The uploaded document does not contain \"\n                    \"enough information to answer this question.\"\n                ),\n                \"sources\": [],\n                \"retrieved_chunks\": []\n            }\n\n        context = \"\\n\\n\".join(\n            item.get(\"text\", \"\")\n            for item in results\n        )\n\n        prompt = f\"\"\"\nYou are InsureMate, an AI assistant for an uploaded insurance policy document.\n\nAnswer the CURRENT USER QUESTION using ONLY the POLICY EVIDENCE below.\n\nCURRENT USER QUESTION:\n{request.question}\n\nPOLICY EVIDENCE:\n{context}\n\nRULES:\n1. Answer the current question directly.\n2. Use only facts supported by the policy evidence.\n3. Do not use outside knowledge.\n4. Do not invent or assume information.\n5. Recognize normal paraphrases and equivalent terminology.\n6. Preserve important numbers, conditions, limits and requirements.\n7. Pay close attention to the exact policy condition mentioned in the question.\n8. If the question refers to an in-force policy, use only rules applicable to an in-force policy."
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 1052,
+          "end_line": 1090,
+          "score": 0.6129,
+          "text": ": \"INSUREMATE AI\"}\n                    </div>\n\n                    <div\n                      style={{\n                        lineHeight: \"1.6\",\n                        whiteSpace: \"pre-wrap\"\n                      }}\n                    >\n                      {message.content}\n                    </div>\n\n\n                    {/* RETRIEVED EVIDENCE */}\n\n                    {message.role === \"assistant\" &&\n                      message.sources &&\n                      message.sources.length > 0 && (\n\n                      <details\n                        style={{\n                          marginTop: \"15px\",\n                          borderTop:\n                            \"1px solid rgba(107,114,128,0.25)\",\n                          paddingTop: \"10px\"\n                        }}\n                      >\n\n                        <summary\n                          style={{\n                            cursor: \"pointer\",\n                            fontWeight: \"600\",\n                            fontSize: \"13px\"\n                          }}\n                        >\n                          View Retrieved Evidence\n                        </summary>\n\n                        <div"
+        }
+      ],
+      "answer": "The endpoint used to retrieve policy evidence is not explicitly mentioned in the provided repository evidence. However, based on the context of the question and the available evidence, it appears that the user is asking for information about an uploaded insurance policy document. Therefore, the most likely endpoint used to retrieve policy evidence would be the `upload` endpoint in the `backend/app/api/` directory.\n\nHere's a possible flow of events:\n\n1. The user uploads an insurance policy document through the frontend application.\n2. The backend API receives the uploaded file and processes it using the `upload` endpoint.\n3. The `upload` endpoint extracts relevant information from the policy document, such as the policy number, coverage type, and duration of coverage.\n4. The extracted information is then stored in a database or other data store for later retrieval.\n5. When the user asks a question about the uploaded policy document, the backend API retrieves the relevant information from the database or data store using the `retrieve` endpoint.\n6. The retrieved information is then used to answer the user's question using the `answer` endpoint.\n\nTherefore, based on the provided repository evidence, it appears that the endpoint used to retrieve policy evidence is the `upload` endpoint in the `backend/app/api/` directory."
+    },
+    {
+      "question_id": "R06",
+      "question": "Trace the flow of a user question from the frontend to the final answer.",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.474,
+      "generation_latency_seconds": 139.633,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/main.py",
+          "start_line": 554,
+          "end_line": 601,
+          "score": 0.6109,
+          "text": "previous_user_questions[-1]\n                + \" \"\n                + question\n            )\n\n    try:\n        retrieval_response = requests.post(\n            \"http://localhost:8000/api/retrieval/search\",\n            json={\n                \"question\": retrieval_question,\n                \"top_k\": 3\n            },\n            timeout=120\n        )\n\n        retrieval_response.raise_for_status()\n\n        retrieval_data = retrieval_response.json()\n        results = retrieval_data.get(\"results\", [])\n\n        print(f\"Retrieved chunks: {len(results)}\")\n\n    except Exception as e:\n\n        print(f\"Retrieval failed: {str(e)}\")\n        print(\"=\" * 65 + \"\\n\")\n\n        return {\n            \"question\": question,\n            \"model\": None,\n            \"complexity\": None,\n            \"models_used\": [],\n            \"answer\": fallback,\n            \"validation\": \"RETRIEVAL_FAILED\",\n            \"sources\": [],\n            \"retrieved_chunks\": [],\n            \"retrieval_confidence\": 0,\n            \"error\": str(e)\n        }\n\n    best_score = max(\n        (float(item.get(\"score\", 0)) for item in results),\n        default=0\n    )\n\n    print(f\"Best retrieval score: {best_score:.4f}\")\n\n    # ====================================================="
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 2100,
+          "end_line": 2157,
+          "score": 0.5974,
+          "text": "</div>\n\n\n                <div className=\"answer-box\">\n\n                  {loading ? (\n\n                    <div className=\"loading\">\n                      Code Llama is analyzing your question...\n                    </div>\n\n                  ) : answer ? (\n\n                    <p>\n                      {answer}\n                    </p>\n\n                  ) : (\n\n                    <div className=\"empty-answer\">\n\n                      <div className=\"empty-icon\">\n                        ✦\n                      </div>\n\n                      <p>\n                        Your answer will appear here.\n                      </p>\n\n                      <span>\n                        Ask a question to get started.\n                      </span>\n\n                    </div>\n\n                  )}\n\n                </div>\n\n              </div>\n\n            </section>\n\n\n            {/* PIPELINE */}\n\n            <section className=\"pipeline-card\">\n\n              <div className=\"pipeline-title\">\n\n                <div>\n\n                  <h2>\n                    AI Processing Pipeline\n                  </h2>\n\n                  <p>\n                    How InsureMate processes your request"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 480,
+          "end_line": 526,
+          "score": 0.5763,
+          "text": "results[0].get(\"score\", 0)\n            if results else 0\n        )\n    }\n\n# =========================================================\n# RAG CHAT\n# =========================================================\n\n@app.post(\"/api/chat\")\ndef chat(\n    question: str = \"\",\n    model: str = MODEL,\n    request: Optional[ChatRequest] = Body(default=None)\n):\n    \"\"\"\n    Main conversational RAG endpoint with multi-model orchestration.\n    \"\"\"\n\n    if request is not None:\n        question = request.question\n        history = request.history or []\n    else:\n        history = []\n\n    question = (question or \"\").strip()\n\n    fallback = (\n        \"The available insurance documents do not contain enough \"\n        \"information to answer this question.\"\n    )\n\n    if not question:\n        return {\n            \"question\": question,\n            \"model\": None,\n            \"complexity\": None,\n            \"models_used\": [],\n            \"answer\": \"Please enter a question about your insurance policy.\",\n            \"validation\": None,\n            \"sources\": [],\n            \"retrieved_chunks\": []\n        }\n\n    # =====================================================\n    # MULTI-MODEL PIPELINE LOG\n    # ====================================================="
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 5835,
+          "end_line": 5879,
+          "score": 0.5668,
+          "text": "<div className=\"status-card\">\n\n                      <div className=\"card-label\">\n                        EVIDENCE CHUNKS\n                      </div>\n\n                      <div className=\"card-value\">\n                        {\n                          (\n                            hallucinationResult\n                              .sources ||\n                            []\n                          ).length\n                        }\n                      </div>\n\n                    </div>\n\n                  </div>\n\n\n                  <h2\n                    style={{\n                      marginTop:\n                        \"28px\"\n                    }}\n                  >\n                    AI Answer\n                  </h2>\n\n                  <div\n                    style={{\n                      padding:\n                        \"18px\",\n                      background:\n                        \"#f8fafc\",\n                      borderRadius:\n                        \"10px\",\n                      lineHeight:\n                        \"1.7\"\n                    }}\n                  >\n                    {\n                      hallucinationResult\n                        .answer"
+        },
+        {
+          "file": "backend/app/main.py",
+          "start_line": 129,
+          "end_line": 197,
+          "score": 0.5661,
+          "text": "def calculate_grounding(answer, results):\n\n    evidence_text = \" \".join(\n        item.get(\"text\", \"\").lower()\n        for item in results\n    )\n\n    sentences = [\n        sentence.strip()\n        for sentence in re.split(\n            r\"[.!?]\",\n            answer\n        )\n        if len(sentence.strip()) > 20\n    ]\n\n    stop_words = {\n        \"the\",\n        \"and\",\n        \"for\",\n        \"with\",\n        \"that\",\n        \"this\",\n        \"from\",\n        \"are\",\n        \"was\",\n        \"were\",\n        \"will\",\n        \"have\",\n        \"has\",\n        \"been\",\n        \"their\",\n        \"they\",\n        \"into\",\n        \"under\",\n        \"provided\",\n        \"after\",\n        \"before\",\n        \"same\",\n        \"which\",\n        \"where\",\n        \"than\",\n        \"then\",\n        \"also\",\n        \"only\",\n        \"based\",\n        \"policy\",\n        \"evidence\",\n        \"insured\"\n    }\n\n    supported_claims = []\n    unsupported_claims = []\n\n    for sentence in sentences:\n\n        words = re.findall(\n            r\"[a-zA-Z]{4,}\",\n            sentence.lower()\n        )\n\n        keywords = [\n            word\n            for word in words\n            if word not in stop_words\n        ]\n\n        if not keywords:\n            continue"
+        }
+      ],
+      "answer": "The flow of a user question from the frontend to the final answer can be traced as follows:\n\n1. The user enters a question in the frontend's input field.\n2. The frontend sends an HTTP request to the backend with the entered question.\n3. The backend receives the HTTP request and processes it using the `chat` endpoint.\n4. The `chat` endpoint calls the `calculate_grounding` function, which extracts relevant information from the evidence chunks (i.e., the insurance documents) to answer the user's question.\n5. The `calculate_grounding` function uses a combination of natural language processing techniques and machine learning models to generate an answer to the user's question.\n6. The backend returns the generated answer to the frontend, which displays it in the UI.\n7. The user can then ask another question or use the platform for other purposes."
+    },
+    {
+      "question_id": "R07",
+      "question": "Which files are involved in the RAG pipeline?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.449,
+      "generation_latency_seconds": 92.687,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/main.py",
+          "start_line": 520,
+          "end_line": 561,
+          "score": 0.575,
+          "text": "\"sources\": [],\n            \"retrieved_chunks\": []\n        }\n\n    # =====================================================\n    # MULTI-MODEL PIPELINE LOG\n    # =====================================================\n\n    print(\"\\n\" + \"=\" * 65)\n    print(\"INSUREMATE MULTI-MODEL PIPELINE\")\n    print(\"=\" * 65)\n    print(f\"Question: {question}\")\n\n    # =====================================================\n    # 1. RETRIEVAL\n    # =====================================================\n\n    print(\"\\nStage 0: RAG → Retrieving relevant policy evidence\")\n\n    retrieval_question = question\n    q_lower = question.lower().strip()\n\n    # Follow-up question handling\n    if history and len(q_lower.split()) <= 6:\n\n        previous_user_questions = [\n            message.get(\"content\", \"\").strip()\n            for message in history\n            if message.get(\"role\") == \"user\"\n            and message.get(\"content\", \"\").strip()\n        ]\n\n        if previous_user_questions:\n            retrieval_question = (\n                previous_user_questions[-1]\n                + \" \"\n                + question\n            )\n\n    try:\n        retrieval_response = requests.post(\n            \"http://localhost:8000/api/retrieval/search\","
+        },
+        {
+          "file": "backend/app/services/document_processor.py",
+          "start_line": 114,
+          "end_line": 127,
+          "score": 0.5747,
+          "text": "return all_chunks\n\n\ndef process_all_documents():\n\n    documents = []\n\n    for pdf in DOCUMENTS_DIR.glob(\"*.pdf\"):\n\n        chunks = process_pdf(pdf)\n\n        documents.extend(chunks)\n\n    return documents"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 2333,
+          "end_line": 2363,
+          "score": 0.5638,
+          "text": "<div className=\"pipeline-number\">1</div>\n                  <div className=\"pipeline-content\">\n                    <div className=\"pipeline-step-title\">\n                      User Question\n                    </div>\n                    <div className=\"pipeline-step-description\">\n                      Your insurance query\n                    </div>\n                  </div>\n                </div>\n\n                <div className=\"pipeline-arrow\">→</div>\n\n                <div className=\"pipeline-step\">\n                  <div className=\"pipeline-number\">2</div>\n                  <div className=\"pipeline-content\">\n                    <div className=\"pipeline-step-title\">\n                      RAG Retrieval\n                    </div>\n                    <div className=\"pipeline-step-description\">\n                      Searches all policy knowledge\n                    </div>\n                  </div>\n                </div>\n\n                <div className=\"pipeline-arrow\">→</div>\n\n                <div className=\"pipeline-step\">\n                  <div className=\"pipeline-number\">3</div>\n                  <div className=\"pipeline-content\">\n                    <div className=\"pipeline-step-title\">"
+        },
+        {
+          "file": "frontend/src/App.css",
+          "start_line": 2144,
+          "end_line": 2171,
+          "score": 0.556,
+          "text": ".pipeline-step {\n    min-width: 150px;\n  }\n}\n\n@media (max-width: 700px) {\n  .orchestration-pipeline {\n    padding: 22px;\n  }\n\n  .pipeline-header {\n    flex-direction: column;\n    gap: 16px;\n  }\n\n  .pipeline-flow {\n    flex-direction: column;\n  }\n\n  .pipeline-arrow {\n    transform: rotate(90deg);\n    height: 25px;\n  }\n\n  .pipeline-step {\n    width: 100%;\n  }\n}"
+        },
+        {
+          "file": "docker/Dockerfile.backend",
+          "start_line": 1,
+          "end_line": 17,
+          "score": 0.5518,
+          "text": "FROM python:3.12-slim\n\nWORKDIR /app/backend\n\nCOPY backend/requirements.txt /app/backend/requirements.txt\n\nRUN pip install --no-cache-dir -r /app/backend/requirements.txt \\\n    && pip install --no-cache-dir pypdf\n\nCOPY backend/app /app/backend/app\nCOPY documents /app/documents\n\nRUN mkdir -p /app/data/uploads\n\nEXPOSE 8000\n\nCMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"]"
+        }
+      ],
+      "answer": "The files involved in the RAG pipeline are:\n\n1. backend/app/main.py (lines 520-561)\n2. backend/app/services/document_processor.py (lines 114-127)\n3. frontend/src/App.jsx (lines 2333-2363)\n4. frontend/src/App.css (lines 2144-2171)\n5. docker/Dockerfile.backend (lines 1-17)"
+    },
+    {
+      "question_id": "R08",
+      "question": "What happens when a PDF is uploaded that already exists in the knowledge base?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.472,
+      "generation_latency_seconds": 152.871,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 47,
+          "end_line": 98,
+          "score": 0.6972,
+          "text": "f\"Document already exists in knowledge base: \"\n            f\"{uploaded_document}\"\n        )\n        return\n\n    main_embeddings.extend(embedded_chunks)\n\n    with open(\n        MAIN_EMBEDDINGS_FILE,\n        \"w\",\n        encoding=\"utf-8\"\n    ) as f:\n        json.dump(\n            main_embeddings,\n            f,\n            ensure_ascii=False\n        )\n\n    print(\n        f\"Added {len(embedded_chunks)} chunks \"\n        f\"to main knowledge base\"\n    )\n\n\ndef cosine_similarity(a, b):\n    dot = sum(x * y for x, y in zip(a, b))\n\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n    magnitude_b = math.sqrt(sum(y * y for y in b))\n\n    if magnitude_a == 0 or magnitude_b == 0:\n        return 0.0\n\n    return dot / (magnitude_a * magnitude_b)\n\n\ndef create_upload_session(pdf_path: Path, original_filename: str = None):\n    session_id = uuid.uuid4().hex\n\n    session_dir = UPLOAD_DIR / session_id\n    session_dir.mkdir(parents=True, exist_ok=True)\n\n    saved_pdf = session_dir / (original_filename or pdf_path.name)\n\n    if pdf_path.resolve() != saved_pdf.resolve():\n        saved_pdf.write_bytes(pdf_path.read_bytes())\n\n    chunks = process_pdf(saved_pdf)\n\n    embedded_chunks = []\n\n    for i, chunk in enumerate(chunks):"
+        },
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 91,
+          "end_line": 137,
+          "score": 0.6498,
+          "text": "if pdf_path.resolve() != saved_pdf.resolve():\n        saved_pdf.write_bytes(pdf_path.read_bytes())\n\n    chunks = process_pdf(saved_pdf)\n\n    embedded_chunks = []\n\n    for i, chunk in enumerate(chunks):\n        embedding = generate_embedding(chunk[\"text\"])\n\n        embedded_chunks.append({\n            **chunk,\n            \"embedding\": embedding\n        })\n\n        print(\n            f\"Uploaded PDF embedding \"\n            f\"{i + 1}/{len(chunks)} | Chunk {chunk['chunk_id']}\"\n        )\n\n    embeddings_file = session_dir / \"embeddings.json\"\n\n    with open(embeddings_file, \"w\", encoding=\"utf-8\") as f:\n        json.dump(\n            embedded_chunks,\n            f,\n            ensure_ascii=False\n        )\n        \n    # Add uploaded PDF to the main knowledge base\n    add_to_main_knowledge_base(embedded_chunks)    \n\n    return {\n        \"session_id\": session_id,\n        \"document\": saved_pdf.name,\n        \"chunks\": len(embedded_chunks),\n        \"embedding_dimensions\": (\n            len(embedded_chunks[0][\"embedding\"])\n            if embedded_chunks\n            else 0\n        )\n    }\n\n\ndef retrieve_uploaded(session_id: str, question: str, top_k: int = 3):\n    embeddings_file = (\n        UPLOAD_DIR"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 230,
+          "end_line": 272,
+          "score": 0.6197,
+          "text": "<p>\n              The uploaded document is independently chunked, embedded and\n              searched before generating an answer.\n            </p>\n          </div>\n        </div>\n\n        <div style={{\n          padding: \"24px\",\n          border: \"2px dashed #d1d5db\",\n          borderRadius: \"12px\",\n          marginTop: \"20px\",\n          background: \"#fafafa\"\n        }}>\n          <input\n            type=\"file\"\n            accept=\".pdf,application/pdf\"\n            onChange={(e) => {\n              setFile(e.target.files?.[0] || null);\n              setError(\"\");\n            }}\n          />\n\n          {file && (\n            <p style={{ marginTop: \"12px\" }}>\n              Selected: <strong>{file.name}</strong>\n            </p>\n          )}\n\n          <div style={{ marginTop: \"16px\" }}>\n            <button\n              className=\"ask-button\"\n              onClick={uploadPDF}\n              disabled={uploading || !file}\n            >\n              {uploading ? \"Processing PDF...\" : \"Upload & Process PDF →\"}\n            </button>\n\n            {session && (\n              <button\n                className=\"clear-chat-button\"\n                onClick={resetUpload}\n                style={{ marginLeft: \"10px\" }}"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 98,
+          "end_line": 150,
+          "score": 0.6074,
+          "text": "suffix=\".pdf\",\n            delete=False\n        ) as temp_file:\n            temp_file.write(content)\n            temp_path = Path(temp_file.name)\n\n        result = create_upload_session(temp_path, file.filename)\n\n        return {\n            \"success\": True,\n            **result\n        }\n\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Failed to process PDF: {str(e)}\"\n        )\n\n    finally:\n        if temp_path and temp_path.exists():\n            temp_path.unlink()\n\n\n@router.post(\"/chunks\")\ndef get_uploaded_document_chunks(\n    request: UploadSessionRequest\n):\n    try:\n        chunks = get_uploaded_chunks(\n            request.session_id\n        )\n\n        return {\n            \"session_id\": request.session_id,\n            \"chunks\": chunks,\n            \"total_chunks\": len(chunks)\n        }\n\n    except FileNotFoundError:\n        raise HTTPException(\n            status_code=404,\n            detail=\"Upload session not found\"\n        )\n\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Failed to load uploaded chunks: {str(e)}\"\n        )\n\n\n@router.post(\"/embeddings\")"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 262,
+          "end_line": 289,
+          "score": 0.604,
+          "text": "6. Preserve important numbers, conditions, limits and requirements.\n7. Pay close attention to the exact policy condition mentioned in the question.\n8. If the question refers to an in-force policy, use only rules applicable to an in-force policy.\n9. Do not use paid-up, Auto Cover, revival, surrender or other policy-state rules unless the question explicitly asks about that state.\n10. When multiple chunks contain related information, prioritize the chunk that directly answers the question and matches its policy condition.\n11. Do not combine rules from different policy states.\n7. If the evidence genuinely does not contain enough information,\n   say:\n\"The available uploaded document does not contain enough information to answer this question.\"\n8. Do not repeat the question.\n9. Do not mention chunks, retrieval, embeddings, sources or the model.\n10. Do not copy large portions of the policy.\n11. Keep the answer concise, preferably 1 to 3 sentences.\n12. Return only the final answer.\n\nANSWER:\n\"\"\"\n\n        answer = call_uploaded_ollama(\n            request.model,\n            prompt\n        )\n\n        answer = (answer or \"\").strip()\n\n        if not answer:\n            answer = (\n                \"The available uploaded document does not contain \""
+        }
+      ],
+      "answer": "When a PDF is uploaded that already exists in the knowledge base, the following actions occur:\n\n1. The uploaded PDF is checked against the existing documents in the knowledge base to see if it already exists. If it does, the function returns without further processing.\n2. If the uploaded PDF does not exist in the knowledge base, it is processed as usual and the chunks are generated and added to the main knowledge base.\n3. The uploaded PDF is then saved to a temporary directory for further processing.\n4. The chunks are extracted from the PDF using the `process_pdf` function.\n5. Each chunk is embedded in a vector space using the `generate_embedding` function.\n6. The embedded chunks are added to the main knowledge base using the `add_to_main_knowledge_base` function.\n7. The session ID, document name, number of chunks, and embedding dimensions are returned as part of the response."
+    },
+    {
+      "question_id": "R09",
+      "question": "How are uploaded documents kept separate using upload sessions?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.456,
+      "generation_latency_seconds": 193.764,
+      "retrieved_chunks": [
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 230,
+          "end_line": 272,
+          "score": 0.6441,
+          "text": "<p>\n              The uploaded document is independently chunked, embedded and\n              searched before generating an answer.\n            </p>\n          </div>\n        </div>\n\n        <div style={{\n          padding: \"24px\",\n          border: \"2px dashed #d1d5db\",\n          borderRadius: \"12px\",\n          marginTop: \"20px\",\n          background: \"#fafafa\"\n        }}>\n          <input\n            type=\"file\"\n            accept=\".pdf,application/pdf\"\n            onChange={(e) => {\n              setFile(e.target.files?.[0] || null);\n              setError(\"\");\n            }}\n          />\n\n          {file && (\n            <p style={{ marginTop: \"12px\" }}>\n              Selected: <strong>{file.name}</strong>\n            </p>\n          )}\n\n          <div style={{ marginTop: \"16px\" }}>\n            <button\n              className=\"ask-button\"\n              onClick={uploadPDF}\n              disabled={uploading || !file}\n            >\n              {uploading ? \"Processing PDF...\" : \"Upload & Process PDF →\"}\n            </button>\n\n            {session && (\n              <button\n                className=\"clear-chat-button\"\n                onClick={resetUpload}\n                style={{ marginLeft: \"10px\" }}"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 140,
+          "end_line": 190,
+          "score": 0.6126,
+          "text": "detail=\"Upload session not found\"\n        )\n\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Failed to load uploaded chunks: {str(e)}\"\n        )\n\n\n@router.post(\"/embeddings\")\ndef get_uploaded_document_embeddings(\n    request: UploadSessionRequest\n):\n    try:\n        embeddings = get_uploaded_embeddings(\n            request.session_id\n        )\n\n        return {\n            \"session_id\": request.session_id,\n            \"embedding_model\": \"nomic-embed-text\",\n            \"embedding_dimensions\": (\n                len(embeddings[0][\"embedding\"])\n                if embeddings\n                else 0\n            ),\n            \"total_chunks\": len(embeddings),\n            \"embeddings\": embeddings\n        }\n\n    except FileNotFoundError:\n        raise HTTPException(\n            status_code=404,\n            detail=\"Upload session not found\"\n        )\n\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Failed to load uploaded embeddings: {str(e)}\"\n        )\n\n\n@router.post(\"/retrieve\")\ndef retrieve_uploaded_document(\n    request: UploadChatRequest\n):\n\n    try:\n        results = retrieve_uploaded("
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 84,
+          "end_line": 144,
+          "score": 0.607,
+          "text": ");\n      }\n\n      // Save session in React state\n      setSession(data);\n\n      // Persist session when navigating to another page\n      localStorage.setItem(\n        \"insuremate_upload_session\",\n        JSON.stringify(data)\n      );\n\n    } catch (err) {\n      setError(err.message);\n\n    } finally {\n      setUploading(false);\n    }\n  };\n\n  const askUploadedPolicy = async () => {\n    if (loading) {\n      return;\n    }\n\n    if (!session) {\n      setError(\"Upload a PDF first.\");\n      return;\n    }\n\n    if (!question.trim()) {\n      setError(\"Enter a question.\");\n      return;\n    }\n\n    const userQuestion = question.trim();\n\n    setLoading(true);\n    setError(\"\");\n    setQuestion(\"\");\n\n    // Immediately add the user's message\n    setChatMessages((prev) => [\n      ...prev,\n      {\n        role: \"user\",\n        content: userQuestion\n      }\n    ]);\n\n    try {\n      const response = await fetch(`${API_URL}/api/upload/chat`, {\n        method: \"POST\",\n        headers: {\n          \"Content-Type\": \"application/json\"\n        },\n        body: JSON.stringify({\n          session_id: session.session_id,\n          question: userQuestion,\n          model: \"codellama:7b-instruct\",\n          top_k: 3"
+        },
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 175,
+          "end_line": 220,
+          "score": 0.6062,
+          "text": "def get_uploaded_embeddings(session_id: str):\n    embeddings_file = (\n        UPLOAD_DIR\n        / session_id\n        / \"embeddings.json\"\n    )\n\n    if not embeddings_file.exists():\n        raise FileNotFoundError(\"Upload session not found\")\n\n    with open(embeddings_file, \"r\", encoding=\"utf-8\") as f:\n        documents = json.load(f)\n\n    return [\n        {\n            \"document\": item[\"document\"],\n            \"page\": item[\"page\"],\n            \"chunk_id\": item[\"chunk_id\"],\n            \"embedding\": item[\"embedding\"]\n        }\n        for item in documents\n    ]\n\ndef get_uploaded_chunks(session_id: str):\n    embeddings_file = (\n        UPLOAD_DIR\n        / session_id\n        / \"embeddings.json\"\n    )\n\n    if not embeddings_file.exists():\n        raise FileNotFoundError(\"Upload session not found\")\n\n    with open(embeddings_file, \"r\", encoding=\"utf-8\") as f:\n        documents = json.load(f)\n\n    # Return chunk information without the large embedding vectors.\n    return [\n        {\n            \"document\": item[\"document\"],\n            \"page\": item[\"page\"],\n            \"chunk_id\": item[\"chunk_id\"],\n            \"text\": item[\"text\"]\n        }\n        for item in documents\n    ]"
+        },
+        {
+          "file": "backend/app/api/upload.py",
+          "start_line": 180,
+          "end_line": 233,
+          "score": 0.6032,
+          "text": "detail=f\"Failed to load uploaded embeddings: {str(e)}\"\n        )\n\n\n@router.post(\"/retrieve\")\ndef retrieve_uploaded_document(\n    request: UploadChatRequest\n):\n\n    try:\n        results = retrieve_uploaded(\n            request.session_id,\n            request.question,\n            request.top_k\n        )\n\n        return {\n            \"session_id\": request.session_id,\n            \"question\": request.question,\n            \"results\": results\n        }\n\n    except FileNotFoundError:\n        raise HTTPException(\n            status_code=404,\n            detail=\"Upload session not found\"\n        )\n\n    except Exception as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Retrieval failed: {str(e)}\"\n        )\n\n\n@router.post(\"/chat\")\ndef chat_with_uploaded_document(\n    request: UploadChatRequest\n):\n\n    try:\n        results = retrieve_uploaded(\n            request.session_id,\n            request.question,\n            request.top_k\n        )\n\n        if not results:\n            return {\n                \"session_id\": request.session_id,\n                \"question\": request.question,\n                \"model\": request.model,\n                \"answer\": (\n                    \"The uploaded document does not contain \""
+        }
+      ],
+      "answer": "Using the provided InsureMate repository evidence, it appears that uploaded documents are kept separate using upload sessions in the following ways:\n\n1. The `uploadPDF` function in `frontend/src/App.jsx` creates a new upload session by generating a unique ID for the session and saving it to local storage. This allows the user to keep track of their uploaded documents across page reloads or browser sessions.\n2. When the user selects a PDF file to upload, the `setFile` function is called with the selected file as an argument. The `setFile` function then saves the file to the session in local storage using the unique ID generated earlier. This ensures that the uploaded document is associated with the current upload session.\n3. When the user clicks the \"Upload & Process PDF\" button, the `uploadPDF` function is called again, but this time it retrieves the previously saved file from local storage and processes it using the `get_uploaded_embeddings` function in `backend/app/services/upload_rag_service.py`. This function generates a JSON file containing information about each chunk of the uploaded document, including its embedding vectors.\n4. The `retrieve_uploaded_document` function in `backend/app/api/upload.py` retrieves the previously saved embeddings from local storage using the unique ID generated earlier and returns them to the client as a JSON response. This allows the user to retrieve the uploaded document's embedding vectors for further processing or analysis.\n5. The `retrieve_uploaded_document` function also saves the uploaded document's information in a JSON file named \"embeddings.json\" in the upload directory, which is associated with the current upload session using the unique ID generated earlier. This ensures that the uploaded document's embedding vectors are kept separate from other documents and can be retrieved later using the"
+    },
+    {
+      "question_id": "R10",
+      "question": "Which components would need to change if the embedding model were replaced?",
+      "model": "codellama:7b-instruct",
+      "retrieval_latency_seconds": 0.457,
+      "generation_latency_seconds": 120.371,
+      "retrieved_chunks": [
+        {
+          "file": "backend/app/services/embedding_service.py",
+          "start_line": 34,
+          "end_line": 43,
+          "score": 0.6247,
+          "text": "\"embedding\": embedding\n        })\n\n        print(\n            f\"Embedded {i + 1}/{len(chunks)} \"\n            f\"| {chunk['document']} \"\n            f\"| Chunk {chunk['chunk_id']}\"\n        )\n\n    return results"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 365,
+          "end_line": 404,
+          "score": 0.6167,
+          "text": "session_id: session.session_id\n                      })\n                    }\n                  );\n\n                  const data = await response.json();\n\n                  if (!response.ok) {\n                    throw new Error(\n                      data.detail || \"Unable to load embeddings.\"\n                    );\n                  }\n\n                  setUploadedEmbeddings(data.embeddings || []);\n                  setSelectedEmbeddingChunk(0);\n                  setShowEmbeddingInspector(true);\n                } catch (err) {\n                  setError(err.message);\n                } finally {\n                  setEmbeddingLoading(false);\n                }\n              }}\n            >\n              <div className=\"card-label\">\n                EMBEDDING DIMENSIONS\n              </div>\n\n              <div className=\"card-value\">\n                {embeddingLoading\n                  ? \"Loading...\"\n                  : session.embedding_dimensions}\n              </div>\n\n              <div className=\"card-status\">\n                ● Embedded · Click to inspect\n              </div>\n            </div>\n\n            <div className=\"status-card\">\n              <div className=\"card-label\">RAG STATUS</div>"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 5322,
+          "end_line": 5377,
+          "score": 0.614,
+          "text": "<div className=\"card-value\">\n                  {generationModels.length}\n                </div>\n\n                <div className=\"card-status\">\n                  ● Completion Models\n                </div>\n\n              </div>\n\n\n              <div className=\"status-card\">\n\n                <div className=\"card-label\">\n                  EMBEDDING\n                </div>\n\n                <div className=\"card-value\">\n                  {embeddingModels.length}\n                </div>\n\n                <div className=\"card-status\">\n                  ● Embedding Models\n                </div>\n\n              </div>\n\n            </section>\n\n\n            <section className=\"documents-card\">\n\n              <div className=\"documents-header\">\n\n                <div>\n\n                  <h2>\n                    Available Models\n                  </h2>\n\n                  <p>\n                    Models detected from the\n                    local Ollama service.\n                  </p>\n\n                </div>\n\n                <span className=\"document-count\">\n                  {models.length} models\n                </span>\n\n              </div>\n\n\n              <div\n                style={{"
+        },
+        {
+          "file": "backend/app/services/upload_rag_service.py",
+          "start_line": 47,
+          "end_line": 98,
+          "score": 0.601,
+          "text": "f\"Document already exists in knowledge base: \"\n            f\"{uploaded_document}\"\n        )\n        return\n\n    main_embeddings.extend(embedded_chunks)\n\n    with open(\n        MAIN_EMBEDDINGS_FILE,\n        \"w\",\n        encoding=\"utf-8\"\n    ) as f:\n        json.dump(\n            main_embeddings,\n            f,\n            ensure_ascii=False\n        )\n\n    print(\n        f\"Added {len(embedded_chunks)} chunks \"\n        f\"to main knowledge base\"\n    )\n\n\ndef cosine_similarity(a, b):\n    dot = sum(x * y for x, y in zip(a, b))\n\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n    magnitude_b = math.sqrt(sum(y * y for y in b))\n\n    if magnitude_a == 0 or magnitude_b == 0:\n        return 0.0\n\n    return dot / (magnitude_a * magnitude_b)\n\n\ndef create_upload_session(pdf_path: Path, original_filename: str = None):\n    session_id = uuid.uuid4().hex\n\n    session_dir = UPLOAD_DIR / session_id\n    session_dir.mkdir(parents=True, exist_ok=True)\n\n    saved_pdf = session_dir / (original_filename or pdf_path.name)\n\n    if pdf_path.resolve() != saved_pdf.resolve():\n        saved_pdf.write_bytes(pdf_path.read_bytes())\n\n    chunks = process_pdf(saved_pdf)\n\n    embedded_chunks = []\n\n    for i, chunk in enumerate(chunks):"
+        },
+        {
+          "file": "frontend/src/App.jsx",
+          "start_line": 6150,
+          "end_line": 6194,
+          "score": 0.5926,
+          "text": "<table\n                  style={{\n                    width:\n                      \"100%\",\n                    borderCollapse:\n                      \"collapse\"\n                  }}\n                >\n\n                  <thead>\n\n                    <tr>\n\n                      <th\n                        style={{\n                          textAlign:\n                            \"left\",\n                          padding:\n                            \"12px\"\n                        }}\n                      >\n                        Model\n                      </th>\n\n                      <th\n                        style={{\n                          textAlign:\n                            \"left\",\n                          padding:\n                            \"12px\"\n                        }}\n                      >\n                        Grounding\n                      </th>\n\n                      <th\n                        style={{\n                          textAlign:\n                            \"left\",\n                          padding:\n                            \"12px\"\n                        }}\n                      >\n                        Risk\n                      </th>"
+        }
+      ],
+      "answer": "The components that would need to change if the embedding model were replaced are:\n\n* The `embedding_service.py` file in the backend, which contains the code for generating and processing embeddings. This file would need to be updated to use a new embedding model.\n* The `upload_rag_service.py` file in the backend, which contains the code for uploading documents and generating RAG statuses. This file would also need to be updated to use a new embedding model.\n* The `App.jsx` file in the frontend, which contains the code for displaying the RAG statuses and handling user interactions. This file would need to be updated to use a new embedding model."
+    }
+  ]
+}

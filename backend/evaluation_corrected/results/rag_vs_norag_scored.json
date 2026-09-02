@@ -1,0 +1,454 @@
+{
+  "title": "InsureMate Controlled RAG vs No-RAG Evaluation",
+  "methodology": {
+    "model": "codellama:7b-instruct",
+    "questions": 10,
+    "same_questions": true,
+    "same_model": true,
+    "rag_top_k": 5,
+    "temperature": 0,
+    "scoring": "Question-specific policy ground truth. Answers are scored against required policy facts. Out-of-context refusal is correct only when the policy documents genuinely do not specify the answer."
+  },
+  "summary": {
+    "RAG": {
+      "total_questions": 10,
+      "correct": 9,
+      "incorrect": 1,
+      "accuracy_percent": 90.0,
+      "grounded_answers": 0,
+      "average_latency_seconds": 78.47
+    },
+    "NO_RAG": {
+      "total_questions": 10,
+      "correct": 5,
+      "incorrect": 5,
+      "accuracy_percent": 50.0,
+      "grounded_answers": 0,
+      "average_latency_seconds": 29.18
+    }
+  },
+  "pairwise_summary": {
+    "rag_wins": 5,
+    "no_rag_wins": 1,
+    "both_correct": 4,
+    "both_incorrect": 0,
+    "rag_win_rate_percent": 50.0
+  },
+  "pairwise_comparison": [
+    {
+      "question_id": "Q01",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG",
+      "rag_answer": "The waiting period for pre-existing diseases is 48 months. This is mentioned in several of the documents provided, including Health_Assurance.pdf, AccidentCare_Insurance.pdf, Travel_Protection_TATA_AIG.pdf, and Group_Health_Insurance.pdf. The waiting period applies to any condition, ailment, or injury for which there were signs or symptoms, and/or were diagnosed, and/or received medical advice/treatment within 48 months prior to the first policy issued by the insurer or its reinstatement.",
+      "no_rag_answer": "The waiting period for pre-existing diseases varies depending on the specific policy and the insurance company. Some policies may have a waiting period of 30 days, while others may have a longer waiting period of 60 or 90 days. It is important to carefully review the terms and conditions of your policy to understand the specific waiting period that applies to you. If you are unsure about the waiting period for your specific policy, it is best to contact your insurance company directly for clarification.",
+      "rag_reason": "Pre-existing diseases have a 48-month waiting period.",
+      "no_rag_reason": "Missing required policy facts: 48 months"
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG",
+      "rag_answer": "The waiting period for cataract treatment is not specified in the provided policy documents. However, it is mentioned that there are specific waiting periods for certain conditions, such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, surgery on tonsils/adenoids, uterine polyps, any type of breast lumps, any type of treatment of spondylosis/spondylitis, and varicose veins.\n\nThere is also a 30-day waiting period for any treatment taken during the first 30 days since the date of commencement of coverage for the Insured Person, unless the treatment needed is the payment of the HospiCash Benefit under 2.3.\n\nHowever, there is no mention of a specific waiting period for cataract treatment in any of the provided policy documents. Therefore, it cannot be determined from the available policy documents whether there is a waiting period for cataract treatment or not.",
+      "no_rag_answer": "The waiting period for cataract treatment varies depending on the type of treatment and the insurance plan you have. In general, most insurance plans require a waiting period of at least 12 months before coverage is available for cataract treatment. This means that if you are diagnosed with cataracts, you will need to wait at least 12 months before your insurance company will cover the cost of treatment.\n\nIt's important to note that some insurance plans may have different waiting periods or coverage limits for certain types of cataract treatments, so it's best to check with your insurance provider directly to determine what is covered under your specific plan.",
+      "rag_reason": "Correctly states that the provided policy documents do not specify a cataract-specific waiting period.",
+      "no_rag_reason": "Gives a specific cataract waiting period without support from the provided policy context."
+    },
+    {
+      "question_id": "Q03",
+      "question": "Are stones in the biliary system covered immediately?",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG",
+      "rag_answer": "Based on the provided policy context, it appears that stones in the biliary system are not covered immediately. The waiting period for the Hospital Cash Benefit under 2.3 is 24 months, and the conditions listed below will be subject to a waiting period of 24 months:\n\n1. Stones in biliary and urinary systems\n2. Lumps/cysts/nodules/polyps/internal tumours\n3. Gastric and Duodenal Ulcers\n4. Surgery on tonsils / adenoids\n\nTherefore, if an Insured Person has a stone in the biliary system, they will need to wait for 24 months before the Hospital Cash Benefit can be paid out.",
+      "no_rag_answer": "Stones in the biliary system are typically covered under a comprehensive medical insurance policy that includes liver disease coverage. However, the specifics of the coverage may vary depending on the policy and the terms of the policy. It is important to consult with an insurance professional or the policyholder's doctor to determine the exact coverage for stones in the biliary system under their specific policy.",
+      "rag_reason": "Biliary stones have a 24-month waiting period and are not covered immediately.",
+      "no_rag_reason": "Missing required policy facts: 24 months"
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG",
+      "rag_answer": "The waiting period for stones in the urinary system is 24 months, as mentioned in the policy documents provided. The specific waiting period applies to all Insured Persons who have been insured continuously under the Policy without any break.",
+      "no_rag_answer": "The waiting period for stones in the urinary system varies depending on the type of stone and the insurance policy you have. In general, the waiting period for kidney stones is typically 30 days after the last time you had a urine sample that contained the stone. However, it's important to note that this is just an average waiting period and may vary depending on your specific situation.\n\nIf you have a history of recurrent kidney stones or are at high risk for developing them, your insurance company may require a longer waiting period before coverage kicks in. Additionally, if you have a urinary tract infection (UTI) or other underlying medical condition that could contribute to the development of a kidney stone, your insurance company may also require a longer waiting period.\n\nIt's important to note that the waiting period for kidney stones is not the same as the waiting period for a UTI. The waiting period for a UTI is typically 72 hours after the onset of symptoms, while the waiting period for a kidney stone is typically longer and may be up to 30 days after the last time you had a urine sample that contained the stone.\n\nIt's",
+      "rag_reason": "Urinary-system stones have a 24-month waiting period.",
+      "no_rag_reason": "Missing required policy facts: 24 months"
+    },
+    {
+      "question_id": "Q05",
+      "question": "Does the policy cover hospitalization expenses?",
+      "rag_classification": "correct",
+      "no_rag_classification": "correct",
+      "winner": "BOTH",
+      "rag_answer": "The answer to your question is yes, the policy covers hospitalization expenses. The policy document states that it will cover \"Medical Expenses incurred due to Illness immediately before the Insured Person's admission and after the Insured Person's discharge from a Hospital\" for a period of 60 days after discharge for the same illness as long as the hospitalization claim has been accepted. Additionally, the policy document also states that \"Post-hospitalization Medical Expenses can be claimed as reimbursement only.\" This indicates that the policy will cover expenses incurred during and after a hospital stay.",
+      "no_rag_answer": "I'm sorry, but I don't have access to your specific insurance policy. However, I can tell you that most health insurance policies cover hospitalization expenses. This is typically included in the policy as \"hospital coverage\" or \"inpatient care.\" If you have a specific question about your policy, I would recommend contacting your insurance provider directly for more information.",
+      "rag_reason": "Hospitalization/inpatient expenses are covered.",
+      "no_rag_reason": "Hospitalization/inpatient expenses are covered."
+    },
+    {
+      "question_id": "Q06",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "rag_classification": "correct",
+      "no_rag_classification": "correct",
+      "winner": "BOTH",
+      "rag_answer": "Based on the provided policy documents, it appears that pre-hospitalization medical expenses are not covered under the Group Health Insurance plan. However, post-hospitalization medical expenses are covered for a period of 60 days after discharge from hospital, as long as the insured person has accepted an inpatient care hospitalization claim under Section 2.1 above.\n\nSimilarly, under the Health Companion Health Insurance Plan, pre-hospitalization medical expenses are not covered, but post-hospitalization medical expenses can be claimed as reimbursement only for a period of 60 days after discharge from hospital, provided that such medical expenses are incurred for the same condition for which the insured person's hospitalization was required and the inpatient care hospitalization claim for such hospitalization is admissible by the insurance company.\n\nIt is important to note that these policies may have additional exclusions or conditions, and it is recommended to consult with an insurance professional to determine the specific coverage under your policy.",
+      "no_rag_answer": "Pre-hospitalization and post-hospitalization expenses are typically not covered under standard health insurance policies. However, some policies may have specific coverage for these types of expenses, such as deductibles or copays. It is important to review the terms and conditions of your specific policy to determine what is covered and what is not.",
+      "rag_reason": "The policy provides pre/post-hospitalization coverage subject to policy conditions.",
+      "no_rag_reason": "The policy provides pre/post-hospitalization coverage subject to policy conditions."
+    },
+    {
+      "question_id": "Q07",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "rag_classification": "correct",
+      "no_rag_classification": "correct",
+      "winner": "BOTH",
+      "rag_answer": "The policy states that spondylosis and spondylitis are excluded from coverage under this policy.",
+      "no_rag_answer": "As an insurance policy assistant, I am not able to provide a specific answer to your question as it is not clear what type of policy you are referring to. However, I can tell you that most health insurance policies do not cover spondylosis or spondylitis. These are medical conditions that require treatment and monitoring by a healthcare professional. If you have been diagnosed with spondylosis or spondylitis, it is important to work closely with your healthcare provider to develop a treatment plan that meets your specific needs.\n\nIt is also important to note that some insurance policies may have specific exclusions for certain medical conditions, so it is always best to review the policy document carefully before making any claims.",
+      "rag_reason": "Spondylosis/spondylitis are subject to the policy's exclusion/waiting provisions.",
+      "no_rag_reason": "Spondylosis/spondylitis are subject to the policy's exclusion/waiting provisions."
+    },
+    {
+      "question_id": "Q08",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "rag_classification": "incorrect",
+      "no_rag_classification": "correct",
+      "winner": "NO_RAG",
+      "rag_answer": "The answer to this question can be determined from the provided context. The policy documents mention that the policy covers \"reasonable expenses incurred towards medical treatment\" during the Policy Period for an Illness, Accident or condition described below if this is contracted or sustained by an Insured Person during the Policy Period and subject always to the Sum Insured, any subsidiary limit specified in the Product Benefits Table, the terms, conditions, limitations and exclusions mentioned in the Policy and eligibility as per the insurance plan opted for in the Product Benefits Table.\n\nThe policy also mentions that the policy covers \"Both hands, Both feet, Sight of both eyes 100% One hand; One foot; Sight of one eye; speech; or Hearing in both ears 50%\" and \"Thumb and Index Finger of Same Hand 25%\".\n\nTherefore, the answer to this question is that the policy covers a percentage of eligible expenses up to 100%.",
+      "no_rag_answer": "I'm sorry, but I don't have access to your specific insurance policy and cannot provide an exact percentage of eligible expenses that are covered. However, I can tell you that the coverage amount for medical expenses is typically specified in the policy document or on the policy summary page. If you need more information about your specific policy, please contact your insurance provider directly.",
+      "rag_reason": "Confuses a 100% schedule-of-loss benefit with a universal percentage of eligible medical expenses.",
+      "no_rag_reason": "Answer discusses the policy's limits/coverage without making an unsupported universal 100% claim."
+    },
+    {
+      "question_id": "Q09",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "rag_classification": "correct",
+      "no_rag_classification": "correct",
+      "winner": "BOTH",
+      "rag_answer": "The benefits provided under the accident insurance policy are as follows:\n\n1. If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n2. The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.\n3. If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.\n4. The Policy provides benefits up to the Sum Assured for the specified events occurring during the Policy Period and while the Policy is in force for an Illness and/or, Accident and/or Hospitali sation or the conditions described below subject to any specific limits specified in the Product Benefits Table, the terms, conditions, limitations and specific and general exclusions mentioned in the Policy and as shown in the Schedule",
+      "no_rag_answer": "As an insurance policy assistant, I can provide you with information about the benefits that are typically included in an accident insurance policy. However, it is important to note that the specific benefits and coverage amounts may vary depending on the type of policy and the insurance company issuing it.\n\nSome common benefits that are often included in accident insurance policies include:\n\n1. Medical expenses: This benefit covers the cost of medical treatment for injuries or illnesses sustained as a result of an accident.\n2. Property damage: This benefit may cover the cost of repairing or replacing damaged property, such as cars or homes.\n3. Personal injury protection: This benefit provides coverage for injuries that are not necessarily visible, such as whiplash or other hidden injuries.\n4. Uninsured/underinsured motorist coverage: This benefit covers the cost of medical treatment and other expenses if you are involved in an accident with a driver who does not have insurance or has inadequate insurance coverage.\n5. Roadside assistance: Some policies may include roadside assistance, which can provide services such as towing, flat tire changes, and jump starts.\n6. Rental",
+      "rag_reason": "The answer should describe actual accident-policy benefits, rather than generic insurance benefits.",
+      "no_rag_reason": "The answer should describe actual accident-policy benefits, rather than generic insurance benefits."
+    },
+    {
+      "question_id": "Q10",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG",
+      "rag_answer": "Yes, travel insurance typically covers medical emergencies during a trip. The policy context provided includes the following information:\n\n* In general, coverage applies worldwide, but there are exceptions. Restrictions may apply to regions that may be involved in an international or internal conflict, or in those countries and territories where the existing infrastructure is deemed inadequate to guarantee service.\n* The policy provides coverage for Covered Medical Expenses in the event of any Injury or Sickness, which is not due to any Pre-existing disease, and which results in a Medically Necessary treatment on the written advice of a Medical Practitioner outside India while on a Trip.\n* The policy provides coverage for Covered Expenses due to Emergency Medical Evacuation if incurred outside India whilst on Trip.\n* The policy covers any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice.\n\nTherefore, based on the information provided, it appears that travel insurance coverage may include medical emergency expenses during a trip, including medical evacuation and treatment outside India. However, it's important to note that the specific",
+      "no_rag_answer": "Yes, travel insurance typically covers medical emergencies that occur during the course of a trip. This can include illnesses, injuries, or other health issues that require medical attention while you are abroad. The specifics of what is covered may vary depending on the policy and the provider, but it is generally included as part of the standard coverage for travel insurance. It's important to carefully review your policy to understand exactly what is covered and what is not.",
+      "rag_reason": "Travel insurance includes medical-emergency coverage during a trip, subject to policy conditions.",
+      "no_rag_reason": "Does not contain the required policy evidence."
+    }
+  ],
+  "detailed_results": [
+    {
+      "question_id": "Q01",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "condition": "RAG",
+      "answer": "The waiting period for pre-existing diseases is 48 months. This is mentioned in several of the documents provided, including Health_Assurance.pdf, AccidentCare_Insurance.pdf, Travel_Protection_TATA_AIG.pdf, and Group_Health_Insurance.pdf. The waiting period applies to any condition, ailment, or injury for which there were signs or symptoms, and/or were diagnosed, and/or received medical advice/treatment within 48 months prior to the first policy issued by the insurer or its reinstatement.",
+      "classification": "correct",
+      "reason": "Pre-existing diseases have a 48-month waiting period.",
+      "grounded": false,
+      "latency_seconds": 62.138,
+      "retrieval_latency_seconds": 1.2,
+      "average_retrieval_score": 0.7824,
+      "retrieved_documents": [
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Travel_Protection_TATA_AIG.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q01",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for pre-existing diseases varies depending on the specific policy and the insurance company. Some policies may have a waiting period of 30 days, while others may have a longer waiting period of 60 or 90 days. It is important to carefully review the terms and conditions of your policy to understand the specific waiting period that applies to you. If you are unsure about the waiting period for your specific policy, it is best to contact your insurance company directly for clarification.",
+      "classification": "incorrect",
+      "reason": "Missing required policy facts: 48 months",
+      "grounded": false,
+      "latency_seconds": 27.337,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "condition": "RAG",
+      "answer": "The waiting period for cataract treatment is not specified in the provided policy documents. However, it is mentioned that there are specific waiting periods for certain conditions, such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, surgery on tonsils/adenoids, uterine polyps, any type of breast lumps, any type of treatment of spondylosis/spondylitis, and varicose veins.\n\nThere is also a 30-day waiting period for any treatment taken during the first 30 days since the date of commencement of coverage for the Insured Person, unless the treatment needed is the payment of the HospiCash Benefit under 2.3.\n\nHowever, there is no mention of a specific waiting period for cataract treatment in any of the provided policy documents. Therefore, it cannot be determined from the available policy documents whether there is a waiting period for cataract treatment or not.",
+      "classification": "correct",
+      "reason": "Correctly states that the provided policy documents do not specify a cataract-specific waiting period.",
+      "grounded": false,
+      "latency_seconds": 84.65,
+      "retrieval_latency_seconds": 0.549,
+      "average_retrieval_score": 0.6772,
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for cataract treatment varies depending on the type of treatment and the insurance plan you have. In general, most insurance plans require a waiting period of at least 12 months before coverage is available for cataract treatment. This means that if you are diagnosed with cataracts, you will need to wait at least 12 months before your insurance company will cover the cost of treatment.\n\nIt's important to note that some insurance plans may have different waiting periods or coverage limits for certain types of cataract treatments, so it's best to check with your insurance provider directly to determine what is covered under your specific plan.",
+      "classification": "incorrect",
+      "reason": "Gives a specific cataract waiting period without support from the provided policy context.",
+      "grounded": false,
+      "latency_seconds": 30.616,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q03",
+      "question": "Are stones in the biliary system covered immediately?",
+      "condition": "RAG",
+      "answer": "Based on the provided policy context, it appears that stones in the biliary system are not covered immediately. The waiting period for the Hospital Cash Benefit under 2.3 is 24 months, and the conditions listed below will be subject to a waiting period of 24 months:\n\n1. Stones in biliary and urinary systems\n2. Lumps/cysts/nodules/polyps/internal tumours\n3. Gastric and Duodenal Ulcers\n4. Surgery on tonsils / adenoids\n\nTherefore, if an Insured Person has a stone in the biliary system, they will need to wait for 24 months before the Hospital Cash Benefit can be paid out.",
+      "classification": "correct",
+      "reason": "Biliary stones have a 24-month waiting period and are not covered immediately.",
+      "grounded": false,
+      "latency_seconds": 76.025,
+      "retrieval_latency_seconds": 0.557,
+      "average_retrieval_score": 0.5988,
+      "retrieved_documents": [
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q03",
+      "question": "Are stones in the biliary system covered immediately?",
+      "condition": "NO_RAG",
+      "answer": "Stones in the biliary system are typically covered under a comprehensive medical insurance policy that includes liver disease coverage. However, the specifics of the coverage may vary depending on the policy and the terms of the policy. It is important to consult with an insurance professional or the policyholder's doctor to determine the exact coverage for stones in the biliary system under their specific policy.",
+      "classification": "incorrect",
+      "reason": "Missing required policy facts: 24 months",
+      "grounded": false,
+      "latency_seconds": 22.967,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "condition": "RAG",
+      "answer": "The waiting period for stones in the urinary system is 24 months, as mentioned in the policy documents provided. The specific waiting period applies to all Insured Persons who have been insured continuously under the Policy without any break.",
+      "classification": "correct",
+      "reason": "Urinary-system stones have a 24-month waiting period.",
+      "grounded": false,
+      "latency_seconds": 59.273,
+      "retrieval_latency_seconds": 0.543,
+      "average_retrieval_score": 0.7054,
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for stones in the urinary system varies depending on the type of stone and the insurance policy you have. In general, the waiting period for kidney stones is typically 30 days after the last time you had a urine sample that contained the stone. However, it's important to note that this is just an average waiting period and may vary depending on your specific situation.\n\nIf you have a history of recurrent kidney stones or are at high risk for developing them, your insurance company may require a longer waiting period before coverage kicks in. Additionally, if you have a urinary tract infection (UTI) or other underlying medical condition that could contribute to the development of a kidney stone, your insurance company may also require a longer waiting period.\n\nIt's important to note that the waiting period for kidney stones is not the same as the waiting period for a UTI. The waiting period for a UTI is typically 72 hours after the onset of symptoms, while the waiting period for a kidney stone is typically longer and may be up to 30 days after the last time you had a urine sample that contained the stone.\n\nIt's",
+      "classification": "incorrect",
+      "reason": "Missing required policy facts: 24 months",
+      "grounded": false,
+      "latency_seconds": 43.982,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q05",
+      "question": "Does the policy cover hospitalization expenses?",
+      "condition": "RAG",
+      "answer": "The answer to your question is yes, the policy covers hospitalization expenses. The policy document states that it will cover \"Medical Expenses incurred due to Illness immediately before the Insured Person's admission and after the Insured Person's discharge from a Hospital\" for a period of 60 days after discharge for the same illness as long as the hospitalization claim has been accepted. Additionally, the policy document also states that \"Post-hospitalization Medical Expenses can be claimed as reimbursement only.\" This indicates that the policy will cover expenses incurred during and after a hospital stay.",
+      "classification": "correct",
+      "reason": "Hospitalization/inpatient expenses are covered.",
+      "grounded": false,
+      "latency_seconds": 87.377,
+      "retrieval_latency_seconds": 0.544,
+      "average_retrieval_score": 0.7652,
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q05",
+      "question": "Does the policy cover hospitalization expenses?",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to your specific insurance policy. However, I can tell you that most health insurance policies cover hospitalization expenses. This is typically included in the policy as \"hospital coverage\" or \"inpatient care.\" If you have a specific question about your policy, I would recommend contacting your insurance provider directly for more information.",
+      "classification": "correct",
+      "reason": "Hospitalization/inpatient expenses are covered.",
+      "grounded": false,
+      "latency_seconds": 22.387,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q06",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "condition": "RAG",
+      "answer": "Based on the provided policy documents, it appears that pre-hospitalization medical expenses are not covered under the Group Health Insurance plan. However, post-hospitalization medical expenses are covered for a period of 60 days after discharge from hospital, as long as the insured person has accepted an inpatient care hospitalization claim under Section 2.1 above.\n\nSimilarly, under the Health Companion Health Insurance Plan, pre-hospitalization medical expenses are not covered, but post-hospitalization medical expenses can be claimed as reimbursement only for a period of 60 days after discharge from hospital, provided that such medical expenses are incurred for the same condition for which the insured person's hospitalization was required and the inpatient care hospitalization claim for such hospitalization is admissible by the insurance company.\n\nIt is important to note that these policies may have additional exclusions or conditions, and it is recommended to consult with an insurance professional to determine the specific coverage under your policy.",
+      "classification": "correct",
+      "reason": "The policy provides pre/post-hospitalization coverage subject to policy conditions.",
+      "grounded": false,
+      "latency_seconds": 83.172,
+      "retrieval_latency_seconds": 0.544,
+      "average_retrieval_score": 0.8257,
+      "retrieved_documents": [
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "condition": "NO_RAG",
+      "answer": "Pre-hospitalization and post-hospitalization expenses are typically not covered under standard health insurance policies. However, some policies may have specific coverage for these types of expenses, such as deductibles or copays. It is important to review the terms and conditions of your specific policy to determine what is covered and what is not.",
+      "classification": "correct",
+      "reason": "The policy provides pre/post-hospitalization coverage subject to policy conditions.",
+      "grounded": false,
+      "latency_seconds": 21.369,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q07",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "condition": "RAG",
+      "answer": "The policy states that spondylosis and spondylitis are excluded from coverage under this policy.",
+      "classification": "correct",
+      "reason": "Spondylosis/spondylitis are subject to the policy's exclusion/waiting provisions.",
+      "grounded": false,
+      "latency_seconds": 55.211,
+      "retrieval_latency_seconds": 0.548,
+      "average_retrieval_score": 0.6621,
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q07",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I am not able to provide a specific answer to your question as it is not clear what type of policy you are referring to. However, I can tell you that most health insurance policies do not cover spondylosis or spondylitis. These are medical conditions that require treatment and monitoring by a healthcare professional. If you have been diagnosed with spondylosis or spondylitis, it is important to work closely with your healthcare provider to develop a treatment plan that meets your specific needs.\n\nIt is also important to note that some insurance policies may have specific exclusions for certain medical conditions, so it is always best to review the policy document carefully before making any claims.",
+      "classification": "correct",
+      "reason": "Spondylosis/spondylitis are subject to the policy's exclusion/waiting provisions.",
+      "grounded": false,
+      "latency_seconds": 31.597,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q08",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "condition": "RAG",
+      "answer": "The answer to this question can be determined from the provided context. The policy documents mention that the policy covers \"reasonable expenses incurred towards medical treatment\" during the Policy Period for an Illness, Accident or condition described below if this is contracted or sustained by an Insured Person during the Policy Period and subject always to the Sum Insured, any subsidiary limit specified in the Product Benefits Table, the terms, conditions, limitations and exclusions mentioned in the Policy and eligibility as per the insurance plan opted for in the Product Benefits Table.\n\nThe policy also mentions that the policy covers \"Both hands, Both feet, Sight of both eyes 100% One hand; One foot; Sight of one eye; speech; or Hearing in both ears 50%\" and \"Thumb and Index Finger of Same Hand 25%\".\n\nTherefore, the answer to this question is that the policy covers a percentage of eligible expenses up to 100%.",
+      "classification": "incorrect",
+      "reason": "Confuses a 100% schedule-of-loss benefit with a universal percentage of eligible medical expenses.",
+      "grounded": false,
+      "latency_seconds": 91.828,
+      "retrieval_latency_seconds": 0.549,
+      "average_retrieval_score": 0.6693,
+      "retrieved_documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to your specific insurance policy and cannot provide an exact percentage of eligible expenses that are covered. However, I can tell you that the coverage amount for medical expenses is typically specified in the policy document or on the policy summary page. If you need more information about your specific policy, please contact your insurance provider directly.",
+      "classification": "correct",
+      "reason": "Answer discusses the policy's limits/coverage without making an unsupported universal 100% claim.",
+      "grounded": false,
+      "latency_seconds": 22.351,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q09",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "condition": "RAG",
+      "answer": "The benefits provided under the accident insurance policy are as follows:\n\n1. If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n2. The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.\n3. If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.\n4. The Policy provides benefits up to the Sum Assured for the specified events occurring during the Policy Period and while the Policy is in force for an Illness and/or, Accident and/or Hospitali sation or the conditions described below subject to any specific limits specified in the Product Benefits Table, the terms, conditions, limitations and specific and general exclusions mentioned in the Policy and as shown in the Schedule",
+      "classification": "correct",
+      "reason": "The answer should describe actual accident-policy benefits, rather than generic insurance benefits.",
+      "grounded": false,
+      "latency_seconds": 85.101,
+      "retrieval_latency_seconds": 0.547,
+      "average_retrieval_score": 0.7747,
+      "retrieved_documents": [
+        "AccidentCare_Insurance.pdf",
+        "Travel_Protection_TATA_AIG.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q09",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I can provide you with information about the benefits that are typically included in an accident insurance policy. However, it is important to note that the specific benefits and coverage amounts may vary depending on the type of policy and the insurance company issuing it.\n\nSome common benefits that are often included in accident insurance policies include:\n\n1. Medical expenses: This benefit covers the cost of medical treatment for injuries or illnesses sustained as a result of an accident.\n2. Property damage: This benefit may cover the cost of repairing or replacing damaged property, such as cars or homes.\n3. Personal injury protection: This benefit provides coverage for injuries that are not necessarily visible, such as whiplash or other hidden injuries.\n4. Uninsured/underinsured motorist coverage: This benefit covers the cost of medical treatment and other expenses if you are involved in an accident with a driver who does not have insurance or has inadequate insurance coverage.\n5. Roadside assistance: Some policies may include roadside assistance, which can provide services such as towing, flat tire changes, and jump starts.\n6. Rental",
+      "classification": "correct",
+      "reason": "The answer should describe actual accident-policy benefits, rather than generic insurance benefits.",
+      "grounded": false,
+      "latency_seconds": 43.871,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    },
+    {
+      "question_id": "Q10",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "condition": "RAG",
+      "answer": "Yes, travel insurance typically covers medical emergencies during a trip. The policy context provided includes the following information:\n\n* In general, coverage applies worldwide, but there are exceptions. Restrictions may apply to regions that may be involved in an international or internal conflict, or in those countries and territories where the existing infrastructure is deemed inadequate to guarantee service.\n* The policy provides coverage for Covered Medical Expenses in the event of any Injury or Sickness, which is not due to any Pre-existing disease, and which results in a Medically Necessary treatment on the written advice of a Medical Practitioner outside India while on a Trip.\n* The policy provides coverage for Covered Expenses due to Emergency Medical Evacuation if incurred outside India whilst on Trip.\n* The policy covers any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice.\n\nTherefore, based on the information provided, it appears that travel insurance coverage may include medical emergency expenses during a trip, including medical evacuation and treatment outside India. However, it's important to note that the specific",
+      "classification": "correct",
+      "reason": "Travel insurance includes medical-emergency coverage during a trip, subject to policy conditions.",
+      "grounded": false,
+      "latency_seconds": 99.914,
+      "retrieval_latency_seconds": 0.541,
+      "average_retrieval_score": 0.7628,
+      "retrieved_documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "Travel_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "condition": "NO_RAG",
+      "answer": "Yes, travel insurance typically covers medical emergencies that occur during the course of a trip. This can include illnesses, injuries, or other health issues that require medical attention while you are abroad. The specifics of what is covered may vary depending on the policy and the provider, but it is generally included as part of the standard coverage for travel insurance. It's important to carefully review your policy to understand exactly what is covered and what is not.",
+      "classification": "incorrect",
+      "reason": "Does not contain the required policy evidence.",
+      "grounded": false,
+      "latency_seconds": 25.353,
+      "retrieval_latency_seconds": 0,
+      "average_retrieval_score": null,
+      "retrieved_documents": []
+    }
+  ]
+}

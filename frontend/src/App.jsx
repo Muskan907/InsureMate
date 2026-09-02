@@ -1319,7 +1319,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL = "http://192.168.62.129:8000";
+const API_URL = "http://192.168.78.129:8000";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -1806,6 +1806,23 @@ const sendChatMessage = async () => {
           >
             <span>🤖</span>
             Models
+          </button>
+
+
+          {/* Evaluation Lab */}
+
+          <button
+            className={`nav-item ${
+              activePage === "Evaluation Lab"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              setActivePage("Evaluation Lab")
+            }
+          >
+            <span>📊</span>
+            Evaluation Lab
           </button>
 
 
@@ -2572,6 +2589,15 @@ const sendChatMessage = async () => {
         )}
 
         {/* ===================================================
+            WEEK 4 EVALUATION LAB
+        =================================================== */}
+
+        {activePage === "Evaluation Lab" && (
+          <EvaluationLabPage />
+        )}
+
+
+        {/* ===================================================
             DOCUMENTS
         =================================================== */}
 
@@ -2630,10 +2656,862 @@ const sendChatMessage = async () => {
           activePage !== "Retrieval" && (
             <TechnicalPage
               title={activePage}
+              documents={documents}
+              totalChunks={totalChunks}
             />
         )}
 
       </main>
+
+    </div>
+  );
+}
+
+
+/* =========================================================
+   WEEK 4 EVALUATION LAB
+========================================================= */
+
+function EvaluationLabPage() {
+
+const modelResults = [
+  {
+    name: "CodeLlama 7B",
+    model: "codellama:7b-instruct",
+    accuracy: 77.27,
+    hallucination: 4,
+    latency: 50.92,
+    ram: 4771.7,
+    confidence: 0.7086
+  },
+  {
+    name: "Qwen 2.5 1.5B",
+    model: "qwen2.5:1.5b",
+    accuracy: 59.09,
+    hallucination: 20,
+    latency: 9.63,
+    ram: 1108.3,
+    confidence: 0.7086
+  },
+  {
+    name: "Phi-3 Mini",
+    model: "phi3:mini",
+    accuracy: 77.27,
+    hallucination: 4,
+    latency: 27.84,
+    ram: 2922.7,
+    confidence: 0.7086
+  }
+];
+
+  const topK = [
+    {
+      k: 1,
+      latency: 29.59,
+      score: 0.6989,
+      context: 593.5
+    },
+    {
+      k: 3,
+      latency: 49.277,
+      score: 0.6900,
+      context: 1696.8
+    },
+    {
+      k: 5,
+      latency: 66.646,
+      score: 0.6808,
+      context: 2920.5
+    }
+  ];
+
+  const repositoryFiles = [
+    ["frontend/src/App.jsx", 18],
+    ["backend/app/api/upload.py", 10],
+    ["backend/app/main.py", 9],
+    ["backend/app/services/upload_rag_service.py", 6],
+    ["backend/app/services/document_processor.py", 3],
+    ["backend/app/api/retrieval.py", 1],
+    ["frontend/src/App.css", 1],
+    ["docker/Dockerfile.backend", 1],
+    ["backend/app/services/embedding_service.py", 1]
+  ];
+
+  return (
+    <div className="evaluation-page">
+
+      <header className="topbar">
+        <div>
+          <p className="eyebrow">
+            WEEK 4 · QUANTITATIVE EVALUATION
+          </p>
+
+          <h1>
+            Evaluation Lab
+          </h1>
+
+          <p className="subtitle">
+            Quantitative analysis of LLM models, RAG retrieval,
+            resource usage and repository-level understanding.
+          </p>
+        </div>
+
+        <div className="evaluation-badge">
+          ✓ 6 EXERCISES ANALYZED
+        </div>
+      </header>
+
+
+      {/* =====================================================
+          OVERVIEW
+      ===================================================== */}
+
+      <section className="evaluation-summary">
+
+        <div className="evaluation-stat">
+          <span>MODELS</span>
+          <strong>3</strong>
+          <small>independently evaluated</small>
+        </div>
+
+        <div className="evaluation-stat">
+          <span>QUESTIONS</span>
+          <strong>25</strong>
+          <small>same dataset for all models</small>
+        </div>
+
+        <div className="evaluation-stat">
+          <span>EVALUATIONS</span>
+          <strong>75</strong>
+          <small>successful model evaluations</small>
+        </div>
+
+        <div className="evaluation-stat highlight">
+          <span>BEST ACCURACY</span>
+          <strong>77.27%</strong>
+          <small>CodeLlama 7B - Phi-3 Mini</small>
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          MAIN FINDING
+      ===================================================== */}
+
+      <section className="evaluation-insight">
+
+        <div className="insight-icon">
+          ★
+        </div>
+
+        <div>
+          <h2>
+            Quality vs Latency Trade-off
+          </h2>
+
+          <p>
+             CodeLlama and Phi-3 achieved the highest measured
+            accuracy at 77.27%, while Qwen was substantially
+            faster and required much less memory. The controlled
+            RAG experiment also showed a 40 percentage-point
+            accuracy improvement over the No-RAG baseline.
+          </p>
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          MODEL COMPARISON
+      ===================================================== */}
+
+      <section className="evaluation-card">
+
+        <div className="evaluation-section-heading">
+          <div>
+            <p className="eyebrow">
+              EXERCISE 1 + 3 + 4
+            </p>
+
+            <h2>
+              Model Comparison
+            </h2>
+
+            <p>
+              Same questions, knowledge base, RAG context,
+              prompt and generation settings.
+            </p>
+          </div>
+        </div>
+
+
+        <div className="evaluation-table-wrap">
+
+          <table className="evaluation-table">
+
+            <thead>
+              <tr>
+                <th>MODEL</th>
+                <th>ACCURACY</th>
+                <th>HALLUCINATION</th>
+                <th>LATENCY</th>
+                <th>RAM</th>
+                <th>RETRIEVAL CONF.</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {modelResults.map((item) => (
+
+                <tr key={item.model}>
+
+                  <td>
+                    <strong>{item.name}</strong>
+                    <small>{item.model}</small>
+                  </td>
+
+                  <td>
+                    <strong
+                      className={
+                        item.accuracy === 66
+                          ? "metric-best"
+                          : ""
+                      }
+                    >
+                      {item.accuracy}%
+                    </strong>
+                  </td>
+
+                  <td>
+                    <strong
+                      className={
+                        item.hallucination === 4
+                          ? "metric-best"
+                          : ""
+                      }
+                    >
+                      {item.hallucination}%
+                    </strong>
+                  </td>
+
+                  <td>
+                    {item.latency.toFixed(2)}s
+                  </td>
+
+                  <td>
+                    {item.ram.toFixed(0)} MB
+                  </td>
+
+                  <td>
+                    {(item.confidence * 100).toFixed(2)}%
+                  </td>
+
+                </tr>
+
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          RESOURCE BENCHMARK
+      ===================================================== */}
+
+      <section className="evaluation-two-column">
+
+        <div className="evaluation-card">
+
+          <div className="evaluation-section-heading">
+            <p className="eyebrow">
+              PERFORMANCE
+            </p>
+
+            <h2>
+              Memory Consumption
+            </h2>
+
+            <p>
+              Average RAM change measured during independent
+              resource benchmarking.
+            </p>
+          </div>
+
+
+          <div className="bar-list">
+
+            {modelResults.map((item) => {
+
+              const width =
+                (item.ram / 4771.7) * 100;
+
+              return (
+                <div
+                  className="bar-row"
+                  key={item.model}
+                >
+
+                  <div className="bar-label">
+                    <span>{item.name}</span>
+                    <strong>
+                      {item.ram.toFixed(0)} MB
+                    </strong>
+                  </div>
+
+                  <div className="bar-track">
+                    <div
+                      className="bar-fill"
+                      style={{
+                        width: `${width}%`
+                      }}
+                    />
+                  </div>
+
+                </div>
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+
+        <div className="evaluation-card">
+
+          <div className="evaluation-section-heading">
+            <p className="eyebrow">
+              PERFORMANCE
+            </p>
+
+            <h2>
+              Response Latency
+            </h2>
+
+            <p>
+              Average response latency across the model
+              comparison experiment.
+            </p>
+          </div>
+
+
+          <div className="bar-list">
+
+            {modelResults.map((item) => {
+
+              const width =
+                (item.latency / 50.92) * 100;
+
+              return (
+                <div
+                  className="bar-row"
+                  key={item.model}
+                >
+
+                  <div className="bar-label">
+                    <span>{item.name}</span>
+                    <strong>
+                      {item.latency.toFixed(2)}s
+                    </strong>
+                  </div>
+
+                  <div className="bar-track">
+                    <div
+                      className="bar-fill"
+                      style={{
+                        width: `${width}%`
+                      }}
+                    />
+                  </div>
+
+                </div>
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          TOP K
+      ===================================================== */}
+
+      <section className="evaluation-card">
+
+        <div className="evaluation-section-heading">
+
+          <p className="eyebrow">
+            EXERCISE 5 · TOP-K SENSITIVITY
+          </p>
+
+          <h2>
+            Retrieval Depth Analysis
+          </h2>
+
+          <p>
+            How changing retrieval depth affects context,
+            similarity and generation latency.
+          </p>
+
+        </div>
+
+
+        <div className="topk-grid">
+
+          {topK.map((item) => (
+
+            <div
+              className={
+                `topk-card ${
+                  item.k === 3
+                    ? "recommended"
+                    : ""
+                }`
+              }
+              key={item.k}
+            >
+
+              {item.k === 3 && (
+                <div className="recommended-label">
+                  BALANCED
+                </div>
+              )}
+
+              <div className="topk-number">
+                K={item.k}
+              </div>
+
+              <div className="topk-metric">
+                <span>Latency</span>
+                <strong>
+                  {item.latency.toFixed(2)}s
+                </strong>
+              </div>
+
+              <div className="topk-metric">
+                <span>Retrieval Score</span>
+                <strong>
+                  {item.score.toFixed(4)}
+                </strong>
+              </div>
+
+              <div className="topk-metric">
+                <span>Context</span>
+                <strong>
+                  {item.context.toFixed(0)}
+                </strong>
+                <small>characters</small>
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+
+        <div className="evaluation-conclusion">
+
+          <strong>
+            Finding:
+          </strong>
+
+          Increasing K from 1 → 5 increased average context
+          from 594 to 2,921 characters and latency from
+          29.59s to 66.65s, while average retrieval similarity
+          decreased from 0.6989 to 0.6808.
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          RAG ABLATION
+      ===================================================== */}
+
+      <section className="evaluation-card">
+
+        <div className="evaluation-section-heading">
+
+          <p className="eyebrow">
+            EXERCISE 5 · RAG ABLATION
+          </p>
+
+          <h2>
+            RAG vs No-RAG
+          </h2>
+
+          <p>
+            Controlled comparison of answer accuracy with
+    and     without retrieved policy context.
+          </p>
+
+        </div>
+
+
+        <div className="rag-comparison">
+
+          <div className="rag-column">
+
+            <div className="rag-title">
+              RAG ON
+            </div>
+
+            <strong>
+              90%
+            </strong>
+
+            <span>
+              Accuracy
+            </span>
+
+            <div className="rag-status">
+              ✓ 9 / 10 correct
+            </div>
+
+            <div className="rag-status">
+              +40 percentage points
+            </div>
+
+            <div className="rag-status">
+              78.47s average latency
+            </div>
+
+          </div>
+
+
+          <div className="rag-vs">
+            VS
+          </div>
+
+
+          <div className="rag-column">
+
+            <div className="rag-title">
+              NO-RAG
+            </div>
+
+            <strong>
+              50%
+            </strong>
+
+            <span>
+              Accuracy
+            </span>
+
+            <div className="rag-status neutral">
+              5 / 10 correct
+            </div>
+
+            <div className="rag-status neutral">
+              Baseline
+            </div>
+
+            <div className="rag-status neutral">
+              29.18s average latency
+            </div>
+
+          </div>
+
+        </div>
+
+
+      <div className="evaluation-conclusion">
+
+        <strong>
+          RAG finding:
+        </strong>
+
+        On the same 10 policy questions, RAG achieved
+        <strong> 90% accuracy</strong> compared with
+        <strong> 50% without retrieval</strong>.
+        RAG won 5 questions, No-RAG won 1, and both
+        approaches were correct on 4 questions.
+
+        <br /><br />
+
+        This represents a
+        <strong> +40 percentage-point improvement</strong>
+        in accuracy, with the trade-off of higher average
+        latency (78.47s vs 29.18s).
+
+      </div>
+
+      </section>
+
+
+      {/* =====================================================
+          GROUNDEDNESS
+      ===================================================== */}
+
+      <section className="evaluation-card">
+
+        <div className="evaluation-section-heading">
+
+          <p className="eyebrow">
+            AI SAFETY
+          </p>
+
+          <h2>
+            Groundedness & "Knows When It Doesn't Know"
+          </h2>
+
+          <p>
+            Evaluation of answers, uncertainty and refusal behavior.
+          </p>
+
+        </div>
+
+
+        <div className="grounded-grid">
+
+          <div className="grounded-stat">
+            <strong>0</strong>
+            <span>Hallucinations</span>
+            <small>RAG ON sample</small>
+          </div>
+
+          <div className="grounded-stat">
+            <strong>1</strong>
+            <span>Appropriate Refusal</span>
+            <small>RAG ON</small>
+          </div>
+
+          <div className="grounded-stat">
+            <strong>1</strong>
+            <span>Appropriate Uncertainty</span>
+            <small>RAG ON</small>
+          </div>
+
+          <div className="grounded-stat">
+            <strong>5</strong>
+            <span>Answers Given</span>
+            <small>RAG ON</small>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          REPOSITORY RAG
+      ===================================================== */}
+
+      <section className="evaluation-card">
+
+        <div className="evaluation-section-heading">
+
+          <p className="eyebrow">
+            EXERCISE 6 · REPOSITORY UNDERSTANDING
+          </p>
+
+          <h2>
+            Repository-Level RAG
+          </h2>
+
+          <p>
+            Testing whether the system can retrieve evidence
+            across multiple files and components.
+          </p>
+
+        </div>
+
+
+        <div className="repository-summary">
+
+          <div>
+            <strong>10</strong>
+            <span>Questions</span>
+          </div>
+
+          <div>
+            <strong>50</strong>
+            <span>Chunks Retrieved</span>
+          </div>
+
+          <div>
+            <strong>0.6160</strong>
+            <span>Average Similarity</span>
+          </div>
+
+          <div>
+            <strong>0.6972</strong>
+            <span>Highest Score</span>
+          </div>
+
+        </div>
+
+
+        <div className="repository-layout">
+
+          <div>
+
+            <h3>
+              Retrieved File Distribution
+            </h3>
+
+            <div className="repository-files">
+
+              {repositoryFiles.map(
+                ([file, count]) => (
+
+                  <div
+                    className="repository-file"
+                    key={file}
+                  >
+
+                    <div>
+                      <span>{file}</span>
+                      <strong>{count}</strong>
+                    </div>
+
+                    <div className="repository-track">
+
+                      <div
+                        className="repository-fill"
+                        style={{
+                          width:
+                            `${(count / 18) * 100}%`
+                        }}
+                      />
+
+                    </div>
+
+                  </div>
+
+                )
+              )}
+
+            </div>
+
+          </div>
+
+
+          <div className="repository-insight">
+
+            <div className="insight-icon">
+              ⌘
+            </div>
+
+            <h3>
+              Cross-file understanding
+            </h3>
+
+            <p>
+              The repository experiment used questions that
+              require reasoning across upload APIs, document
+              processing, retrieval, embeddings, frontend
+              components and backend orchestration.
+            </p>
+
+            <div className="repository-tag">
+              MULTI-FILE RAG
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          FINAL FINDINGS
+      ===================================================== */}
+
+      <section className="evaluation-card final-findings">
+
+        <div className="evaluation-section-heading">
+
+          <p className="eyebrow">
+            FINAL CONCLUSION
+          </p>
+
+          <h2>
+            What Did Week 4 Prove?
+          </h2>
+
+        </div>
+
+
+        <div className="finding-list">
+
+          <div>
+            <span>01</span>
+            <p>
+             <strong>CodeLlama and Phi-3 were the strongest quality models.</strong>
+              Both achieved 77.27% accuracy in the corrected
+            </p>
+          </div>
+
+          <div>
+            <span>02</span>
+            <p>
+              <strong>Qwen was the efficiency winner.</strong>
+              It achieved the lowest latency at 9.63s and
+              lowest average RAM change at 1108 MB.
+            </p>
+          </div>
+
+          <div>
+            <span>03</span>
+            <p>
+              <strong>More retrieval is not automatically better.</strong>
+              Increasing K increased context and latency while
+              similarity decreased in this experiment.
+            </p>
+          </div>
+
+          <div>
+            <span>04</span>
+            <p>
+              <strong>The experiments expose a quality-resource trade-off.</strong>
+              The most accurate model was also the slowest,
+              demonstrating that model selection depends on
+              deployment constraints.
+            </p>
+          </div>
+
+          <div>
+            <span>05</span>
+            <p>
+              <strong>Repository RAG extends the system beyond policy Q&A.</strong>
+              Ten multi-file questions were evaluated across
+              backend and frontend components.
+            </p>
+          </div>
+
+          <div>
+            <span>06</span>
+            <p>
+              <strong>RAG substantially improved answer accuracy.</strong>
+              In the controlled 10-question policy evaluation,
+              RAG achieved 90% accuracy compared with 50% for
+              No-RAG, a 40 percentage-point improvement.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <div className="evaluation-footer">
+        InsureMate · Week 4 Evaluation · Experimental results
+      </div>
 
     </div>
   );
@@ -4244,7 +5122,11 @@ function RetrievalPage() {
    TECHNICAL PAGE PLACEHOLDER
 ========================================================= */
 
-function TechnicalPage({ title }) {
+function TechnicalPage({
+  title,
+  documents,
+  totalChunks,
+}) {
 
   const API_BASE = API_URL;
 
@@ -4252,7 +5134,7 @@ function TechnicalPage({ title }) {
      SOURCES STATE
   ========================================================= */
 
-  const [documents, setDocuments] = useState([]);
+  // const [documents, setDocuments] = useState([]);
   const [chunks, setChunks] = useState([]);
   const [sourcesLoading, setSourcesLoading] = useState(false);
   const [sourcesError, setSourcesError] = useState("");
@@ -4313,21 +5195,21 @@ function TechnicalPage({ title }) {
       setSourcesLoading(true);
       setSourcesError("");
 
-      const documentsResponse =
-        await fetch(
-          `${API_BASE}/api/knowledge/documents`
-        );
+      // const documentsResponse =
+      //   await fetch(
+      //     `${API_BASE}/api/knowledge/documents`
+      //   );
 
-      if (!documentsResponse.ok) {
-        throw new Error("Failed to load documents");
-      }
+      // if (!documentsResponse.ok) {
+      //   throw new Error("Failed to load documents");
+      // }
 
-      const documentsData =
-        await documentsResponse.json();
+      // const documentsData =
+      //   await documentsResponse.json();
 
-      setDocuments(
-        documentsData.documents || []
-      );
+      // setDocuments(
+      //   documentsData.documents || []
+      // );
 
 
       const chunksResponse =
@@ -6457,3 +7339,6 @@ function TechnicalPage({ title }) {
 
 
 export default App;
+
+
+

@@ -1,0 +1,1534 @@
+{
+  "title": "InsureMate Week 4 Corrected RAG vs No-RAG Evaluation",
+  "methodology": {
+    "same_application": true,
+    "same_model": true,
+    "same_questions": true,
+    "only_changed_variable": "retrieved policy context",
+    "out_of_scope_refusal": "counted as correct",
+    "manual_review": "excluded from automatic accuracy",
+    "purpose": "Measure whether retrieved policy evidence improves grounded answer quality."
+  },
+  "summary": {
+    "RAG": {
+      "total_evaluations": 24,
+      "correct": 3,
+      "incorrect": 6,
+      "manual_review": 15,
+      "scored_questions": 9,
+      "accuracy_percent": 33.33,
+      "average_latency_seconds": 26.373,
+      "average_retrieval_latency_seconds": 0.562,
+      "average_prompt_tokens": 521.292,
+      "average_generated_tokens": 72.042
+    },
+    "NO_RAG": {
+      "total_evaluations": 24,
+      "correct": 3,
+      "incorrect": 6,
+      "manual_review": 15,
+      "scored_questions": 9,
+      "accuracy_percent": 33.33,
+      "average_latency_seconds": 20.529,
+      "average_retrieval_latency_seconds": 0.0,
+      "average_prompt_tokens": 101.417,
+      "average_generated_tokens": 169.917
+    }
+  },
+  "retrieval_analysis": [
+    {
+      "question_id": "Q02",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.687,
+      "top_retrieval_score": 0.689,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.687,
+      "top_retrieval_score": 0.689,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.687,
+      "top_retrieval_score": 0.689,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "classification": "correct",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.727,
+      "top_retrieval_score": 0.7375,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "classification": "correct",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.727,
+      "top_retrieval_score": 0.7375,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "classification": "correct",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.727,
+      "top_retrieval_score": 0.7375,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.77,
+      "top_retrieval_score": 0.7726,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.77,
+      "top_retrieval_score": 0.7726,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.77,
+      "top_retrieval_score": 0.7726,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.667,
+      "top_retrieval_score": 0.6745,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.667,
+      "top_retrieval_score": 0.6745,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.667,
+      "top_retrieval_score": 0.6745,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.744,
+      "top_retrieval_score": 0.7486,
+      "documents": [
+        "AccidentCare_Insurance.pdf",
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.744,
+      "top_retrieval_score": 0.7486,
+      "documents": [
+        "AccidentCare_Insurance.pdf",
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.744,
+      "top_retrieval_score": 0.7486,
+      "documents": [
+        "AccidentCare_Insurance.pdf",
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.737,
+      "top_retrieval_score": 0.7485,
+      "documents": [
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.737,
+      "top_retrieval_score": 0.7485,
+      "documents": [
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.737,
+      "top_retrieval_score": 0.7485,
+      "documents": [
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Health_Assurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.682,
+      "top_retrieval_score": 0.6877,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.682,
+      "top_retrieval_score": 0.6877,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "classification": "manual_review",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.682,
+      "top_retrieval_score": 0.6877,
+      "documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.504,
+      "top_retrieval_score": 0.5329,
+      "documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+        "Travel_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.504,
+      "top_retrieval_score": 0.5329,
+      "documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+        "Travel_Insurance.pdf"
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "classification": "incorrect",
+      "retrieved_chunk_count": 3,
+      "average_retrieval_score": 0.504,
+      "top_retrieval_score": 0.5329,
+      "documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+        "Travel_Insurance.pdf"
+      ]
+    }
+  ],
+  "rag_vs_no_rag_differences": [
+    {
+      "question_id": "Q04",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "rag_answer": "The waiting period for stones in the urinary system is 24 months from the date of commencement of coverage for the Insured Person.",
+      "no_rag_answer": "The waiting period for stones in the urinary system can vary depending on the type of stone and the individual's overall health. In general, however, the waiting period for a urinary tract stone (UTS) is typically longer than the waiting period for a kidney stone.\n\nFor UTS, the average waiting period is around 2-3 months after the last time the person had a drink containing calcium or other substances that can cause stones. However, some people may experience symptoms earlier, while others may not experience any symptoms until several weeks or even months after the stone has formed.\n\nFor kidney stones, the waiting period is typically shorter and can range from 1-3 days after the last time the person had a drink containing the same substances that caused the stone. However, it's important to note that the symptoms of a kidney stone can be unpredictable and may not always appear immediately after the stone has formed.\n\nIt's also worth noting that some people may experience recurrent stones over time, which means they may have multiple stones in their urinary tract at different times. In these cases, the waiting period between stones can vary widely depending on the individual's overall health"
+    },
+    {
+      "question_id": "Q20",
+      "rag_classification": "incorrect",
+      "no_rag_classification": "correct",
+      "rag_answer": "The available insurance documents do not contain enough information to answer this question.",
+      "no_rag_answer": "I'm sorry, but I don't have access to real-time market data or any other external sources. Therefore, I cannot provide you with the most recent price of Bitcoin."
+    }
+  ],
+  "all_evaluations": [
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting period for cataract treatment is not mentioned in either context. Therefore, it cannot be determined from the policy documents provided.",
+      "classification": "incorrect",
+      "latency_seconds": 40.067,
+      "retrieval_latency_seconds": 1.255,
+      "prompt_tokens": 530,
+      "generated_tokens": 28,
+      "total_tokens": 558,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for cataract treatment can vary depending on the type of treatment and the individual's medical history. In general, the waiting period for cataract treatment is typically several months to a year or more after the diagnosis of cataracts. During this time, the patient may need to follow a regular eye care routine, including wearing corrective lenses if necessary, to manage the symptoms of cataracts.\n\nIn some cases, surgical treatment for cataracts may be recommended, which can involve removing the cloudy lens (cataract) and replacing it with an artificial lens or a new natural lens. The waiting period for this type of treatment can range from several months to a year or more after the diagnosis.\n\nIt is important to note that the waiting period for cataract treatment can vary depending on the individual's medical history, the severity of the cataracts, and other factors. It is best to consult with an eye doctor or ophthalmologist to determine the appropriate waiting period for your specific situation.",
+      "classification": "incorrect",
+      "latency_seconds": 43.782,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 110,
+      "generated_tokens": 230,
+      "total_tokens": 340,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "incorrect",
+      "latency_seconds": 7.979,
+      "retrieval_latency_seconds": 1.255,
+      "prompt_tokens": 457,
+      "generated_tokens": 15,
+      "total_tokens": 472,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for cataract treatment can vary depending on several factors, including the specific type of surgery and the individual's health condition. Generally, a waiting period may be required after the procedure to ensure proper healing before returning to normal activities.\n\nFor most cataract surgeries, patients are advised to avoid strenuous physical activity or heavy lifting for about 2 weeks following the procedure. This is typically followed by a gradual return to daily activities and light exercise under medical supervision.\n\nIt's important to follow your surgeon's specific instructions regarding post-operative care and any additional waiting periods recommended by your healthcare provider.",
+      "classification": "incorrect",
+      "latency_seconds": 7.587,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 94,
+      "generated_tokens": 121,
+      "total_tokens": 215,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "incorrect",
+      "latency_seconds": 20.007,
+      "retrieval_latency_seconds": 1.255,
+      "prompt_tokens": 519,
+      "generated_tokens": 16,
+      "total_tokens": 535,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ]
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "As an AI without access to specific insurance databases, I can provide a general answer based on common practices in healthcare coverage. Typically, most major health insurance plans have a standard waiting or elimination period of about 30 days for vision-related treatments such as cataract surgery. However, this duration may vary depending on the policy' endorsements and local regulations. It is essential to review your specific plan details directly with your insurer for accurate information regarding coverage wait times.",
+      "classification": "incorrect",
+      "latency_seconds": 14.89,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 99,
+      "generated_tokens": 106,
+      "total_tokens": 205,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting period for stones in the urinary system is 24 months from the date of commencement of coverage for the Insured Person.",
+      "classification": "correct",
+      "latency_seconds": 44.211,
+      "retrieval_latency_seconds": 0.652,
+      "prompt_tokens": 612,
+      "generated_tokens": 31,
+      "total_tokens": 643,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7375
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7331
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7115
+        }
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for stones in the urinary system can vary depending on the type of stone and the individual's overall health. In general, however, the waiting period for a urinary tract stone (UTS) is typically longer than the waiting period for a kidney stone.\n\nFor UTS, the average waiting period is around 2-3 months after the last time the person had a drink containing calcium or other substances that can cause stones. However, some people may experience symptoms earlier, while others may not experience any symptoms until several weeks or even months after the stone has formed.\n\nFor kidney stones, the waiting period is typically shorter and can range from 1-3 days after the last time the person had a drink containing the same substances that caused the stone. However, it's important to note that the symptoms of a kidney stone can be unpredictable and may not always appear immediately after the stone has formed.\n\nIt's also worth noting that some people may experience recurrent stones over time, which means they may have multiple stones in their urinary tract at different times. In these cases, the waiting period between stones can vary widely depending on the individual's overall health",
+      "classification": "incorrect",
+      "latency_seconds": 46.166,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 112,
+      "generated_tokens": 256,
+      "total_tokens": 368,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The waiting period for stones in the urinary system is 24 months, as stated in Context 1.",
+      "classification": "correct",
+      "latency_seconds": 8.716,
+      "retrieval_latency_seconds": 0.652,
+      "prompt_tokens": 529,
+      "generated_tokens": 23,
+      "total_tokens": 552,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7375
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7331
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7115
+        }
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for stones in the urinary system can vary depending on several factors, including the type of stone and its size. Generally, a waiting period might be recommended to allow the stone to pass naturally through the urinary tract before medical intervention is considered.\n\nFor small stones (typically less than 5 mm), patients may be advised to drink plenty of water and monitor their symptoms for about one week. This allows the stone to move down the ureter on its own, often without any need for treatment.\n\nIf a patient experiences severe pain, infection, or obstruction that cannot be managed at home, they might be referred to a healthcare provider who can assess whether surgical intervention is necessary. In some cases, this could involve lithotripsy (using shock waves) or ureteroscopy with removal of the stone.\n\nFor larger stones (>5 mm), it's more likely that medical intervention would be recommended sooner rather than later. This might include medications to help pass the stone, such as alpha-blockers for smooth muscle relaxation in the bladder and ureters, or even surgical procedures like extracorporeal shock wave lithotripsy (ESWL) or ureteroscopy.\n\nIt's important to note that these are general guidelines, and individual cases can vary. Always consult with a",
+      "classification": "incorrect",
+      "latency_seconds": 12.238,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 95,
+      "generated_tokens": 256,
+      "total_tokens": 351,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "The disease conditions listed under both Contexts are subject to a waiting period of 24 months, which means that there is no immediate coverage available upon policy commencement. However, this does not apply to subsequent and continuous renewals starting from the third Policy Year for individuals who have been continuously insured without any break in their policies.",
+      "classification": "correct",
+      "latency_seconds": 28.62,
+      "retrieval_latency_seconds": 0.652,
+      "prompt_tokens": 601,
+      "generated_tokens": 70,
+      "total_tokens": 671,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7375
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7331
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7115
+        }
+      ]
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "As an AI without access to specific insurance documents, I can provide general knowledge on this topic instead of company-specific policies or data from InsureMate. The term \"waiting period\" typically refers to a time frame during which claims for certain conditions are not covered by health insurance after the policy has started. However, in medical terms related to stones in the urinary system (nephrolithiasis), there isn't usually an industry-standard waiting period as it is considered necessary and often life-saving treatment that should be provided without delay when symptomatic or complications arise. It’s always best to check directly with your insurance provider for their specific policy details regarding coverage of urinary stones, including any deductibles or co-pays you might need to pay out-of-pocket before full benefits apply if they have such provisions in place.",
+      "classification": "incorrect",
+      "latency_seconds": 20.485,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 101,
+      "generated_tokens": 185,
+      "total_tokens": 286,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The answer to your question is yes, the policy covers hospitalization expenses. The policy document states that it will cover \"Medical Expenses incurred immediately before the Insured Person is Hospitalised\" and \"Medical Expenses incurred immediately after the Insured Person is discharged from the hospital.\" This indicates that the policy covers hospitalization expenses, including the cost of admission to a hospital and any medical treatments or procedures provided during the hospital stay.",
+      "classification": "manual_review",
+      "latency_seconds": 45.206,
+      "retrieval_latency_seconds": 0.435,
+      "prompt_tokens": 560,
+      "generated_tokens": 100,
+      "total_tokens": 660,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7726
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7713
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.7674
+        }
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to the InsureMate insurance knowledge base for this experiment. Therefore, I cannot answer your question about whether the policy covers hospitalization expenses.",
+      "classification": "manual_review",
+      "latency_seconds": 16.657,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 108,
+      "generated_tokens": 45,
+      "total_tokens": 153,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "Yes, the policy covers hospitalization expenses. The policy explicitly states that it will cover \"Medical Expenses incurred immediately before the Insured Person is Hospitalised\" and provides additional coverage for post-hospitalization medical expenses up to 60 days after discharge. This comprehensive coverage indicates that the policy does indeed cover hospitalization expenses.",
+      "classification": "manual_review",
+      "latency_seconds": 9.121,
+      "retrieval_latency_seconds": 0.435,
+      "prompt_tokens": 450,
+      "generated_tokens": 66,
+      "total_tokens": 516,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7726
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7713
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.7674
+        }
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "Yes, most health insurance policies typically cover hospitalization expenses. This coverage can include inpatient and outpatient services, medications, and related medical supplies. However, specific details about what is covered can vary widely depending on the insurer's terms and conditions. It's important to review your policy carefully or contact customer service for clarification on exactly which hospitalization expenses are included under your insurance plan.",
+      "classification": "manual_review",
+      "latency_seconds": 5.208,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 91,
+      "generated_tokens": 77,
+      "total_tokens": 168,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "Yes, according to Clause 2.1 of both Contexts 2 and 3, if an Inpatient Care Hospitalisation claim is accepted for a specific illness under Section 2.1 above or as per the Health Companion plan policy document on Page 24 (Def. 43), then hospitalization expenses are covered up to the amount specified in the Schedule of Insurance Certificate, provided they relate directly to that same condition for which Hospitalization was required and claimed by the insurance company.",
+      "classification": "manual_review",
+      "latency_seconds": 27.529,
+      "retrieval_latency_seconds": 0.435,
+      "prompt_tokens": 549,
+      "generated_tokens": 112,
+      "total_tokens": 661,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7726
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7713
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.7674
+        }
+      ]
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "As an AI without access to specific documents, I cannot provide direct answers about coverage details for a particular insurance policy provided by InsureMate or any other company. However, typically in health insurance policies, there is often hospitalization expense coverage included as part of the benefits package. To determine if your specific policy covers such costs and under what conditions it applies (like deductibles, co-pays, maximum limits), you should review the terms outlined within your own policy document or contact a representative from InsureMate for detailed information regarding hospitalization expense coverage in their policies.",
+      "classification": "manual_review",
+      "latency_seconds": 13.895,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 97,
+      "generated_tokens": 124,
+      "total_tokens": 221,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The policy states that spondylosis and spondylitis are covered under the policy, specifically in the section on Osteoarthrosis / Arthritis / Gout / Rheumatism.",
+      "classification": "manual_review",
+      "latency_seconds": 39.425,
+      "retrieval_latency_seconds": 0.411,
+      "prompt_tokens": 614,
+      "generated_tokens": 46,
+      "total_tokens": 660,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 4 of 36 5. Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse 6. Cataract 7. Fissure / Fistula / Haemorrhoids 8. Hernia / Hydrocele 9. Chronic Renal Failure or end stage Renal Failure 10. Sinusitis / Deviated Nasal Septum / Tympanoplasty / Chronic Suppurative Otitis Media 11. Benign Prostatic Hypertrophy 12. Knee/Hip Joint replacement 13. Dilatation and Curettage 14. Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16.",
+          "score": 0.6745
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 8,
+          "chunk_id": 32,
+          "text": "agents or the Insured Person has received a bone marrow or cord blood stem cell transplant. Temporary or reversible Aplastic Anemia is excluded and not covered under this Policy. 13. Bacterial Meningitis Bacterial meningitis is a bacterial infection of the meninges of th e brain causing brain dysfunction. There must be an unequivocal diagnosis by a consultant physician of bacterial meningitis that must be proven on analysis of the cerebrospinal fluid.",
+          "score": 0.6697
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 34,
+          "chunk_id": 137,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event. Def. 17.",
+          "score": 0.6575
+        }
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I can provide you with general information about spondylosis and spondylitis based on my knowledge of medical terminology. However, please note that this answer is not a substitute for professional medical advice or diagnosis. If you have any concerns or questions about your health, it is always best to consult with a qualified healthcare professional.\n\nSpondylosis refers to a condition where the spine becomes inflamed and painful due to various factors such as injury, arthritis, or degenerative conditions. Spondylitis, on the other hand, is an inflammatory condition that affects the spinal cord and can cause pain, numbness, tingling, and weakness in the legs.\n\nAccording to my knowledge, there are several types of spondylosis and spondylitis, including ankylosing spondylitis, psoriatic arthritis, and inflammatory spondyloarthritis. These conditions can cause a range of symptoms, including back pain, stiffness, muscle weakness, and fatigue.\n\nIt is important to note that while these conditions can be managed with",
+      "classification": "manual_review",
+      "latency_seconds": 48.48,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 115,
+      "generated_tokens": 256,
+      "total_tokens": 371,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The policy mentions \"Spondylosis\" and \"Spondylitis\" under the category of \"Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse.\" It does not provide specific details about these conditions, but it indicates that they are covered by the policy.",
+      "classification": "manual_review",
+      "latency_seconds": 11.645,
+      "retrieval_latency_seconds": 0.411,
+      "prompt_tokens": 515,
+      "generated_tokens": 80,
+      "total_tokens": 595,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 4 of 36 5. Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse 6. Cataract 7. Fissure / Fistula / Haemorrhoids 8. Hernia / Hydrocele 9. Chronic Renal Failure or end stage Renal Failure 10. Sinusitis / Deviated Nasal Septum / Tympanoplasty / Chronic Suppurative Otitis Media 11. Benign Prostatic Hypertrophy 12. Knee/Hip Joint replacement 13. Dilatation and Curettage 14. Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16.",
+          "score": 0.6745
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 8,
+          "chunk_id": 32,
+          "text": "agents or the Insured Person has received a bone marrow or cord blood stem cell transplant. Temporary or reversible Aplastic Anemia is excluded and not covered under this Policy. 13. Bacterial Meningitis Bacterial meningitis is a bacterial infection of the meninges of th e brain causing brain dysfunction. There must be an unequivocal diagnosis by a consultant physician of bacterial meningitis that must be proven on analysis of the cerebrospinal fluid.",
+          "score": 0.6697
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 34,
+          "chunk_id": 137,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event. Def. 17.",
+          "score": 0.6575
+        }
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "I apologize, but I don't have specific knowledge about \"spondylosis\" or \"spondylitis\" being covered in insurance policies. These terms are medical conditions related to spinal issues and typically would be discussed under a general health policy rather than an insurance for the spine itself.\n\nWithout access to InsureMate's documents, I can only provide information based on general knowledge about common coverage areas in insurance policies:\n\n- Many insurance policies cover orthopedic injuries or musculoskeletal problems that affect the body.\n- If you have a specific type of injury related to your spinal health (like spondylosis or spondylitis), it would likely be covered under an overall health policy rather than one specifically for the spine.\n\nIf you're looking for information about coverage for these conditions, I recommend checking with your insurance provider directly. They can provide detailed answers based on your specific policy and medical history.",
+      "classification": "manual_review",
+      "latency_seconds": 10.742,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 100,
+      "generated_tokens": 185,
+      "total_tokens": 285,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "Spondylosis and Spondylitis are conditions listed under Covered Conditions in Health Companion Health Insurance Plan, as indicated on page 4 of the Policy Document. However, specific details regarding coverage for these conditions such as waiting periods or exclusions have not been provided within this context.",
+      "classification": "manual_review",
+      "latency_seconds": 25.899,
+      "retrieval_latency_seconds": 0.411,
+      "prompt_tokens": 603,
+      "generated_tokens": 64,
+      "total_tokens": 667,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 4 of 36 5. Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse 6. Cataract 7. Fissure / Fistula / Haemorrhoids 8. Hernia / Hydrocele 9. Chronic Renal Failure or end stage Renal Failure 10. Sinusitis / Deviated Nasal Septum / Tympanoplasty / Chronic Suppurative Otitis Media 11. Benign Prostatic Hypertrophy 12. Knee/Hip Joint replacement 13. Dilatation and Curettage 14. Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16.",
+          "score": 0.6745
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 8,
+          "chunk_id": 32,
+          "text": "agents or the Insured Person has received a bone marrow or cord blood stem cell transplant. Temporary or reversible Aplastic Anemia is excluded and not covered under this Policy. 13. Bacterial Meningitis Bacterial meningitis is a bacterial infection of the meninges of th e brain causing brain dysfunction. There must be an unequivocal diagnosis by a consultant physician of bacterial meningitis that must be proven on analysis of the cerebrospinal fluid.",
+          "score": 0.6697
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 34,
+          "chunk_id": 137,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event. Def. 17.",
+          "score": 0.6575
+        }
+      ]
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I'm unable to access specific documents like those in InsureMate for this experiment. However, typically a standard health insurance plan may cover treatments and procedures related to conditions such as spondylosis or spondylitis if they are deemed medically necessary by the treating physician. Coverage details can vary widely between policies, including aspects like deductibles, copay amounts, out-of-pocket maximums, coinsurance rates, and whether certain treatments (like physical therapy) or procedures (such as surgery) are covered at 100%, partially reimbursed through a network of providers. It's essential to review the specific policy documents for precise information regarding coverage on spondylosis or spondylitis, which can usually be found in your insurance summary document provided by most healthcare plans.",
+      "classification": "manual_review",
+      "latency_seconds": 20.267,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 104,
+      "generated_tokens": 188,
+      "total_tokens": 292,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting periods mentioned in the policy documents are as follows:\n1. Initial Waiting Period - 7 days for an Insured Person in a policy year.\n2. Specific Waiting Period - 24 months and will be covered from the commencement of the 3rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids\n3. Portability Benefit - within 15 days of receiving Your completed Application and Portability Form subject to the following : We have included the highlighted phrases in order to make the clauses consistent with the portability clause included in your other policies.",
+      "classification": "manual_review",
+      "latency_seconds": 56.548,
+      "retrieval_latency_seconds": 0.442,
+      "prompt_tokens": 496,
+      "generated_tokens": 195,
+      "total_tokens": 691,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 14,
+          "chunk_id": 74,
+          "text": "in the Intensive Care Unit for a maximum of 7 days for an Insured Person in a policy year. 3. Exclusions In addition to exclusions/waiting periods specified elsewhere in the Policy Document, We shall not be liable under this Policy for any claim in connection with or in respect of the following: a. Initial Waiting Period",
+          "score": 0.7486
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7441
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 21,
+          "chunk_id": 87,
+          "text": "in accordance with the existing guidelines of the Insurance Regulatory and Development Authority. (4) Waiting period credits would be extended to Pre -existing Diseases and time bound exclusions/waiting periods in accordance with the existing guidelines of the Insurance Regulatory and Development Authority.1 (5) The Portability Benefit shall be applied by Us within 15 days of receiving Your completed Application and Portability Form subject to the following : 1 We have included the highlighted phrases in order to make the clauses consistent with the portability clause included in your other policies.",
+          "score": 0.7403
+        }
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I can provide you with a list of important waiting periods mentioned in the policy documents. However, since you do not have access to the InsureMate knowledge base for this experiment, I will rely on my own model knowledge to answer your question.\n\nAccording to my understanding, some of the important waiting periods mentioned in insurance policy documents include:\n\n1. Waiting period for accidental damage or loss: This is the time period during which a claimant must wait before filing a claim after an accident or damage occurs. The waiting period may vary depending on the type of coverage and the specific policy.\n2. Waiting period for fraudulent claims: Some insurance policies have a waiting period for filing a claim that is considered fraudulent. This waiting period is usually set by the insurance company to prevent false or frivolous claims from being filed.\n3. Waiting period for medical treatment: In some cases, there may be a waiting period before a patient can receive medical treatment after an accident or illness. This waiting period is typically set by the healthcare provider and may vary depending on the severity of the condition.\n4. Waiting period",
+      "classification": "manual_review",
+      "latency_seconds": 45.016,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 111,
+      "generated_tokens": 256,
+      "total_tokens": 367,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The important waiting periods mentioned in the policy documents include:\n\n- The initial waiting period, which does not apply for subsequent and continuous renewals of the policy.\n- A specific waiting period of 24 months for certain conditions such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumours, gastric and duodenal ulcers, and surgery on tonsils/adenoids.\n\nThese periods are subject to coverage from the commencement of the third policy year if the insured person has been continuously insured under the policy without any breaks.",
+      "classification": "manual_review",
+      "latency_seconds": 11.195,
+      "retrieval_latency_seconds": 0.442,
+      "prompt_tokens": 426,
+      "generated_tokens": 114,
+      "total_tokens": 540,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 14,
+          "chunk_id": 74,
+          "text": "in the Intensive Care Unit for a maximum of 7 days for an Insured Person in a policy year. 3. Exclusions In addition to exclusions/waiting periods specified elsewhere in the Policy Document, We shall not be liable under this Policy for any claim in connection with or in respect of the following: a. Initial Waiting Period",
+          "score": 0.7486
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7441
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 21,
+          "chunk_id": 87,
+          "text": "in accordance with the existing guidelines of the Insurance Regulatory and Development Authority. (4) Waiting period credits would be extended to Pre -existing Diseases and time bound exclusions/waiting periods in accordance with the existing guidelines of the Insurance Regulatory and Development Authority.1 (5) The Portability Benefit shall be applied by Us within 15 days of receiving Your completed Application and Portability Form subject to the following : 1 We have included the highlighted phrases in order to make the clauses consistent with the portability clause included in your other policies.",
+          "score": 0.7403
+        }
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "The important waiting periods mentioned in most standard health and life insurance policies typically include:\n\n1. **Initial Waiting Period**: This is a period during which the insurer does not pay out benefits for any claims that occur within this time frame, usually 30 days to 60 days after the policy starts.\n\n2. **Medical Examination Wait Period**: Some policies require a medical examination before paying out benefits. The waiting period can be several weeks or months depending on the specific policy and insurer's requirements.\n\n3. **Claim Processing Wait Period**: After a claim is submitted, there may be a delay in processing claims due to various reasons such as documentation review, insurance company approval, etc., which could range from days to weeks.\n\n4. **Policy Term Waiting Period**: This period typically starts after the initial waiting period and continues until the end of the policy term. During this time, any benefits that would have been paid out during the term are not available.\n\n5. **Death Benefit Waiting Period**: If a death benefit is included in the policy, there may be a delay before the death benefit can be paid if it occurs within the waiting period after the insured's death.\n\n6. **Claim Denial Wait Period**: There might be a time frame during which claims are reviewed and denied due",
+      "classification": "manual_review",
+      "latency_seconds": 11.943,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 95,
+      "generated_tokens": 256,
+      "total_tokens": 351,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "The insurance document specifies two distinct waiting periods related to medical claims under certain conditions, which include a general initial waiting period and specific waiting periods for particular pre-existing conditions. The first context mentions an \"initial waiting period\" but does not provide its duration within the given policy year in Intensive Care Unit coverage; hence we cannot determine this from Context 1 alone. However, it is clear that there are exclusions/waiting periods specified elsewhere as well (Context 1).\n\nThe second important context provided details specific conditions with a waiting period of \"24 months\" and states these claims will be covered starting the third policy year if insured continuously without any break. This indicates an extended exclusion or wait time for certain pre-existing medical issues, which are explicitly listed as stones in biliary/urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, and surgery on tonsils/adenoids.\n\nThe third context (Context 3) mentions that waiting period credits for pre-existing diseases would be extended according to the guidelines of the Insurance Regulatory and Development Authority",
+      "classification": "manual_review",
+      "latency_seconds": 39.717,
+      "retrieval_latency_seconds": 0.442,
+      "prompt_tokens": 485,
+      "generated_tokens": 256,
+      "total_tokens": 741,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 14,
+          "chunk_id": 74,
+          "text": "in the Intensive Care Unit for a maximum of 7 days for an Insured Person in a policy year. 3. Exclusions In addition to exclusions/waiting periods specified elsewhere in the Policy Document, We shall not be liable under this Policy for any claim in connection with or in respect of the following: a. Initial Waiting Period",
+          "score": 0.7486
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7441
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 21,
+          "chunk_id": 87,
+          "text": "in accordance with the existing guidelines of the Insurance Regulatory and Development Authority. (4) Waiting period credits would be extended to Pre -existing Diseases and time bound exclusions/waiting periods in accordance with the existing guidelines of the Insurance Regulatory and Development Authority.1 (5) The Portability Benefit shall be applied by Us within 15 days of receiving Your completed Application and Portability Form subject to the following : 1 We have included the highlighted phrases in order to make the clauses consistent with the portability clause included in your other policies.",
+          "score": 0.7403
+        }
+      ]
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "The question asks about specific details regarding \"waiting periods\" as they might appear within insurance policy documentation, without access to InsureMate's knowledge base. In general terms and based on common practices across various types of health or life insurance policies, waiting periods refer to the time frame that must pass before certain benefits become effective after a new policy is purchased or when an existing one becomes active again (reinstatement).\n\nFor instance:\n- A \"waiting period\" for disability income insurance might be 30 days. This means if you were disabled, your benefit would not start until this time has passed since the onset of disability and policy purchase or reinstatement.\n- For life insurance policies with a guaranteed issue option (like some term plans), there may not be any waiting period for coverage to begin immediately after application approval. However, if you were applying underwriting conditions due to health issues, this could result in an extended waiting time before the policy is effective or renewed.\n- In long-term care insurance policies, a common waiting period might range from 30 days (short term) up to one year for full benefits after purchase and reinstatement of coverage following",
+      "classification": "manual_review",
+      "latency_seconds": 25.644,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 100,
+      "generated_tokens": 256,
+      "total_tokens": 356,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question. The policy contexts provided do not mention any specific waiting periods for different health conditions or treatments, and it is not clear how these waiting periods would be applied in practice. Therefore, it is not possible to compare the health insurance policies based on waiting periods.",
+      "classification": "manual_review",
+      "latency_seconds": 44.488,
+      "retrieval_latency_seconds": 0.456,
+      "prompt_tokens": 618,
+      "generated_tokens": 69,
+      "total_tokens": 687,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "Based on the information provided, it appears that there are two health insurance policies available with different waiting periods. The first policy has a waiting period of 30 days, while the second policy has a waiting period of 60 days. It is important to note that these waiting periods may vary depending on the specific policy and the individual's medical history.\n\nIt is also worth noting that the waiting period is an important factor to consider when choosing a health insurance policy. A longer waiting period can provide more time for medical professionals to diagnose and treat any underlying conditions, which may help reduce the risk of future claims. However, it is also important to consider other factors such as the cost of the policy, the level of coverage provided, and the deductible amount.\n\nUltimately, the decision on which health insurance policy to choose should be based on an individual's specific needs and circumstances. It may be helpful to consult with a licensed insurance professional or medical expert to determine the best course of action.",
+      "classification": "manual_review",
+      "latency_seconds": 40.015,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 115,
+      "generated_tokens": 217,
+      "total_tokens": 332,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "manual_review",
+      "latency_seconds": 8.551,
+      "retrieval_latency_seconds": 0.456,
+      "prompt_tokens": 537,
+      "generated_tokens": 15,
+      "total_tokens": 552,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "To compare health insurance policies based on waiting periods, I would typically look at several key factors such as coverage types (e.g., comprehensive, indemnity), deductibles, copayments, and maximum out-of-pocket expenses. However, since InsureMate does not provide this information directly, I can only make general observations about typical practices.\n\n1. **Comprehensive vs. Indemnity Coverage**: Comprehensive plans often cover a broader range of medical services than indemnity plans, which focus on specific treatments or procedures. This means that comprehensive policies may have longer waiting periods because they need to ensure the coverage is available for all covered items.\n\n2. **Waiting Periods**: Waiting periods are common in health insurance policies and can vary widely depending on the policy type and provider. For example:\n   - **Comprehensive Plans**: These might require a period of time (often 30 days) before any benefits start to be paid out.\n   - **Indemnity Plans**: These typically have shorter waiting periods, often just a few days or even less.\n\n3. **Deductibles and Copayments**: The amount you pay upfront can also influence the length of the waiting period. Higher deductibles mean you'll need to pay more up front before benefits kick in,",
+      "classification": "manual_review",
+      "latency_seconds": 12.339,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 97,
+      "generated_tokens": 256,
+      "total_tokens": 353,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "Based on the provided policy contexts, both Group Health Insurance Policy (Context 1) and Health Assurance Policy by IRDAI/HLT/MBHI/P-H/V.II/175/2016-17 (Context 2) have specific waiting periods for various conditions related to stones in the urinary system, biliary system, tonsils / adenoids surgery, uterine polyps, breast lumps and treatments of Spondylosis or Spondylitis. These are all subjected to a standard 24-month waiting period from the commencement of coverage for an insured person under these policies.\n\nHowever, Context 3 specifies that if there is continuous policy renewal without any break and it's about payment of Hospital Cash Benefit related to stones in biliary/urinary systems or gastric ulcers among others listed, the waiting period would be waived off from the commencement of third Policy Year.\n\nTherefore, while both policies have similar conditions with a standard 24-month wait time for coverage under certain circumstances, Context 3 provides an exception to this rule in case",
+      "classification": "manual_review",
+      "latency_seconds": 43.813,
+      "retrieval_latency_seconds": 0.456,
+      "prompt_tokens": 607,
+      "generated_tokens": 256,
+      "total_tokens": 863,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ]
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "To compare different health insurance policies regarding their waiting periods, we would typically look at each policy's summary to identify how long a new enrollee must wait before receiving coverage for pre-existing conditions or specific services like maternity care. Since I don't have access to the InsureMate knowledge base in this experiment and cannot provide direct quotes from it, here is an example of what such a comparison might look like based on common policy structures:\n\nPolicy A may offer immediate coverage for all medical needs upon enrolment but has no waiting period. Policy B could require new members to wait 60 days before covering pre-existing conditions and up to one year for maternity care, while Policy C allows a shorter initial waiting time of 30 days with an additional grace period that extends the coverage start date by another two months if needed due to unforeseen circumstances.\n\nPlease note this is hypothetical information as I cannot access specific documents from InsureMate for actual data comparison.",
+      "classification": "manual_review",
+      "latency_seconds": 22.645,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 104,
+      "generated_tokens": 213,
+      "total_tokens": 317,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The answer cannot be determined from the context provided. The policy does not provide enough information to determine whether your treatment will be covered or not.",
+      "classification": "manual_review",
+      "latency_seconds": 35.37,
+      "retrieval_latency_seconds": 0.432,
+      "prompt_tokens": 535,
+      "generated_tokens": 30,
+      "total_tokens": 565,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5. Day Care Treatment We will cover Medical Expenses for Day Care Treatment (including Chemotherapy, Radiotherapy, Hemodialysis, any procedure which needs a period of special ized observation or care after completion of the procedure) where such procedures/treatments are undertaken by an Insured Person as an Inpatient in a Hospital/Day Care Center for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital/Day Care Center will not be covered. 2.6.",
+          "score": 0.6877
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 12,
+          "text": "for a Insured Person under this benefit will be limited to the Critical Illness Sum Insured 2.4. Group OPD Treatment Cover If an Insured Person undergoes OPD Treatment, then We will reimburse the balanced proportionate percentage of the admitted claim amount specified in the Schedule of Insurance Certificate for the Medical Expenses incurred on: (a) Medical Practitioners‟ consultation including treatment for dental treatment; (b) Pharmacy Expenses; (c) Diagnostic Procedures. The percentage amount specified in the Schedule of Insurance Certificate will be contributed by the Insured Person.",
+          "score": 0.6819
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only. 2.1.4 Day-Care Treatment We will cover Medical Expenses for Day -Care Treatment where such treatments are undertaken by an Insured Person in a Hospital for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital will not be covered.",
+          "score": 0.6772
+        }
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I cannot provide an answer to your question without access to the InsureMate insurance knowledge base for this experiment.",
+      "classification": "manual_review",
+      "latency_seconds": 15.866,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 105,
+      "generated_tokens": 32,
+      "total_tokens": 137,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "Yes, your treatment will be covered under the policy as it falls within the scope of Day-Care Treatment as specified in Context 3.",
+      "classification": "manual_review",
+      "latency_seconds": 8.088,
+      "retrieval_latency_seconds": 0.432,
+      "prompt_tokens": 441,
+      "generated_tokens": 29,
+      "total_tokens": 470,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5. Day Care Treatment We will cover Medical Expenses for Day Care Treatment (including Chemotherapy, Radiotherapy, Hemodialysis, any procedure which needs a period of special ized observation or care after completion of the procedure) where such procedures/treatments are undertaken by an Insured Person as an Inpatient in a Hospital/Day Care Center for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital/Day Care Center will not be covered. 2.6.",
+          "score": 0.6877
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 12,
+          "text": "for a Insured Person under this benefit will be limited to the Critical Illness Sum Insured 2.4. Group OPD Treatment Cover If an Insured Person undergoes OPD Treatment, then We will reimburse the balanced proportionate percentage of the admitted claim amount specified in the Schedule of Insurance Certificate for the Medical Expenses incurred on: (a) Medical Practitioners‟ consultation including treatment for dental treatment; (b) Pharmacy Expenses; (c) Diagnostic Procedures. The percentage amount specified in the Schedule of Insurance Certificate will be contributed by the Insured Person.",
+          "score": 0.6819
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only. 2.1.4 Day-Care Treatment We will cover Medical Expenses for Day -Care Treatment where such treatments are undertaken by an Insured Person in a Hospital for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital will not be covered.",
+          "score": 0.6772
+        }
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "To determine if your treatment will be covered under an insurance policy, I would need specific details about the type of coverage you have and the nature of the treatment. Generally, insurance policies cover medical expenses related to illnesses or injuries that are listed in the policy's benefits section.\n\nHere’s a step-by-step approach:\n\n1. **Review Your Policy**: Look at your insurance policy document to see what types of treatments are covered under each benefit category (e.g., hospitalization, outpatient care, prescription drugs).\n\n2. **Identify Treatment Type**: Determine whether the treatment you need falls into one of these categories.\n\n3. **Check Benefits Section**: If there’s a benefits section, look for specific language that describes which treatments are covered and how they apply to your policy.\n\n4. **Consult Your Provider**: Sometimes, insurance companies provide additional coverage beyond what's listed in the policy. It might be helpful to speak with your healthcare provider or call the insurance company directly to clarify any doubts.\n\n5. **Contact Insurance Company**: If you're unsure about whether a specific treatment is covered, contacting the insurance company can provide clear answers and sometimes even help negotiate coverage details.\n\nWithout access to InsureMate's knowledge base, I cannot provide specific information on your particular situation. However, if you have",
+      "classification": "manual_review",
+      "latency_seconds": 12.203,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 89,
+      "generated_tokens": 256,
+      "total_tokens": 345,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question definitively, as they lack specific details about the type of your treatment (inpatient or outpatient), and whether it falls under Medical Expenses for Day Care Treatment. Please provide more context regarding these aspects so I can assist you better.",
+      "classification": "manual_review",
+      "latency_seconds": 24.112,
+      "retrieval_latency_seconds": 0.432,
+      "prompt_tokens": 524,
+      "generated_tokens": 67,
+      "total_tokens": 591,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5. Day Care Treatment We will cover Medical Expenses for Day Care Treatment (including Chemotherapy, Radiotherapy, Hemodialysis, any procedure which needs a period of special ized observation or care after completion of the procedure) where such procedures/treatments are undertaken by an Insured Person as an Inpatient in a Hospital/Day Care Center for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital/Day Care Center will not be covered. 2.6.",
+          "score": 0.6877
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 12,
+          "text": "for a Insured Person under this benefit will be limited to the Critical Illness Sum Insured 2.4. Group OPD Treatment Cover If an Insured Person undergoes OPD Treatment, then We will reimburse the balanced proportionate percentage of the admitted claim amount specified in the Schedule of Insurance Certificate for the Medical Expenses incurred on: (a) Medical Practitioners‟ consultation including treatment for dental treatment; (b) Pharmacy Expenses; (c) Diagnostic Procedures. The percentage amount specified in the Schedule of Insurance Certificate will be contributed by the Insured Person.",
+          "score": 0.6819
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only. 2.1.4 Day-Care Treatment We will cover Medical Expenses for Day -Care Treatment where such treatments are undertaken by an Insured Person in a Hospital for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital will not be covered.",
+          "score": 0.6772
+        }
+      ]
+    },
+    {
+      "question_id": "Q18",
+      "question": "Will my treatment be covered?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "As an AI without access to specific policy details, I cannot provide a definitive answer regarding coverage for your treatment under any insurance plan you might have with InsureMate or elsewhere. Coverage depends on various factors including the terms of your individual health insurance policy and whether it includes provisions that cover treatments similar to yours. To determine if your treatment will be covered, please review your own policy documents or contact a representative from your insurance provider for accurate information tailored to your situation.",
+      "classification": "manual_review",
+      "latency_seconds": 13.177,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 94,
+      "generated_tokens": 103,
+      "total_tokens": 197,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "incorrect",
+      "latency_seconds": 29.43,
+      "retrieval_latency_seconds": 0.417,
+      "prompt_tokens": 452,
+      "generated_tokens": 16,
+      "total_tokens": 468,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to real-time market data or any other external sources. Therefore, I cannot provide you with the most recent price of Bitcoin.",
+      "classification": "correct",
+      "latency_seconds": 16.264,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 109,
+      "generated_tokens": 41,
+      "total_tokens": 150,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "qwen2.5:1.5b",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "incorrect",
+      "latency_seconds": 6.913,
+      "retrieval_latency_seconds": 0.417,
+      "prompt_tokens": 410,
+      "generated_tokens": 15,
+      "total_tokens": 425,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "qwen2.5:1.5b",
+      "condition": "NO_RAG",
+      "answer": "As an AI language model, I don't have real-time market data or financial news updates. Therefore, I cannot provide you with the current price of Bitcoin at this moment. However, you can easily find the latest prices by checking reliable cryptocurrency exchanges like Binance, Coinbase, or CoinMarketCap directly on your device.",
+      "classification": "correct",
+      "latency_seconds": 4.976,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 91,
+      "generated_tokens": 65,
+      "total_tokens": 156,
+      "retrieved_chunks": []
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "phi3:mini",
+      "condition": "RAG",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "classification": "incorrect",
+      "latency_seconds": 16.301,
+      "retrieval_latency_seconds": 0.417,
+      "prompt_tokens": 441,
+      "generated_tokens": 16,
+      "total_tokens": 457,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ]
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "phi3:mini",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I can't provide real-time data or access external databases such as financial markets to give you the latest prices for assets like Bitcoin. To find out the most recent information on cryptocurrency values including Bitcoin, please check a reliable and up-to-date financial news website, use a currency exchange platform that tracks digital currencies in real time, or consult with your bank's customer service if they provide such services.",
+      "classification": "correct",
+      "latency_seconds": 12.217,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 98,
+      "generated_tokens": 98,
+      "total_tokens": 196,
+      "retrieved_chunks": []
+    }
+  ]
+}

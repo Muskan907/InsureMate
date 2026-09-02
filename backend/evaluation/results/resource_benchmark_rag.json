@@ -1,0 +1,352 @@
+{
+  "metadata": {
+    "evaluation_type": "Independent RAG Resource Benchmark",
+    "questions": [
+      "Q02",
+      "Q11",
+      "Q20"
+    ],
+    "models": [
+      "codellama:7b-instruct",
+      "qwen2.5:1.5b",
+      "phi3:mini"
+    ],
+    "conditions": "Same questions, same retrieved chunks, same RAG prompt, same generation settings. Models evaluated independently.",
+    "note": "Resource measurements are system-level measurements on the evaluation VM."
+  },
+  "results": [
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "codellama:7b-instruct",
+      "latency_seconds": 29.332,
+      "ram_before_mb": 948,
+      "ram_after_mb": 5743,
+      "ram_change_mb": 4795,
+      "ram_available_after_mb": 1632,
+      "cpu_percent": 0.1,
+      "context_characters": 1440,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ],
+      "response": "The waiting period for cataract treatment is not mentioned in either context. Therefore, the available insurance documents do not contain enough information to answer this question.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "qwen2.5:1.5b",
+      "latency_seconds": 6.507,
+      "ram_before_mb": 968,
+      "ram_after_mb": 2076,
+      "ram_change_mb": 1108,
+      "ram_available_after_mb": 5300,
+      "cpu_percent": 0.1,
+      "context_characters": 1440,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ],
+      "response": "The waiting period for cataract treatment under this policy is 24 months.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "phi3:mini",
+      "latency_seconds": 16.006,
+      "ram_before_mb": 971,
+      "ram_after_mb": 3919,
+      "ram_change_mb": 2948,
+      "ram_available_after_mb": 3457,
+      "cpu_percent": 0.1,
+      "context_characters": 1440,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        }
+      ],
+      "response": "The available insurance documents do not contain enough information to answer this question.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "codellama:7b-instruct",
+      "latency_seconds": 38.545,
+      "ram_before_mb": 972,
+      "ram_after_mb": 5748,
+      "ram_change_mb": 4776,
+      "ram_available_after_mb": 1627,
+      "cpu_percent": 0.1,
+      "context_characters": 1700,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ],
+      "response": "The available insurance documents do not contain enough information to answer this question. The policy contexts provided do not mention any specific waiting periods for different diseases or treatments, and it is not clear how these waiting periods would be applied in practice. Therefore, it is not possible to compare the health insurance policies based on waiting periods.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "qwen2.5:1.5b",
+      "latency_seconds": 7.851,
+      "ram_before_mb": 953,
+      "ram_after_mb": 2078,
+      "ram_change_mb": 1125,
+      "ram_available_after_mb": 5297,
+      "cpu_percent": 0.1,
+      "context_characters": 1700,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ],
+      "response": "The available insurance documents do not contain enough information to answer this question.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "model": "phi3:mini",
+      "latency_seconds": 41.74,
+      "ram_before_mb": 986,
+      "ram_after_mb": 3909,
+      "ram_change_mb": 2923,
+      "ram_available_after_mb": 3466,
+      "cpu_percent": 0.1,
+      "context_characters": 1700,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ],
+      "response": "Based on the provided policy contexts, both Group Health Insurance Policy (Context 1) and Personal Health Assurance Plan (Policy Document - Context 2 & 3), have specific waiting periods for certain medical conditions or treatments as follows:\n\n- For urinary stones in the urinary system under the first policy document, there is a standard waiting period of 24 months. This applies to both policies if we consider that they might share similar terms regarding this condition (though it's not explicitly stated). However, for biliary stones and other conditions listed across all documents with explicit mention in Context 3:\n  1. Biliary system - A waiting period of 24 months is mentioned under the third policy document context specifically addressing hospital cash benefit eligibility starting from the commencement of the third Policy Year, provided there has been continuous insurance without a break since the first policy inception for that individual (Contexts 1 and 3).\n  2. Urinary system - A waiting period of 24 months is mentioned under Context 1 as part of general conditions subject to this wait time from coverage commencement, with no specific mention about starting eligibility or exceptions based on",
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "codellama:7b-instruct",
+      "latency_seconds": 32.127,
+      "ram_before_mb": 957,
+      "ram_after_mb": 5701,
+      "ram_change_mb": 4744,
+      "ram_available_after_mb": 1675,
+      "cpu_percent": 0.1,
+      "context_characters": 1362,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ],
+      "response": "The answer cannot be determined from the provided context. The policy does not mention anything about Bitcoin or its price. Therefore, it is not possible to determine the current price of Bitcoin based on this policy.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "qwen2.5:1.5b",
+      "latency_seconds": 6.496,
+      "ram_before_mb": 956,
+      "ram_after_mb": 2048,
+      "ram_change_mb": 1092,
+      "ram_available_after_mb": 5328,
+      "cpu_percent": 0.1,
+      "context_characters": 1362,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ],
+      "response": "The available insurance documents do not contain enough information to answer this question.",
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "model": "phi3:mini",
+      "latency_seconds": 16.719,
+      "ram_before_mb": 985,
+      "ram_after_mb": 3882,
+      "ram_change_mb": 2897,
+      "ram_available_after_mb": 3494,
+      "cpu_percent": 0.1,
+      "context_characters": 1362,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ],
+      "response": "The available insurance documents do not contain enough information to answer this question about the current price of Bitcoin.",
+      "status": "success"
+    }
+  ]
+}

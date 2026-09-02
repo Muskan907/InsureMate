@@ -26,9 +26,9 @@ app = FastAPI(title="InsureMate AI")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://192.168.62.129:5173",
-        "http://192.168.62.129:5174",
-        "http://192.168.62.129:5175",
+        "http://192.168.78.129:5173",
+        "http://192.168.78.129:5174",
+        "http://192.168.78.129:5175",
         "http://localhost:5174",
         "http://localhost:5175",
         "http://localhost:5173",

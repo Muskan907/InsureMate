@@ -2169,3 +2169,713 @@ option {
     width: 100%;
   }
 }
+
+/* =========================================================
+   WEEK 4 EVALUATION LAB
+========================================================= */
+
+.evaluation-page {
+  width: 100%;
+  max-width: none;
+}
+
+/* HEADER */
+
+.evaluation-page .topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.evaluation-page .topbar h1 {
+  margin: 4px 0 6px;
+}
+
+.evaluation-page .topbar .subtitle {
+  max-width: 800px;
+}
+
+.evaluation-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  height: 36px;
+  padding: 0 14px;
+
+  background: #101b2d;
+  color: #4f8cff;
+  border: 1px solid #263650;
+  border-radius: 6px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+/* =========================================================
+   OVERVIEW CARDS
+========================================================= */
+
+.evaluation-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.evaluation-stat {
+  min-width: 0;
+  background: #111c2d;
+  border: 1px solid #263650;
+  border-radius: 7px;
+  padding: 17px 18px;
+  box-sizing: border-box;
+}
+
+.evaluation-stat span {
+  display: block;
+  color: #8fa0b8;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  margin-bottom: 6px;
+}
+
+.evaluation-stat strong {
+  display: block;
+  margin: 0;
+  color: #f8fafc;
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.evaluation-stat small {
+  display: block;
+  margin-top: 6px;
+  color: #9aa9bd;
+  font-size: 9px;
+}
+
+.evaluation-stat.highlight {
+  background: #111c2d;
+  border-color: #263650;
+}
+
+/* =========================================================
+   MAIN INSIGHT
+========================================================= */
+
+.evaluation-insight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: #0d1728;
+  color: white;
+
+  border: 1px solid #1d4ed8;
+  border-radius: 7px;
+
+  padding: 13px 17px;
+  margin-bottom: 10px;
+}
+
+.evaluation-insight h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.evaluation-insight p {
+  margin: 5px 0 0;
+  color: #aeb8c7;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.insight-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   COMMON EVALUATION CARD
+========================================================= */
+
+.evaluation-card {
+  background: #111c2d;
+  border: 1px solid #263650;
+  border-radius: 7px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.evaluation-section-heading {
+  margin-bottom: 12px;
+}
+
+.evaluation-section-heading h2 {
+  margin: 3px 0 0;
+  color: #f1f5f9;
+  font-size: 15px;
+}
+
+.evaluation-section-heading p:not(.eyebrow) {
+  color: #8fa0b8;
+  font-size: 9px;
+  line-height: 1.4;
+  margin: 4px 0 0;
+}
+
+/* =========================================================
+   MODEL COMPARISON
+========================================================= */
+
+.evaluation-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.evaluation-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 9px;
+}
+
+.evaluation-table th {
+  text-align: left;
+  color: #8fa0b8;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .5px;
+
+  padding: 8px 6px;
+  border-bottom: 1px solid #263650;
+}
+
+.evaluation-table td {
+  padding: 10px 6px;
+  color: #d1d9e6;
+  border-bottom: 1px solid #1e2b40;
+  vertical-align: middle;
+}
+
+.evaluation-table td strong {
+  display: block;
+  color: #f1f5f9;
+  font-size: 9px;
+}
+
+.evaluation-table td small {
+  display: block;
+  color: #71829a;
+  margin-top: 3px;
+  font-size: 8px;
+}
+
+.metric-best {
+  color: #4f8cff !important;
+}
+
+/* =========================================================
+   TWO COLUMN PERFORMANCE SECTION
+========================================================= */
+
+.evaluation-two-column {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.evaluation-two-column .evaluation-card {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   BAR CHARTS
+========================================================= */
+
+.bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 9px;
+}
+
+.bar-label span {
+  color: #d1d9e6;
+}
+
+.bar-label strong {
+  color: #e2e8f0;
+  font-size: 9px;
+}
+
+.bar-track {
+  height: 7px;
+  background: #1c2a3e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   TOP K
+========================================================= */
+
+.topk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.topk-card {
+  position: relative;
+  min-width: 0;
+
+  background: #0d1728;
+  border: 1px solid #263650;
+  border-radius: 7px;
+
+  padding: 12px;
+}
+
+.topk-card.recommended {
+  border-color: #2563eb;
+  background: #101d34;
+}
+
+.recommended-label {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  font-size: 7px;
+  color: #4f8cff;
+  font-weight: 700;
+}
+
+.topk-number {
+  color: #f1f5f9;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.topk-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 7px 0;
+  border-top: 1px solid #1e2b40;
+
+  font-size: 8px;
+}
+
+.topk-metric span {
+  color: #8fa0b8;
+}
+
+.topk-metric strong {
+  color: #4f8cff;
+}
+
+.topk-metric small {
+  color: #71829a;
+  margin-left: 3px;
+}
+
+/* =========================================================
+   CONCLUSION BOX
+========================================================= */
+
+.evaluation-conclusion {
+  margin-top: 10px;
+  padding: 10px 12px;
+
+  background: #0d1728;
+  border: 1px solid #263650;
+  border-left: 2px solid #2563eb;
+
+  color: #9aa9bd;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.evaluation-conclusion strong {
+  color: #f1f5f9;
+}
+
+/* =========================================================
+   RAG COMPARISON
+========================================================= */
+
+.rag-comparison {
+  display: grid;
+  grid-template-columns: 1fr 45px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.rag-column {
+  text-align: center;
+
+  padding: 15px 10px;
+
+  border: 1px solid #263650;
+  border-radius: 7px;
+
+  background: #0d1728;
+}
+
+.rag-title {
+  color: #4f8cff;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .7px;
+}
+
+.rag-column > strong {
+  display: block;
+  margin-top: 6px;
+
+  font-size: 20px;
+  color: #f1f5f9;
+}
+
+.rag-column > span {
+  display: block;
+  color: #8fa0b8;
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+.rag-status {
+  margin-top: 10px;
+  color: #4ade80;
+  font-size: 8px;
+}
+
+.rag-status.neutral {
+  color: #f87171;
+}
+
+.rag-vs {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #334155;
+  border-radius: 50%;
+
+  color: #d1d9e6;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   GROUNDEDNESS
+========================================================= */
+
+.grounded-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.grounded-stat {
+  min-width: 0;
+
+  padding: 11px 8px;
+
+  background: #0d1728;
+  border: 1px solid #263650;
+  border-radius: 7px;
+
+  text-align: center;
+}
+
+.grounded-stat strong {
+  display: block;
+  font-size: 16px;
+  color: #4ade80;
+}
+
+.grounded-stat span {
+  display: block;
+  margin-top: 4px;
+  font-size: 8px;
+  color: #d1d9e6;
+}
+
+.grounded-stat small {
+  display: block;
+  margin-top: 3px;
+  color: #71829a;
+  font-size: 7px;
+}
+
+/* =========================================================
+   REPOSITORY SUMMARY
+========================================================= */
+
+.repository-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.repository-summary div {
+  background: #0d1728;
+  border: 1px solid #263650;
+  border-radius: 7px;
+  padding: 10px;
+  text-align: center;
+}
+
+.repository-summary strong {
+  display: block;
+  font-size: 16px;
+  color: #4ade80;
+}
+
+.repository-summary span {
+  display: block;
+  margin-top: 3px;
+  font-size: 7px;
+  color: #8fa0b8;
+}
+
+/* =========================================================
+   REPOSITORY LAYOUT
+========================================================= */
+
+.repository-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 18px;
+}
+
+.repository-layout h3 {
+  margin: 0 0 10px;
+  color: #f1f5f9;
+  font-size: 11px;
+}
+
+.repository-files {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.repository-file > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.repository-file span {
+  color: #aeb8c7;
+  font-size: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repository-file strong {
+  color: #d1d9e6;
+  font-size: 8px;
+}
+
+.repository-track {
+  height: 5px;
+  background: #1c2a3e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.repository-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   REPOSITORY INSIGHT
+========================================================= */
+
+.repository-insight {
+  background: #0d1728;
+  border: 1px solid #263650;
+  color: white;
+  border-radius: 7px;
+  padding: 15px;
+}
+
+.repository-insight .insight-icon {
+  margin-bottom: 10px;
+}
+
+.repository-insight h3 {
+  color: #f1f5f9;
+  font-size: 12px;
+}
+
+.repository-insight p {
+  color: #9aa9bd;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.repository-tag {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 5px 7px;
+
+  border-radius: 4px;
+  background: #2563eb;
+
+  font-size: 7px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FINAL FINDINGS
+========================================================= */
+
+.final-findings {
+  margin-top: 10px;
+}
+
+.finding-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.finding-list > div {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 9px;
+
+  padding: 9px 0;
+
+  border-top: 1px solid #1e2b40;
+}
+
+.finding-list > div:first-child {
+  border-top: none;
+}
+
+.finding-list > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 5px;
+  background: #2563eb;
+
+  color: white;
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.finding-list p {
+  margin: 0;
+  color: #9aa9bd;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.finding-list p strong {
+  color: #f1f5f9;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.evaluation-footer {
+  text-align: center;
+  color: #71829a;
+  font-size: 8px;
+  padding: 5px 0 18px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .evaluation-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .evaluation-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .repository-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  .evaluation-summary,
+  .grounded-grid,
+  .repository-summary,
+  .topk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rag-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .rag-vs {
+    margin: 0 auto;
+  }
+
+  .evaluation-page .topbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

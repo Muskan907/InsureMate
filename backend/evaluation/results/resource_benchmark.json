@@ -1,0 +1,130 @@
+{
+  "metadata": {
+    "models": [
+      "codellama:7b-instruct",
+      "qwen2.5:1.5b",
+      "phi3:mini"
+    ],
+    "questions": [
+      {
+        "id": "Q02",
+        "question": "What is the waiting period for cataract treatment?"
+      },
+      {
+        "id": "Q11",
+        "question": "Compare the health insurance policies in the knowledge base based on waiting periods."
+      },
+      {
+        "id": "Q20",
+        "question": "What is the current price of Bitcoin?"
+      }
+    ],
+    "cpu_cores": "4",
+    "baseline_memory": {
+      "total_mb": 7376,
+      "used_mb": 840,
+      "available_mb": 6535
+    }
+  },
+  "results": [
+    {
+      "model": "codellama:7b-instruct",
+      "question": "What is the waiting period for cataract treatment?",
+      "latency_seconds": 50.602,
+      "ram_before_mb": 2087,
+      "ram_after_mb": 6557,
+      "ram_available_mb": 819,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The waiting period for cataract treatment is typically 6 to 12 months after diagnosis, depending on the type of treatment and the individual's overall health.",
+      "question_id": "Q02"
+    },
+    {
+      "model": "qwen2.5:1.5b",
+      "question": "What is the waiting period for cataract treatment?",
+      "latency_seconds": 4.06,
+      "ram_before_mb": 2075,
+      "ram_after_mb": 3139,
+      "ram_available_mb": 4237,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The waiting period for cataract treatment varies depending on the specific procedure and location, but it typically ranges from a few days to several weeks.",
+      "question_id": "Q02"
+    },
+    {
+      "model": "phi3:mini",
+      "question": "What is the waiting period for cataract treatment?",
+      "latency_seconds": 15.363,
+      "ram_before_mb": 2100,
+      "ram_after_mb": 3634,
+      "ram_available_mb": 3741,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The document does not specify a waiting period for cataract treatment; it discusses various aspects of insurance coverage and eligibility criteria unrelated to specific medical procedures' wait times.",
+      "question_id": "Q02"
+    },
+    {
+      "model": "codellama:7b-instruct",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "latency_seconds": 14.706,
+      "ram_before_mb": 1029,
+      "ram_after_mb": 5347,
+      "ram_available_mb": 2028,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The waiting period for health insurance policies in the knowledge base is 30 days for one policy and 60 days for another policy.",
+      "question_id": "Q11"
+    },
+    {
+      "model": "qwen2.5:1.5b",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "latency_seconds": 5.303,
+      "ram_before_mb": 813,
+      "ram_after_mb": 1855,
+      "ram_available_mb": 5520,
+      "ollama_model_memory_gb": 0.0,
+      "response": "To compare health insurance policies based on waiting periods, please provide specific details such as coverage types (e.g., comprehensive, indemnity), premium rates, and any additional benefits or exclusions. This information will help determine which policy offers the best balance of protection and affordability for your needs.",
+      "question_id": "Q11"
+    },
+    {
+      "model": "phi3:mini",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "latency_seconds": 8.324,
+      "ram_before_mb": 804,
+      "ram_after_mb": 3718,
+      "ram_available_mb": 3657,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The BlueCrest Health Plan has a shorter initial waiting period of 30 days, while the GreenShield Coverage requires a longer wait time of up to 90 days before certain benefits become effective.",
+      "question_id": "Q11"
+    },
+    {
+      "model": "codellama:7b-instruct",
+      "question": "What is the current price of Bitcoin?",
+      "latency_seconds": 10.821,
+      "ram_before_mb": 827,
+      "ram_after_mb": 5483,
+      "ram_available_mb": 1892,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The current price of Bitcoin is $10,543.",
+      "question_id": "Q20"
+    },
+    {
+      "model": "qwen2.5:1.5b",
+      "question": "What is the current price of Bitcoin?",
+      "latency_seconds": 3.772,
+      "ram_before_mb": 814,
+      "ram_after_mb": 1888,
+      "ram_available_mb": 5488,
+      "ollama_model_memory_gb": 0.0,
+      "response": "The current price of Bitcoin is approximately $32,000 USD as of [insert date].",
+      "question_id": "Q20"
+    },
+    {
+      "model": "phi3:mini",
+      "question": "What is the current price of Bitcoin?",
+      "latency_seconds": 10.978,
+      "ram_before_mb": 828,
+      "ram_after_mb": 3734,
+      "ram_available_mb": 3641,
+      "ollama_model_memory_gb": 0.0,
+      "response": "I'm sorry, but I can't provide real-time data or prices as my training only includes information up to April 2023 and does not have access to live databases or internet resources for current market values like Bitcoin price. Please check a reliable financial news source or cryptocurrency exchange platform for the most recent pricing of Bitcoin.",
+      "question_id": "Q20"
+    }
+  ]
+}

@@ -1,0 +1,615 @@
+{
+  "metadata": {
+    "experiment": "Corrected RAG Quality Comparison",
+    "model": "codellama:7b-instruct",
+    "top_k": 3,
+    "same_questions": true,
+    "same_model": true,
+    "same_generation_settings": true,
+    "only_difference": "retrieved policy context availability"
+  },
+  "summary": {
+    "RAG_ON": {
+      "evaluations": 10,
+      "correct": 2,
+      "incorrect": 0,
+      "manual_review": 8,
+      "accuracy_percent_excluding_manual": 100.0,
+      "refusal_count": 1,
+      "average_generation_latency_seconds": 68.454
+    },
+    "NO_RAG": {
+      "evaluations": 10,
+      "correct": 1,
+      "incorrect": 1,
+      "manual_review": 8,
+      "accuracy_percent_excluding_manual": 50.0,
+      "refusal_count": 7,
+      "average_generation_latency_seconds": 35.643
+    }
+  },
+  "question_comparisons": [
+    {
+      "question_id": "Q04",
+      "rag_classification": "correct",
+      "no_rag_classification": "incorrect",
+      "winner": "RAG"
+    },
+    {
+      "question_id": "Q06",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q08",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q10",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q11",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q12",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q15",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q24",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q25",
+      "rag_classification": "manual_review",
+      "no_rag_classification": "manual_review",
+      "winner": "tie_or_manual_review"
+    },
+    {
+      "question_id": "Q20",
+      "rag_classification": "correct",
+      "no_rag_classification": "correct",
+      "winner": "tie_or_manual_review"
+    }
+  ],
+  "results": [
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The waiting period for stones in the urinary system is 24 months, as stated in the Group Health Insurance Policy Document on page 5, line 10.",
+      "classification": "correct",
+      "retrieval_latency_seconds": 3.273,
+      "generation_latency_seconds": 107.579,
+      "prompt_tokens": 778,
+      "generated_tokens": 38,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7375
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7331
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7115
+        }
+      ],
+      "context_characters": 1940,
+      "status": "success"
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "The waiting period for stones in the urinary system can vary depending on the type of stone and the individual's overall health. In general, however, the waiting period for a urinary tract stone (UTS) is typically longer than the waiting period for a kidney stone.\n\nFor UTS, the average waiting period is around 2-3 months after the last time the person had a drink containing calcium or other substances that can cause stones. However, some people may experience symptoms earlier, while others may not experience them until several weeks or even months after the last time they drank something with these substances.\n\nFor kidney stones, the average waiting period is around 1-2 months after the last time the person had a drink containing oxalate or other substances that can cause stones. However, some people may experience symptoms earlier, while others may not experience them until several weeks or even months after the last time they drank something with these substances.\n\nIt's important to note that these are just general estimates and the waiting period for a specific stone can vary depending on many factors, including the individual's overall health, their diet, and any medications they may be taking.",
+      "classification": "incorrect",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 55.141,
+      "prompt_tokens": 162,
+      "generated_tokens": 256,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The answer is yes, the policy covers hospitalization expenses. The policy document states that it will cover \"Medical Expenses incurred immediately before the Insured Person is Hospitalised\" and \"Medical Expenses incurred immediately after the Insured Person is discharged from the hospital.\" This implies that the policy covers hospitalization expenses, as well as any medical expenses incurred during the time the person is hospitalized.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 3.557,
+      "generation_latency_seconds": 53.11,
+      "prompt_tokens": 731,
+      "generated_tokens": 94,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7726
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7713
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.7674
+        }
+      ],
+      "context_characters": 1800,
+      "status": "success"
+    },
+    {
+      "question_id": "Q06",
+      "question": "Does the policy cover hospitalization expenses?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I'm sorry, but I don't have access to the InsureMate policy documents and cannot provide a definitive answer to your question about whether the policy covers hospitalization expenses. If you need more information on this topic, please contact the insurance company directly or consult their knowledge base for more details.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 22.053,
+      "prompt_tokens": 158,
+      "generated_tokens": 66,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The policy document \"Health_Companion_Insurance.pdf\" on page 4 mentions that the policy covers osteoarthrosis, arthritis, gout, rheumatism, spondylosis, and spondylitis. Therefore, it is covered under this policy.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.579,
+      "generation_latency_seconds": 53.073,
+      "prompt_tokens": 776,
+      "generated_tokens": 69,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 4 of 36 5. Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse 6. Cataract 7. Fissure / Fistula / Haemorrhoids 8. Hernia / Hydrocele 9. Chronic Renal Failure or end stage Renal Failure 10. Sinusitis / Deviated Nasal Septum / Tympanoplasty / Chronic Suppurative Otitis Media 11. Benign Prostatic Hypertrophy 12. Knee/Hip Joint replacement 13. Dilatation and Curettage 14. Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16.",
+          "score": 0.6745
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 8,
+          "chunk_id": 32,
+          "text": "agents or the Insured Person has received a bone marrow or cord blood stem cell transplant. Temporary or reversible Aplastic Anemia is excluded and not covered under this Policy. 13. Bacterial Meningitis Bacterial meningitis is a bacterial infection of the meninges of th e brain causing brain dysfunction. There must be an unequivocal diagnosis by a consultant physician of bacterial meningitis that must be proven on analysis of the cerebrospinal fluid.",
+          "score": 0.6697
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 34,
+          "chunk_id": 137,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event. Def. 17.",
+          "score": 0.6575
+        }
+      ],
+      "context_characters": 1729,
+      "status": "success"
+    },
+    {
+      "question_id": "Q08",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I'm sorry, but I don't have enough information to give a specific answer to your question. However, I can tell you that spondylosis and spondylitis are both terms used to describe conditions related to the spine. Spondylosis is a condition where the spine becomes inflamed or infected, while spondylitis is an autoimmune disease that causes inflammation in the spine.\n\nIf you have any further questions about this topic, please let me know and I will do my best to assist you.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 28.631,
+      "prompt_tokens": 165,
+      "generated_tokens": 117,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The important waiting periods mentioned in the policy documents are as follows:\n\n1. Initial Waiting Period - 7 days for an Insured Person in a policy year.\n2. Specific Waiting Period - 24 months for the following conditions: stones in biliary and urinary systems, lumps / cysts / nodules / polyps / internal tumours, gastric and duodenal ulcers, surgery on tonsils / adenoids.\n3. Portability Benefit - 15 days for applying the Portability Benefit subject to the existing guidelines of the Insurance Regulatory and Development Authority.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.547,
+      "generation_latency_seconds": 61.15,
+      "prompt_tokens": 663,
+      "generated_tokens": 142,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 14,
+          "chunk_id": 74,
+          "text": "in the Intensive Care Unit for a maximum of 7 days for an Insured Person in a policy year. 3. Exclusions In addition to exclusions/waiting periods specified elsewhere in the Policy Document, We shall not be liable under this Policy for any claim in connection with or in respect of the following: a. Initial Waiting Period",
+          "score": 0.7486
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7441
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 21,
+          "chunk_id": 87,
+          "text": "in accordance with the existing guidelines of the Insurance Regulatory and Development Authority. (4) Waiting period credits would be extended to Pre -existing Diseases and time bound exclusions/waiting periods in accordance with the existing guidelines of the Insurance Regulatory and Development Authority.1 (5) The Portability Benefit shall be applied by Us within 15 days of receiving Your completed Application and Portability Form subject to the following : 1 We have included the highlighted phrases in order to make the clauses consistent with the portability clause included in your other policies.",
+          "score": 0.7403
+        }
+      ],
+      "context_characters": 1680,
+      "status": "success"
+    },
+    {
+      "question_id": "Q10",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "As an insurance policy assistant, I do not have access to the specific policy documents of InsureMate. However, I can provide general information on important waiting periods that may be relevant to your question.\n\nIn general, there are several waiting periods mentioned in insurance policies that can impact your coverage and benefits. Some examples include:\n\n1. Waiting period for accidental damage: This is the time period during which you must wait before filing a claim after an accident or incident. The waiting period may vary depending on the type of coverage and the specific policy.\n2. Waiting period for fraudulent claims: Some insurance policies have a waiting period for filing a claim that was not caused by the named peril (e.g., theft, vandalism). This waiting period is typically several days to weeks.\n3. Waiting period for medical treatment: In some cases, you may be required to wait a certain period of time before seeking medical treatment or filing a claim related to an injury or illness covered by your insurance policy.\n4. Waiting period for natural disasters: Some policies may have waiting periods for claims related to natural disasters such as hurricanes",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 51.127,
+      "prompt_tokens": 161,
+      "generated_tokens": 256,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The waiting period for the hospital cash benefit under 2.3 for the payment of the hospital cash benefit is subject to a waiting period of 24 months and will be covered from the commencement of the third policy year as long as the insured person has been insured continuously under the policy without any break.\n\nThe waiting periods for the following conditions are listed below:\n1. Stones in the urinary system\n2. Stones in billiary system\n3. Surgery on tonsils / adenoids\n4. Uterine Polyps\n5. Any type of breast lumps\n6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.595,
+      "generation_latency_seconds": 65.762,
+      "prompt_tokens": 784,
+      "generated_tokens": 154,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7485
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 23,
+          "chunk_id": 113,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 23 of 53 i. If the ported Sum Insured is higher than the Sum Insured under the expiring policy, Waiting Periods would be applied on the amount of proposed increase in Sum Insured only, in accordance with the existing guidelines of the IRDAI. ii. If the proposed Plan is to be changed and not the Sum Insured then the applicable Waiting Periods would be applied as per the proposed plan. c.",
+          "score": 0.7374
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7259
+        }
+      ],
+      "context_characters": 1888,
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I can provide you with a comparison of health insurance policies based on waiting periods available in the InsureMate knowledge base. However, please note that this comparison is based on the information provided in the knowledge base and may not be comprehensive or up-to-date.\n\nInsureMate offers several health insurance plans with varying waiting periods for coverage to meet your needs. Here's a brief overview of the waiting periods available:\n\n1. Bronze Plan: This plan has a 30-day waiting period for coverage, which means you can start receiving benefits after 30 days of being diagnosed with a covered illness or injury.\n2. Silver Plan: This plan has a 60-day waiting period for coverage, which means you can start receiving benefits after 60 days of being diagnosed with a covered illness or injury.\n3. Gold Plan: This plan has a 90-day waiting period for coverage, which means you can start receiving benefits after 90 days of being diagnosed with a covered illness or injury.\n4. Platinum Plan: This plan has a 180-day waiting period for coverage, which means you can start",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 45.459,
+      "prompt_tokens": 165,
+      "generated_tokens": 256,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "Both Group Health Insurance and Health Companion Health Insurance Policy Documents mention coverage for hospitalization.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.544,
+      "generation_latency_seconds": 44.604,
+      "prompt_tokens": 773,
+      "generated_tokens": 26,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7846
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7845
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 30,
+          "chunk_id": 143,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 30 of 44 Def. 40. Pre-hospitalisation Medical Expenses means Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: c) Such Medical Expenses are incurred for the same condition for which the Insured Person‟s Hospitalisation was required, and d) The Inpatient Care Hospitalisation claim for such Hospitalisation is admissible by the Insurance Company. Def. 41. Primary Insured means Your group member who is named as the Primary Insured and as an Insured Person in the Schedule of Insurance Certificate. Def. 42.",
+          "score": 0.7762
+        }
+      ],
+      "context_characters": 1957,
+      "status": "success"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I'm sorry, but I don't have enough information to give you a specific answer to your question about which health insurance policy documents mention coverage for hospitalization. However, I can tell you that in general, most health insurance policies cover hospitalization and other medical expenses. It is important to carefully review the terms of your specific policy to understand what is covered and what is not. If you have any questions or concerns about your health insurance policy, it is best to consult with a licensed insurance professional or the insurance company directly.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 30.069,
+      "prompt_tokens": 162,
+      "generated_tokens": 116,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q15",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The benefits provided under the accident insurance policy are as follows:\n\n1. Accidental death or injury resulting solely and directly from an accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n2. If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n3. If any of the Insured Persons dies or sustains any bodily Injury resulting solely and directly from Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.\n4. If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n5. If any of the Insured Persons dies or",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.579,
+      "generation_latency_seconds": 77.974,
+      "prompt_tokens": 706,
+      "generated_tokens": 256,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 1,
+          "chunk_id": 2,
+          "text": "and eligibility for the insurance plan op ted for as specified in the Product Benefits Table. 2.1. AccidentCare (Individual or Family option) If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.",
+          "score": 0.8222
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 7,
+          "chunk_id": 50,
+          "text": "has been acquired with points earned by a Rewards program associated with your Eligible Card (i.e. mileage point for travel) provided You embark on a Trip as mentioned in the Policy Schedule/ Certificate of Insurance. This Benefit provides Travel Accident – Insured Journey coverage against Accidental death, dismemberment (including Loss of sight, speech & hearing) as a result of Injury during a Trip. · The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.",
+          "score": 0.767
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 1,
+          "chunk_id": 3,
+          "text": "and eligibility for the insurance plan opted for as specified in the Product Benefit Table. 2.1. Personal Accident Cover (Individual or Family option) If any of the Insured Persons dies or sustains any bodily Injury resulting solely and directly from Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below: 2.1.1 Accidental Death If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.",
+          "score": 0.7659
+        }
+      ],
+      "context_characters": 1821,
+      "status": "success"
+    },
+    {
+      "question_id": "Q15",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "As an insurance policy assistant, I can provide you with general information about accident insurance policies and their benefits. However, since you do not have access to the specific InsureMate policy documents, I cannot provide a detailed answer to your question.\n\nAccording to my knowledge, accident insurance policies typically cover medical expenses, property damage, and personal injury liability in the event of an accident. The specific benefits provided under an accident insurance policy may vary depending on the terms of the policy and the insurance company offering it. It is important to carefully review the policy documents to understand the coverage and limitations of your policy.\n\nIf you have any further questions or concerns about your accident insurance policy, I recommend contacting the insurance company directly for more information.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 33.749,
+      "prompt_tokens": 160,
+      "generated_tokens": 162,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The answer is Document: LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.55,
+      "generation_latency_seconds": 105.917,
+      "prompt_tokens": 1962,
+      "generated_tokens": 37,
+      "retrieved_chunks": [
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 1,
+          "chunk_id": 0,
+          "text": "LIC’s Jan Suraksha (Established by the Life Insurance Corporation Act, 1956) LIC’s (A Non-Par, Non-Linked, Ref: NB ____________________________ ____________________________ Dear Policyholder, Re: We have pleasure in forwarding herewith the above along with Customer Information Sheet (CIS) We would also like to draw your kind attention to the information mentioned in the Schedule of the Policy and the benefits available under the Policy.",
+          "score": 0.7815
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 4,
+          "chunk_id": 20,
+          "text": "LIC’s Jan Suraksha Page 4 of 24 SCHEDULE DIVISIONAL OFFICE: MICRO-INSURANCE UNIT/BRANCH OFFICE: Policy Number: UIN : Plan & Policy Term: Premium Paying Term: Date of Commencement of Policy: Date of Commencement of Risk: Date of Maturity: Proposal No: Date of Proposal: Date of issuance of policy: Benefit Illustration Reference No: Basic Sum Assured (Rs.): Sum Assured on Death (Rs.): Instalment Premium for Base Policy (Rs.): Total Instalment Premium (Rs.): (Taxes, if any ,as applicable from time to time are charged extra) Applicable Rate of Guaranteed Additions (inclusive of incentives, if any) for an in-force policy: Due date of premium: Mode of payment of premium: Due Date of Payment of Last premium for Base Policy : Date of Birth of the Life Assured: Age of the Life Assured: Whether Age Admitted: Details of Rider opted : Sr No Rider Opted UIN Date of Commencement of Risk for Rider Rider Sum Assured (Rs) Instalment Premium for Rider (Rs) Due Date of payment of last premium for Rider Date of expiry of rider Note: Conditions of the rider(s) opted and mentioned above are enclosed as endorsement to the policy.",
+          "score": 0.7391
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 24,
+          "chunk_id": 167,
+          "text": "LIC’s Jan Suraksha Page 24 of 24 Annexure - V LIC's Jan Suraksha GSV Factor applicable to Accrued Guaranteed Additions Policy Year Policy Term (Years) 12 13 14 15 16 17 18 19 20 1 0.00% 0.00% 0.00% 0.00% 0.00% 0.00% 0.00% 0.00% 0.00% 2 18.16% 17.85% 17.66% 17.58% 17.58% 17.03% 16.58% 16.22% 15.93% 3 18.60% 18.16% 17.85% 17.66% 17.58% 17.58% 17.03% 16.58% 16.22% 4 19.18% 18.60% 18.16% 17.85% 17.66% 17.58% 17.58% 17.03% 16.58% 5 19.93% 19.18% 18.60% 18.16% 17.85% 17.66% 17.58% 17.58% 17.03% 6 20.85% 19.93% 19.18% 18.60% 18.16% 17.85% 17.66% 17.58% 17.58% 7 21.99% 20.85% 19.93% 19.18% 18.60% 18.16% 17.85% 17.66% 17.58% 8 23.38% 21.99% 20.85% 19.93% 19.18% 18.60% 18.16% 17.85% 17.66% 9 25.05% 23.38% 21.99% 20.85% 19.93% 19.18% 18.60% 18.16% 17.85% 10 27.06% 25.05% 23.38% 21.99% 20.85% 19.93% 19.18% 18.60% 18.16% 11 30.00% 27.06% 25.05% 23.38% 21.99% 20.85% 19.93% 19.18% 18.60% 12 35.00% 30.00% 27.06% 25.05% 23.38% 21.99% 20.85% 19.93% 19.18% 13 35.00% 30.00% 27.06% 25.05% 23.38% 21.99% 20.85% 19.93% 14 35.00% 30.00% 27.06% 25.05% 23.38% 21.99% 20.85% 15 35.00% 30.00% 27.06% 25.05% 23.38% 21.99% 16 35.00% 30.00% 27.06% 25.05% 23.38% 17 35.00% 30.00% 27.06% 25.05% 18 35.00% 30.00% 27.06% 19 35.00% 30.00% 20 35.00%",
+          "score": 0.7179
+        }
+      ],
+      "context_characters": 3122,
+      "status": "success"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I am not able to provide a specific answer to your question as I do not have access to the InsureMate knowledge base and cannot pretend to know the contents of the specific insurance documents. However, I can suggest that you check with the LIC's customer service department or visit their website to find out which document contains information about their Jan Suraksha policy.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 23.972,
+      "prompt_tokens": 165,
+      "generated_tokens": 78,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The most relevant policy document for questions about accidental injury benefits is \"Health_Assurance.pdf\". This document contains information about the insurance plan's coverage for personal accident cover, which includes benefits for accidental death and bodily injury resulting solely and directly from an accident occurring during the Policy Period at any location worldwide, while the policy is in force. The other two documents, \"Travel_Protection_TATA_AIG.pdf\" and \"AccidentCare_Insurance.pdf\", do not contain information about accidental injury benefits.",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0.562,
+      "generation_latency_seconds": 63.2,
+      "prompt_tokens": 680,
+      "generated_tokens": 122,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 1,
+          "chunk_id": 2,
+          "text": "for the payment of the premium and in compliance with all applicable provisions of this Policy. The insurance provided under this Policy is only with respect to such and so many of the Benefits as are indicated by a specific amount set opposite in the Policy Schedule/ Certificate of Insurance. Part 1: Policy Definitions 1. Accident/Accidental means a sudden, unforeseen, and involuntary event caused by external, visible and violent means. 2.",
+          "score": 0.7613
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 1,
+          "chunk_id": 3,
+          "text": "and eligibility for the insurance plan opted for as specified in the Product Benefit Table. 2.1. Personal Accident Cover (Individual or Family option) If any of the Insured Persons dies or sustains any bodily Injury resulting solely and directly from Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below: 2.1.1 Accidental Death If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.",
+          "score": 0.7459
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 1,
+          "chunk_id": 2,
+          "text": "and eligibility for the insurance plan op ted for as specified in the Product Benefits Table. 2.1. AccidentCare (Individual or Family option) If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.",
+          "score": 0.7205
+        }
+      ],
+      "context_characters": 1708,
+      "status": "success"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "The Accidental Injury Benefits Policy Document",
+      "classification": "manual_review",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 16.507,
+      "prompt_tokens": 164,
+      "generated_tokens": 13,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "condition": "RAG_ON",
+      "model": "codellama:7b-instruct",
+      "answer": "The answer to this question cannot be determined from the provided policy evidence as it does not contain information about the current price of Bitcoin. The policy evidence only discusses the exchange rate for converting foreign currency into Indian Rupees and the interest rates for loans under the policy. It does not provide any information about the current price of Bitcoin or any other cryptocurrency. Therefore, it is not possible to answer this question based on the provided policy evidence.",
+      "classification": "correct",
+      "retrieval_latency_seconds": 0.565,
+      "generation_latency_seconds": 52.171,
+      "prompt_tokens": 644,
+      "generated_tokens": 96,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 33,
+          "chunk_id": 257,
+          "text": "of last necessary document to the date of payment of Claim at a rate 2% above the bank rate. For the purpose of this clause, ‘bank rate’ shall mean bank rate fixed by the Reserve Bank of India (RBI) at the beginning of the financial year in which Claim has fallen due. The payment of any claim under this benefit will be in Indian Rupees based on the rate of exchange as on the date of invoice, published by Reserve Bank of India (RBI) and shall be used for conversion of foreign currency into Indian Rupees for claims payment. If these rates are not published on the date of invoice, the",
+          "score": 0.5329
+        },
+        {
+          "document": "LICs_Jan_Suraksha_Policy_Document_with_logo_CC_28072025.pdf",
+          "page": 13,
+          "chunk_id": 102,
+          "text": "at the rate to be specified by the Corporation at the time of taking loan under this policy. The rate of loan interest applicable for full loan term, for the loan to be availed under this policy for every 12",
+          "score": 0.4943
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 14,
+          "text": "amounts, loss, and other amounts under this Policy are expressed and payable in Indi an currency. If judgement is rendered, settlement is denominated or any benefit, Sum Insur ed or element of loss is stated in a currency other than Indian Rupees, then payment und er this Policy shall be made in Indian Rupees at the rate of exchange published by the Reserve Bank of India on the date the final judgement is entered, the amount of settlement is a greed upon or any benefit, Sum Insured or element of loss is due, respectively.",
+          "score": 0.4862
+        }
+      ],
+      "context_characters": 1587,
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "What is the current price of Bitcoin?",
+      "condition": "NO_RAG",
+      "model": "codellama:7b-instruct",
+      "answer": "I'm just an AI, I don't have access to real-time market data or specific information about the current price of Bitcoin. However, I can suggest some ways for you to find out the current price of Bitcoin.\n\n1. Check online financial news websites: Websites like CNBC, Bloomberg, and Reuters often provide real-time updates on market trends and prices. You can search for \"Bitcoin price\" or \"current Bitcoin price\" to find the latest information.\n2. Use a cryptocurrency exchange: Many cryptocurrency exchanges, such as Coinbase or Binance, offer real-time price quotes. You can check their websites or mobile apps to see the current price of Bitcoin.\n3. Check social media: Follow reputable sources on social media platforms like Twitter or Facebook for updates on Bitcoin prices. They often share real-time information and insights from experts in the field.\n4. Use a cryptocurrency tracking tool: There are many tools available online that allow you to track the price of Bitcoin in real-time. Some popular options include CoinMarketCap, CryptoComp",
+      "classification": "correct",
+      "retrieval_latency_seconds": 0,
+      "generation_latency_seconds": 49.724,
+      "prompt_tokens": 159,
+      "generated_tokens": 256,
+      "retrieved_chunks": [],
+      "context_characters": 0,
+      "status": "success"
+    }
+  ]
+}

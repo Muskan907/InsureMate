@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "experiment": "Groundedness and Know-When-Unknown Analysis",
+    "source": "retrieval_ablation.json",
+    "model": "codellama:7b-instruct",
+    "questions": [
+      "Q02",
+      "Q04",
+      "Q06",
+      "Q08",
+      "Q10",
+      "Q11",
+      "Q18",
+      "Q20"
+    ],
+    "purpose": "Analyze whether the model provides grounded policy answers and whether it appropriately refuses questions that cannot be answered from the available information.",
+    "important_note": "This is an analysis of existing evaluation outputs. No new model or retrieval calls were made."
+  },
+  "label_definitions": {
+    "appropriate_refusal": "Model correctly refuses an out-of-scope question.",
+    "appropriate_uncertainty": "Model recognizes that an ambiguous question cannot be answered without more information.",
+    "hallucination": "Model provides unsupported information for an out-of-scope question.",
+    "unsupported_answer": "Model gives an answer to an ambiguous question without enough information.",
+    "answer_given": "Model provides an answer to a policy-specific question.",
+    "uncertain_or_refusal": "Model refuses or expresses uncertainty on a policy question."
+  },
+  "summary": {
+    "rag_on": {
+      "evaluations": 8,
+      "appropriate_refusal": 1,
+      "appropriate_uncertainty": 1,
+      "hallucination": 0,
+      "answer_given": 5,
+      "uncertain_or_refusal": 1,
+      "unsupported_answer": 0
+    },
+    "rag_off": {
+      "evaluations": 8,
+      "appropriate_refusal": 1,
+      "appropriate_uncertainty": 1,
+      "hallucination": 0,
+      "answer_given": 5,
+      "uncertain_or_refusal": 1,
+      "unsupported_answer": 0
+    }
+  },
+  "overall_label_counts": {
+    "uncertain_or_refusal": 2,
+    "answer_given": 10,
+    "appropriate_uncertainty": 2,
+    "appropriate_refusal": 2
+  },
+  "results": [
+    {
+      "question_id": "Q02",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The waiting period for cataract treatment is not mentioned in either context. Therefore, it cannot be determined from the provided context.",
+      "groundedness_label": "uncertain_or_refusal",
+      "latency_seconds": 34.264,
+      "retrieved_chunks": 3,
+      "context_characters": 1440
+    },
+    {
+      "question_id": "Q02",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The waiting period for cataract treatment varies depending on the type of treatment and the individual's medical history. In general, the waiting period for cataract treatment can range from a few weeks to several months.\n\nFor pharmacological treatments such as eye drops or ointments, the waiting period is usually shorter, typically ranging from 1-2 weeks. However, these treatments may not be suitable for everyone and may have side effects.\n\nSurgical treatments, on the other hand, can take longer to complete and may require a longer recovery time. The waiting period for surgical treatments can range from several months to a year or more, depending on the complexity of the procedure and the individual's overall health.\n\nIt is important to note that the waiting period for cataract treatment can vary depending on the specific treatment and the individual's medical history. It is best to consult with an eye doctor or ophthalmologist to determine the appropriate waiting period for your specific situation.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 37.728,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q04",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The waiting period for stones in the urinary system is 24 months, as stated in Context 3.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 36.466,
+      "retrieved_chunks": 3,
+      "context_characters": 1749
+    },
+    {
+      "question_id": "Q04",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The waiting period for stones in the urinary system can vary depending on the type of stone and the individual's overall health. In general, however, the waiting period for a urinary tract stone (UTS) is typically longer than the waiting period for a kidney stone.\n\nFor UTS, the average waiting period is around 2-3 months after the last time the person had a drink containing calcium or other substances that can cause stones. However, some people may experience symptoms earlier than this, and in some cases, the waiting period can be as short as 1-2 weeks.\n\nFor kidney stones, the average waiting period is around 6-8 months after the last time the person had a drink containing oxalate or other substances that can cause stones. However, some people may experience symptoms earlier than this, and in some cases, the waiting period can be as short as 3-4 weeks.\n\nIt's important to note that these are general estimates and that the waiting period for a specific stone can vary depending on the individual's overall health and other factors. If you have any concerns about your risk of developing a urinary tract stone or kidney stone, it'",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 42.089,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q06",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The answer to the question \"Does the policy cover hospitalization expenses?\" is yes, based on the provided context. The policy document states that it will cover Medical Expenses incurred due to Illness immediately before and after an Insured Person's discharge from a Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. This indicates that the policy covers hospitalization expenses.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 44.447,
+      "retrieved_chunks": 3,
+      "context_characters": 1599
+    },
+    {
+      "question_id": "Q06",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "I'm sorry, but I don't have access to specific InsureMate policy documents. However, I can tell you that most insurance policies cover hospitalization expenses. This is because hospitals are considered essential services and are typically covered under the policy. However, it's important to check your specific policy to confirm whether or not it covers hospitalization expenses. If you have any questions about your policy, I recommend contacting your insurance provider directly for more information.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 23.143,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q08",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "The policy states that it covers osteoarthrosis, arthritis, gout, rheumatism, and spondylosis/spondylitis.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 38.745,
+      "retrieved_chunks": 3,
+      "context_characters": 1544
+    },
+    {
+      "question_id": "Q08",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "policy_specific",
+      "answer": "I'm sorry, but I don't have access to specific InsureMate policy documents. However, I can tell you that spondylosis and spondylitis are related terms that refer to inflammatory conditions of the spine. Spondylosis is a condition where the spine becomes inflamed due to various factors such as injury, disease, or infection. Spondylitis is an inflammatory condition of the spine that can cause pain and stiffness.\n\nIt's important to note that this information is based on my training data and may not be up-to-date or accurate. If you have specific questions about your policy, it would be best to consult with a qualified insurance professional or the InsureMate customer service team directly.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 31.509,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q10",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "multi_fact",
+      "answer": "The important waiting periods mentioned in the policy documents are:\n\n1. Initial Waiting Period - 7 days for an Insured Person in a policy year.\n2. Specific Waiting Period - 24 months for conditions such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, and surgery on tonsils/adenoids.\n3. Portability Benefit - 15 days for applying the portability benefit within the existing guidelines of the Insurance Regulatory and Development Authority.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 46.917,
+      "retrieved_chunks": 3,
+      "context_characters": 1488
+    },
+    {
+      "question_id": "Q10",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "multi_fact",
+      "answer": "As an insurance policy assistant, I can provide general information about important waiting periods mentioned in policy documents. However, without specific access to InsureMate policy documents, I cannot provide a detailed answer to your question.\n\nIn general, important waiting periods mentioned in insurance policies include:\n\n1. Waiting period for accidental damage or loss: This is the time period during which you must wait before filing a claim after an accident or damage occurs. The waiting period may vary depending on the type of coverage and the specific policy.\n2. Waiting period for fraudulent claims: Some policies may have a waiting period for filing a claim if it was submitted falsely or with intent to defraud. This is to prevent false claims from being filed and to ensure that legitimate claims are processed fairly.\n3. Waiting period for medical treatment: In some cases, there may be a waiting period before you can receive medical treatment covered by your insurance policy. This is typically the case with hospital stays or other medical procedures.\n4. Waiting period for prescription medication: Some policies may have a waiting period before you can start taking prescription medication covered by your insurance policy. This is",
+      "groundedness_label": "uncertain_or_refusal",
+      "latency_seconds": 52.005,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q11",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "cross_document",
+      "answer": "The waiting period for the hospital cash benefit under the second policy is 24 months, while the waiting period for the hospital cash benefit under the third policy is also 24 months.",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 39.049,
+      "retrieved_chunks": 3,
+      "context_characters": 1700
+    },
+    {
+      "question_id": "Q11",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "cross_document",
+      "answer": "I can provide a general comparison of health insurance policies based on waiting periods. However, it's important to note that the specific details and features of each policy may vary depending on the provider and the individual's needs.\n\nIn general, health insurance policies with longer waiting periods typically offer more comprehensive coverage and lower deductibles. This is because the longer waiting period allows the insurer to collect more data on the individual's health and medical history, which can help them assess their risk and provide more targeted coverage. Additionally, policies with longer waiting periods may also have higher premiums due to the increased cost of collecting and analyzing this data.\n\nOn the other hand, policies with shorter waiting periods typically offer lower premiums but may not provide as much comprehensive coverage. This is because the shorter waiting period allows the insurer to assess the individual's risk more quickly, which can result in lower premiums. However, it's important to note that policies with shorter waiting periods may also have higher deductibles and out-of-pocket costs for medical expenses.\n\nIt's important to carefully consider your own needs and financial situation when choosing a health insurance policy based on waiting period. It",
+      "groundedness_label": "answer_given",
+      "latency_seconds": 41.964,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q18",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "ambiguous",
+      "answer": "The answer to the question cannot be determined from the provided context alone. The policy does not provide enough information to determine whether the treatment is covered or not. It only mentions that Day-Care Treatment will be covered for a continuous period of less than 24 hours, but it does not specify what constitutes \"Day-Care Treatment\" or how long it must be undertaken in order to qualify for coverage. Therefore, more information is needed to determine whether the treatment is covered under the policy.",
+      "groundedness_label": "appropriate_uncertainty",
+      "latency_seconds": 44.042,
+      "retrieved_chunks": 3,
+      "context_characters": 1574
+    },
+    {
+      "question_id": "Q18",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "ambiguous",
+      "answer": "I'm sorry, but I don't have enough information to give a clear answer to your question. Please provide more details about the specific insurance policy and the treatment you are asking about so that I can better assist you.",
+      "groundedness_label": "appropriate_uncertainty",
+      "latency_seconds": 16.638,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    },
+    {
+      "question_id": "Q20",
+      "condition": "rag_on",
+      "model": "codellama:7b-instruct",
+      "question_type": "out_of_scope",
+      "answer": "The policy context does not provide enough information to answer the question about the current price of Bitcoin. The policy only refers to the exchange rate for converting foreign currency into Indian Rupees and the interest rate for loans under the policy. It does not mention anything about the current price of Bitcoin or any other cryptocurrency. Therefore, it is not possible to determine the current price of Bitcoin based on this policy context.",
+      "groundedness_label": "appropriate_refusal",
+      "latency_seconds": 37.912,
+      "retrieved_chunks": 3,
+      "context_characters": 1362
+    },
+    {
+      "question_id": "Q20",
+      "condition": "rag_off",
+      "model": "codellama:7b-instruct",
+      "question_type": "out_of_scope",
+      "answer": "I'm sorry, but I don't have access to specific InsureMate policy documents or current market data. Therefore, I cannot provide you with the current price of Bitcoin.",
+      "groundedness_label": "appropriate_refusal",
+      "latency_seconds": 16.127,
+      "retrieved_chunks": 0,
+      "context_characters": 0
+    }
+  ]
+}

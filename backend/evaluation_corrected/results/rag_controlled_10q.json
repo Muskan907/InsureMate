@@ -1,0 +1,778 @@
+{
+  "metadata": {
+    "experiment": "Controlled RAG vs No-RAG",
+    "model": "codellama:7b-instruct",
+    "questions": 10,
+    "total_evaluations": 20,
+    "rag_top_k": 5,
+    "temperature": 0,
+    "same_questions": true,
+    "same_model": true,
+    "only_variable": "retrieved policy context"
+  },
+  "results": [
+    {
+      "question_id": "Q01",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting period for pre-existing diseases is 48 months. This is mentioned in several of the documents provided, including Health_Assurance.pdf, AccidentCare_Insurance.pdf, Travel_Protection_TATA_AIG.pdf, and Group_Health_Insurance.pdf. The waiting period applies to any condition, ailment, or injury for which there were signs or symptoms, and/or were diagnosed, and/or received medical advice/treatment within 48 months prior to the first policy issued by the insurer or its reinstatement.",
+      "latency_seconds": 62.138,
+      "retrieval_latency_seconds": 1.2,
+      "prompt_tokens": 747,
+      "generated_tokens": 136,
+      "total_tokens": 883,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 20,
+          "chunk_id": 82,
+          "text": "in accordance with the existing guidelines of the Insurance Regulatory and Development Authority. (5) Waiting period credits would be extended to Pre -existing Diseases and time bound exclusions/waiting periods in accordance with the existing guidelines of the Insurance Regulatory and Development Authority.",
+          "score": 0.7899
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 38,
+          "chunk_id": 192,
+          "text": "from one insurer to another or from one plan to another plan of the same insurer. Def. 32. Pre-existing Disease Pre-Existing Disease means any condition, ailment or injury or related condition(s) for which there were signs or symptoms, and / or were diagnosed, and / or for which medical advice / treatment was received within 48 months prior to the first policy issued by the insurer and renewed continuously thereafter.",
+          "score": 0.7847
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 3,
+          "chunk_id": 25,
+          "text": "but not limited to Policy Schedule, Certificate of Insurance, Endorsements and Policy Wordings. 29. Pre-existing Disease means any condition, ailment, Injury or disease: a) That is/are diagnosed by a physician within 48 months prior to the effective date of the Policy issued by insurer or its reinstatement; or b) For which medical advice or treatment was recommended by, or received from, a physician within 48",
+          "score": 0.7831
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "not be liable under this Policy for any claim in connection with or in respect of the following. a. Pre-Existing Diseases Benefits will not be available for Pre -Existing Diseases until 48 months of continuous coverage have elapsed from the date of c ommencement of coverage for the Insured Person. Pre-existing Diseases exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b.",
+          "score": 0.7821
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 29,
+          "chunk_id": 142,
+          "text": "Hospitalisation claim for such Hospitalisation is admissible by the Insurance Company. Def. 39. Pre-Existing Disease means any condition, ailment or Injury or related condition(s) for which you had signs or symptoms, and / or were diagnosed, and / or received medical advice / treatment within 48 months to prior to the first pol icy issued by the insurer.",
+          "score": 0.7721
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Travel_Protection_TATA_AIG.pdf",
+        "Group_Health_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.7824,
+      "top_retrieval_score": 0.7899,
+      "context_characters": 2206,
+      "status": "success"
+    },
+    {
+      "question_id": "Q01",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for pre-existing diseases varies depending on the specific policy and the insurance company. Some policies may have a waiting period of 30 days, while others may have a longer waiting period of 60 or 90 days. It is important to carefully review the terms and conditions of your policy to understand the specific waiting period that applies to you. If you are unsure about the waiting period for your specific policy, it is best to contact your insurance company directly for clarification.",
+      "latency_seconds": 27.337,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 129,
+      "generated_tokens": 108,
+      "total_tokens": 237,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting period for cataract treatment is not specified in the provided policy documents. However, it is mentioned that there are specific waiting periods for certain conditions, such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, surgery on tonsils/adenoids, uterine polyps, any type of breast lumps, any type of treatment of spondylosis/spondylitis, and varicose veins.\n\nThere is also a 30-day waiting period for any treatment taken during the first 30 days since the date of commencement of coverage for the Insured Person, unless the treatment needed is the payment of the HospiCash Benefit under 2.3.\n\nHowever, there is no mention of a specific waiting period for cataract treatment in any of the provided policy documents. Therefore, it cannot be determined from the available policy documents whether there is a waiting period for cataract treatment or not.",
+      "latency_seconds": 84.65,
+      "retrieval_latency_seconds": 0.549,
+      "prompt_tokens": 925,
+      "generated_tokens": 232,
+      "total_tokens": 1157,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.689
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.6857
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "exclude the list of conditions mentioned under „Specific Waiting Period‟ under Clause 4(c). b. 30 Days Waiting Period We will not cover any treatment taken during the first 30 days since t he date of commencement of coverage for the Insured Person, unless the treatment needed is the",
+          "score": 0.6852
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 15,
+          "chunk_id": 77,
+          "text": "of the first Policy with Us or other insurer in case of portability, for the respective benefit. c. Specific Waiting Period for the HospiCash Benefit under 2.3 For the payment of the HospiCash Benefit, the disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps/ cysts/ nodules/ polyps/ internal tumours excluding malignancies 3.",
+          "score": 0.6671
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16. Diabetes and related complications 17. Hysterectomy for any benign disorder d. Personal Waiting Periods Conditions mentioned under Personal Waiting Period in the Schedule of Insurance Certificate will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break. e.",
+          "score": 0.6589
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.6772,
+      "top_retrieval_score": 0.689,
+      "context_characters": 2790,
+      "status": "success"
+    },
+    {
+      "question_id": "Q02",
+      "question": "What is the waiting period for cataract treatment?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for cataract treatment varies depending on the type of treatment and the insurance plan you have. In general, most insurance plans require a waiting period of at least 12 months before coverage is available for cataract treatment. This means that if you are diagnosed with cataracts, you will need to wait at least 12 months before your insurance company will cover the cost of treatment.\n\nIt's important to note that some insurance plans may have different waiting periods or coverage limits for certain types of cataract treatments, so it's best to check with your insurance provider directly to determine what is covered under your specific plan.",
+      "latency_seconds": 30.616,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 127,
+      "generated_tokens": 145,
+      "total_tokens": 272,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q03",
+      "question": "Are stones in the biliary system covered immediately?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "Based on the provided policy context, it appears that stones in the biliary system are not covered immediately. The waiting period for the Hospital Cash Benefit under 2.3 is 24 months, and the conditions listed below will be subject to a waiting period of 24 months:\n\n1. Stones in biliary and urinary systems\n2. Lumps/cysts/nodules/polyps/internal tumours\n3. Gastric and Duodenal Ulcers\n4. Surgery on tonsils / adenoids\n\nTherefore, if an Insured Person has a stone in the biliary system, they will need to wait for 24 months before the Hospital Cash Benefit can be paid out.",
+      "latency_seconds": 76.025,
+      "retrieval_latency_seconds": 0.557,
+      "prompt_tokens": 919,
+      "generated_tokens": 168,
+      "total_tokens": 1087,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.6239
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 15,
+          "chunk_id": 77,
+          "text": "of the first Policy with Us or other insurer in case of portability, for the respective benefit. c. Specific Waiting Period for the HospiCash Benefit under 2.3 For the payment of the HospiCash Benefit, the disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps/ cysts/ nodules/ polyps/ internal tumours excluding malignancies 3.",
+          "score": 0.6184
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 13,
+          "chunk_id": 65,
+          "text": "infection or carrier status alone does not meet the diagnostic criteria. What does it mean? Appearance of severe systemic complications like seps is, gastro -intestinal bleeding, cerebral oedema, renal and cardiac failure, rapidly after the first signs of liver disease (such as jaundice), and indicates that the liver has sustained severe damage. 19. Third Degree Burns There must be third -degree burns with scarring that cover at least 20% of the body’s surface area.",
+          "score": 0.5877
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 7,
+          "text": "period of less than 24 hours. Any OPD Treatment undertaken in a Hospital will not be covered. We will also cover the Medical Expenses up to the Sum Insure d for Chemotherapy, Radiotherapy, Hemodialysis or any other procedure which requires a period of specialized observation or care after completion of the procedure where such procedure is undertaken by an Insured Person in a Hospital for a continuous period of less than 24 hours.",
+          "score": 0.5838
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.5803
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.5988,
+      "top_retrieval_score": 0.6239,
+      "context_characters": 2888,
+      "status": "success"
+    },
+    {
+      "question_id": "Q03",
+      "question": "Are stones in the biliary system covered immediately?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "Stones in the biliary system are typically covered under a comprehensive medical insurance policy that includes liver disease coverage. However, the specifics of the coverage may vary depending on the policy and the terms of the policy. It is important to consult with an insurance professional or the policyholder's doctor to determine the exact coverage for stones in the biliary system under their specific policy.",
+      "latency_seconds": 22.967,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 127,
+      "generated_tokens": 84,
+      "total_tokens": 211,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The waiting period for stones in the urinary system is 24 months, as mentioned in the policy documents provided. The specific waiting period applies to all Insured Persons who have been insured continuously under the Policy without any break.",
+      "latency_seconds": 59.273,
+      "retrieval_latency_seconds": 0.543,
+      "prompt_tokens": 1004,
+      "generated_tokens": 50,
+      "total_tokens": 1054,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 3,
+          "chunk_id": 16,
+          "text": "This waiting period does not apply for any subsequent and continuous renewals of Your Policy. c. Specific Waiting Period The conditions listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the 3 rd Policy Year as long as the Insured Person has been insured continuously under the Policy without any break: 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4. Surgery on tonsils / adenoids",
+          "score": 0.7375
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 5,
+          "chunk_id": 19,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 5 of 44 result of an Accident or Cardio or Neurological Emergency. This waiting period does not apply for any subsequent and continuous Renewals of Your Policy. c. Specific Waiting Periods For all Insured Persons the conditions listed below will be subject to a waiting period of 24 months from the date of commencement of coverage for the Insured Person : 1. Stones in the urinary system 2. Stones in billiary system 3. Surgery on tonsils / adenoids 4. Uterine Polyps 5. Any type of breast lumps 6. Any type of treatment of Spondylosis /Spondylitis - 7.",
+          "score": 0.7331
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 12,
+          "chunk_id": 48,
+          "text": "have elapsed since the inception of the first Policy with Us for the respective benefit. b. Specific Waiting Period for the Hospital Cash Benefit under 2.3 For the payment of the Hospital Cash Benefit, t he disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps / cysts / nodules / polyps / internal tumours 3. Gastric and Duodenal Ulcers 4.",
+          "score": 0.7115
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 15,
+          "chunk_id": 77,
+          "text": "of the first Policy with Us or other insurer in case of portability, for the respective benefit. c. Specific Waiting Period for the HospiCash Benefit under 2.3 For the payment of the HospiCash Benefit, the disease conditions / treatments listed below will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break 1. Stones in biliary and urinary systems 2. Lumps/ cysts/ nodules/ polyps/ internal tumours excluding malignancies 3.",
+          "score": 0.7049
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 18,
+          "text": "Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16. Diabetes and related complications 17. Hysterectomy for any benign disorder d. Personal Waiting Periods Conditions mentioned under Personal Waiting Period in the Schedule of Insurance Certificate will be subject to a waiting period of 24 months and will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break. e.",
+          "score": 0.6398
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.7054,
+      "top_retrieval_score": 0.7375,
+      "context_characters": 3094,
+      "status": "success"
+    },
+    {
+      "question_id": "Q04",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "The waiting period for stones in the urinary system varies depending on the type of stone and the insurance policy you have. In general, the waiting period for kidney stones is typically 30 days after the last time you had a urine sample that contained the stone. However, it's important to note that this is just an average waiting period and may vary depending on your specific situation.\n\nIf you have a history of recurrent kidney stones or are at high risk for developing them, your insurance company may require a longer waiting period before coverage kicks in. Additionally, if you have a urinary tract infection (UTI) or other underlying medical condition that could contribute to the development of a kidney stone, your insurance company may also require a longer waiting period.\n\nIt's important to note that the waiting period for kidney stones is not the same as the waiting period for a UTI. The waiting period for a UTI is typically 72 hours after the onset of symptoms, while the waiting period for a kidney stone is typically longer and may be up to 30 days after the last time you had a urine sample that contained the stone.\n\nIt's",
+      "latency_seconds": 43.982,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 129,
+      "generated_tokens": 256,
+      "total_tokens": 385,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q05",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The answer to your question is yes, the policy covers hospitalization expenses. The policy document states that it will cover \"Medical Expenses incurred due to Illness immediately before the Insured Person's admission and after the Insured Person's discharge from a Hospital\" for a period of 60 days after discharge for the same illness as long as the hospitalization claim has been accepted. Additionally, the policy document also states that \"Post-hospitalization Medical Expenses can be claimed as reimbursement only.\" This indicates that the policy will cover expenses incurred during and after a hospital stay.",
+      "latency_seconds": 87.377,
+      "retrieval_latency_seconds": 0.544,
+      "prompt_tokens": 1317,
+      "generated_tokens": 135,
+      "total_tokens": 1452,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.7726
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.7713
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.7674
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 37,
+          "chunk_id": 165,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 37 of 44 Annexure IV List of Generally excluded in Hospitalisation Policy SNO List of Expenses Generally Excluded (\"Non-Medical\")in Hospital Indemnity Policy - SUGGESTIONS TOILETRIES/COSMETICS/ PERSONAL COMFORT OR CONVENIENCE ITEMS 1 HAIR REMOVAL CREAM Not Payable 2 BABY CHARGES (UNLESS SPECIFIED/INDICATED) Not Payable 3 BABY FOOD Not Payable 4 BABY UTILITES CHARGES Not Payable 5 BABY SET Not Payable 6 BABY BOTTLES Not Payable 7 BRUSH Not Payable 8 COSY TOWEL Not Payable 9 HAND WASH Not Payable 10 M01STUR1SER PASTE BRUSH Not Payable 11 POWDER Not Payable 12 RAZOR Payable 13 SHOE COVER Not Payable 14 BEAUTY SERVICES Not Payable 15 BELTS/ BRACES Essential and may be paid specifically for cases who have undergone surgery of thorcic or lumbar spine.",
+          "score": 0.7576
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 45,
+          "chunk_id": 216,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 45 of 53 Annexure II List of Expenses Generally excluded in Hospitalisation Policy SNO List of Expenses Generally Excluded (\"Non-Medical\")in Hospital Indemnity Policy - SUGGESTIONS TOILETRIES/COSMETICS/ PERSONAL COMFORT OR CONVENIENCE ITEMS 1 HAIR REMOVAL CREAM Not Payable 2 BABY CHARGES (UNLESS SPECIFIED/INDICATED) Not Payable 3 BABY FOOD Not Payable 4 BABY UTILITES CHARGES Not Payable 5 BABY SET Not Payable 6 BABY BOTTLES Not Payable 7 BRUSH Not Payable 8 COSY TOWEL Not Payable 9 HAND WASH Not Payable 10 M01STUR1SER PASTE BRUSH Not Payable 11 POWDER Not Payable 12 RAZOR Payable 13 SHOE COVER Not Payable 14 BEAUTY SERVICES Not Payable 15 BELTS/ BRACES Essential and may be paid specifically for cases who have undergone surgery of thoracic or lumbar spine.",
+          "score": 0.7569
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Group_Health_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.7652,
+      "top_retrieval_score": 0.7726,
+      "context_characters": 3508,
+      "status": "success"
+    },
+    {
+      "question_id": "Q05",
+      "question": "Does the policy cover hospitalization expenses?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to your specific insurance policy. However, I can tell you that most health insurance policies cover hospitalization expenses. This is typically included in the policy as \"hospital coverage\" or \"inpatient care.\" If you have a specific question about your policy, I would recommend contacting your insurance provider directly for more information.",
+      "latency_seconds": 22.387,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 125,
+      "generated_tokens": 83,
+      "total_tokens": 208,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q06",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "Based on the provided policy documents, it appears that pre-hospitalization medical expenses are not covered under the Group Health Insurance plan. However, post-hospitalization medical expenses are covered for a period of 60 days after discharge from hospital, as long as the insured person has accepted an inpatient care hospitalization claim under Section 2.1 above.\n\nSimilarly, under the Health Companion Health Insurance Plan, pre-hospitalization medical expenses are not covered, but post-hospitalization medical expenses can be claimed as reimbursement only for a period of 60 days after discharge from hospital, provided that such medical expenses are incurred for the same condition for which the insured person's hospitalization was required and the inpatient care hospitalization claim for such hospitalization is admissible by the insurance company.\n\nIt is important to note that these policies may have additional exclusions or conditions, and it is recommended to consult with an insurance professional to determine the specific coverage under your policy.",
+      "latency_seconds": 83.172,
+      "retrieval_latency_seconds": 0.544,
+      "prompt_tokens": 947,
+      "generated_tokens": 233,
+      "total_tokens": 1180,
+      "retrieved_chunks": [
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 2 of 44 2.1.3 Pre-hospitalisation Medical Expenses and Post-hospitalisation Medical Expenses We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above. Pre and Post - hospitalisation Medical Expenses can be claimed as reimbursement only.",
+          "score": 0.8452
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 5,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 2 of 36 2.4. Post-hospitalization Medical Expenses We will cover Medical Expenses incurred due to Illness up to 60 days immediately after an Insured Person’s discharge from Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5.",
+          "score": 0.8413
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 29,
+          "chunk_id": 141,
+          "text": "and time -bound exclusions if he/she chooses to switch from one insurer to another. Def. 38. Post-hospitalisation Medical Expenses means Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: a) Such Medical Expenses are incurred for the same condition for which the Insured Person‟s Hospitalisation was required, and b) The Inpatient Care Hospitalisation claim for such Hospitalisation is admissible by the Insurance Company. Def. 39.",
+          "score": 0.8262
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 24,
+          "chunk_id": 126,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 24 of 36 Medical Expenses incurred immediately before the Insured Person is Hospitalised, provided that: I. Such Medical Expenses are incurred for the same condition for which the Insured Person’s Hospitalisation was required, and II. The In -patient Hospitalization claim for such Hospitalization is admissible by the Insurance Company. Def. 43. Post-hospitalization Medical Expenses Medical Expenses incurred immediately after the Insured Person is discharged from the hospital, provided that: i.",
+          "score": 0.8089
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 2,
+          "chunk_id": 6,
+          "text": "Section 2.1 above. Post-hospitalization Medical Expenses can be claimed as reimbursement only. 2.5. Day Care Treatment We will cover Medical Expenses for Day Care Treatment (including Chemotherapy, Radiotherapy, Hemodialysis, any procedure which needs a period of special ized observation or care after completion of the procedure) where such procedures/treatments are undertaken by an Insured Person as an Inpatient in a Hospital/Day Care Center for a continuous period of less than 24 hours. Any OPD Treatment undertaken in a Hospital/Day Care Center will not be covered. 2.6.",
+          "score": 0.807
+        }
+      ],
+      "retrieved_documents": [
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.8257,
+      "top_retrieval_score": 0.8452,
+      "context_characters": 2935,
+      "status": "success"
+    },
+    {
+      "question_id": "Q06",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "Pre-hospitalization and post-hospitalization expenses are typically not covered under standard health insurance policies. However, some policies may have specific coverage for these types of expenses, such as deductibles or copays. It is important to review the terms and conditions of your specific policy to determine what is covered and what is not.",
+      "latency_seconds": 21.369,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 132,
+      "generated_tokens": 73,
+      "total_tokens": 205,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q07",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The policy states that spondylosis and spondylitis are excluded from coverage under this policy.",
+      "latency_seconds": 55.211,
+      "retrieval_latency_seconds": 0.548,
+      "prompt_tokens": 995,
+      "generated_tokens": 23,
+      "total_tokens": 1018,
+      "retrieved_chunks": [
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 4,
+          "chunk_id": 17,
+          "text": "Health Companion Health Insurance Plan POLICY DOCUMENT Page 4 of 36 5. Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse 6. Cataract 7. Fissure / Fistula / Haemorrhoids 8. Hernia / Hydrocele 9. Chronic Renal Failure or end stage Renal Failure 10. Sinusitis / Deviated Nasal Septum / Tympanoplasty / Chronic Suppurative Otitis Media 11. Benign Prostatic Hypertrophy 12. Knee/Hip Joint replacement 13. Dilatation and Curettage 14. Varicose veins 15. Dysfunctional Uterine Bleeding / Fibroids / Prolapse Uterus / Endometriosis 16.",
+          "score": 0.6745
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 8,
+          "chunk_id": 32,
+          "text": "agents or the Insured Person has received a bone marrow or cord blood stem cell transplant. Temporary or reversible Aplastic Anemia is excluded and not covered under this Policy. 13. Bacterial Meningitis Bacterial meningitis is a bacterial infection of the meninges of th e brain causing brain dysfunction. There must be an unequivocal diagnosis by a consultant physician of bacterial meningitis that must be proven on analysis of the cerebrospinal fluid.",
+          "score": 0.6697
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 34,
+          "chunk_id": 137,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event. Def. 17.",
+          "score": 0.6575
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 35,
+          "chunk_id": 174,
+          "text": "Us or Our representatives over the telephone for the purposes of applying for this Policy. Def. 15. Injury: Injury means accidental physical bodily harm excluding illness or disease solely and directly caused by external, violent and visible and evident means which is verified and certified by a Medical Practitioner. Def. 16. Inpatient Care means treatment for which the insured person has to stay in a Hospital for more than 24 hours for a covered event.",
+          "score": 0.6546
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 6,
+          "chunk_id": 22,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 6 of 44 25. Diabetic Nephropathy and Retinopathy 26. Mastoidectomy (operation to remove piece of bone behind the ear) 27. Tympanoplasty (Surgery to repair tympanic membrane i.e. eardrum) 28. Gout 29. Rheumatism 30. Varicose veins, Varicose ulcers 31. Internal Congenital Anomaly d. Permanent Exclusions We shall not be liable under any circumstances, for any claim in connection with or with regard to any of the following permanent exclusions i.",
+          "score": 0.6543
+        }
+      ],
+      "retrieved_documents": [
+        "Health_Companion_Insurance.pdf",
+        "Health_Assurance.pdf",
+        "AccidentCare_Insurance.pdf",
+        "Group_Health_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.6621,
+      "top_retrieval_score": 0.6745,
+      "context_characters": 2738,
+      "status": "success"
+    },
+    {
+      "question_id": "Q07",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I am not able to provide a specific answer to your question as it is not clear what type of policy you are referring to. However, I can tell you that most health insurance policies do not cover spondylosis or spondylitis. These are medical conditions that require treatment and monitoring by a healthcare professional. If you have been diagnosed with spondylosis or spondylitis, it is important to work closely with your healthcare provider to develop a treatment plan that meets your specific needs.\n\nIt is also important to note that some insurance policies may have specific exclusions for certain medical conditions, so it is always best to review the policy document carefully before making any claims.",
+      "latency_seconds": 31.597,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 132,
+      "generated_tokens": 153,
+      "total_tokens": 285,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q08",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The answer to this question can be determined from the provided context. The policy documents mention that the policy covers \"reasonable expenses incurred towards medical treatment\" during the Policy Period for an Illness, Accident or condition described below if this is contracted or sustained by an Insured Person during the Policy Period and subject always to the Sum Insured, any subsidiary limit specified in the Product Benefits Table, the terms, conditions, limitations and exclusions mentioned in the Policy and eligibility as per the insurance plan opted for in the Product Benefits Table.\n\nThe policy also mentions that the policy covers \"Both hands, Both feet, Sight of both eyes 100% One hand; One foot; Sight of one eye; speech; or Hearing in both ears 50%\" and \"Thumb and Index Finger of Same Hand 25%\".\n\nTherefore, the answer to this question is that the policy covers a percentage of eligible expenses up to 100%.",
+      "latency_seconds": 91.828,
+      "retrieval_latency_seconds": 0.549,
+      "prompt_tokens": 1142,
+      "generated_tokens": 223,
+      "total_tokens": 1365,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 8,
+          "chunk_id": 63,
+          "text": "a maximum benefit up to the amount as mentioned in the Policy Schedule/ Certificate of Insurance. Covered Medical Expenses include: a. The services of a Physician including diagnosis, treatment and surgery by a Physician; b. charges by a Hospital for room and board, floor nursing and other services, including charges for professional services, except personal services of a non-medical nature, provided, however, that expenses do not exceed the Hospital’s average charge for semi-private room and board accommodation; c.",
+          "score": 0.6907
+        },
+        {
+          "document": "Group_Health_Insurance.pdf",
+          "page": 11,
+          "chunk_id": 43,
+          "text": "GROUP HEALTH INSURANCE POLICY DOCUMENT Page 11 of 44 xxxiii. Any expenses as mentioned under the List of Expenses Generally Excluded as mentioned in Ann exure IV except for all claims made under the Critical Illness Benefit. 5. Standard Terms and Conditions a. Reasonable Care The Insured Person shall take all reasonable steps to safeguard against any Accident or Illness that may give rise to any claim under this Policy. b.",
+          "score": 0.6707
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 7,
+          "chunk_id": 51,
+          "text": "Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance. Schedule of Losses: For Loss of: Percentage of the Principal Benefit means the Amount as mentioned against Eligible Cardholder / Spouse / Child(ren) / Domestic Helper in the Policy Schedule / Certificate of Insurance: Life 100% Both hands, Both feet, Sight of both eyes 100% One hand; One foot; Sight of one eye; speech; or Hearing in both ears 50% Thumb and Index Finger of Same Hand 25% III. Conditions/Limitations 1.",
+          "score": 0.6656
+        },
+        {
+          "document": "Health_Companion_Insurance.pdf",
+          "page": 1,
+          "chunk_id": 2,
+          "text": "nature of job, state of health, or of any other changes affecting You or any Insured Person. 2. Benefits The Policy covers reasonable expenses incurred towards medical treatment taken during the Policy Period for an Illness, Accident or c ondition described below if this is contracted or sustained by an Insured Person during the Policy Period and subject always to the Sum Insured, any subsidiary limit specified in the Product Benefits Table, the terms, conditions, limitations and exclusions mentioned in the Policy and eligibility as per the insurance plan opted for in the Product Benefits Table and as shown in the Schedule of Insurance Certificate : 2.1.",
+          "score": 0.6639
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 45,
+          "chunk_id": 216,
+          "text": "Policy Document Health Assurance (UIN: IRDAI/HLT/MBHI/P-H/V.II/175/2016-17) Page 45 of 53 Annexure II List of Expenses Generally excluded in Hospitalisation Policy SNO List of Expenses Generally Excluded (\"Non-Medical\")in Hospital Indemnity Policy - SUGGESTIONS TOILETRIES/COSMETICS/ PERSONAL COMFORT OR CONVENIENCE ITEMS 1 HAIR REMOVAL CREAM Not Payable 2 BABY CHARGES (UNLESS SPECIFIED/INDICATED) Not Payable 3 BABY FOOD Not Payable 4 BABY UTILITES CHARGES Not Payable 5 BABY SET Not Payable 6 BABY BOTTLES Not Payable 7 BRUSH Not Payable 8 COSY TOWEL Not Payable 9 HAND WASH Not Payable 10 M01STUR1SER PASTE BRUSH Not Payable 11 POWDER Not Payable 12 RAZOR Payable 13 SHOE COVER Not Payable 14 BEAUTY SERVICES Not Payable 15 BELTS/ BRACES Essential and may be paid specifically for cases who have undergone surgery of thoracic or lumbar spine.",
+          "score": 0.6555
+        }
+      ],
+      "retrieved_documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "Group_Health_Insurance.pdf",
+        "Health_Companion_Insurance.pdf",
+        "AccidentCare_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.6693,
+      "top_retrieval_score": 0.6907,
+      "context_characters": 3281,
+      "status": "success"
+    },
+    {
+      "question_id": "Q08",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "I'm sorry, but I don't have access to your specific insurance policy and cannot provide an exact percentage of eligible expenses that are covered. However, I can tell you that the coverage amount for medical expenses is typically specified in the policy document or on the policy summary page. If you need more information about your specific policy, please contact your insurance provider directly.",
+      "latency_seconds": 22.351,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 130,
+      "generated_tokens": 81,
+      "total_tokens": 211,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q09",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "The benefits provided under the accident insurance policy are as follows:\n\n1. If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n2. The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.\n3. If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.\n4. The Policy provides benefits up to the Sum Assured for the specified events occurring during the Policy Period and while the Policy is in force for an Illness and/or, Accident and/or Hospitali sation or the conditions described below subject to any specific limits specified in the Product Benefits Table, the terms, conditions, limitations and specific and general exclusions mentioned in the Policy and as shown in the Schedule",
+      "latency_seconds": 85.101,
+      "retrieval_latency_seconds": 0.547,
+      "prompt_tokens": 921,
+      "generated_tokens": 256,
+      "total_tokens": 1177,
+      "retrieved_chunks": [
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 1,
+          "chunk_id": 2,
+          "text": "and eligibility for the insurance plan op ted for as specified in the Product Benefits Table. 2.1. AccidentCare (Individual or Family option) If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.",
+          "score": 0.8222
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 7,
+          "chunk_id": 50,
+          "text": "has been acquired with points earned by a Rewards program associated with your Eligible Card (i.e. mileage point for travel) provided You embark on a Trip as mentioned in the Policy Schedule/ Certificate of Insurance. This Benefit provides Travel Accident – Insured Journey coverage against Accidental death, dismemberment (including Loss of sight, speech & hearing) as a result of Injury during a Trip. · The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.",
+          "score": 0.767
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 1,
+          "chunk_id": 3,
+          "text": "and eligibility for the insurance plan opted for as specified in the Product Benefit Table. 2.1. Personal Accident Cover (Individual or Family option) If any of the Insured Persons dies or sustains any bodily Injury resulting solely and directly from Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below: 2.1.1 Accidental Death If an Insured Person dies solely and directly due to Accidental bodily Injury within 90 days from occurrence of such Accidental bodily Injury We will pay the Sum Assured specified in the Schedule of Insurance Certificate.",
+          "score": 0.7659
+        },
+        {
+          "document": "Health_Assurance.pdf",
+          "page": 1,
+          "chunk_id": 1,
+          "text": "form or Information Summary Sheet) for Yourelf and on behalf of each of the Insured Persons 2. Benefit This Policy provides benefits up to the Sum Assured for the specified events occurring during the Policy Period and while the Policy is in force for an Illness and/or, Accident and/or Hospitali sation or the conditions described below subject to any specific limits specified in the Product Benefits Table, the terms, conditions, limitations and specific and general exclusions mentioned in the Policy and as shown in the Schedule of Insurance Certificate and eligibility for the insurance plan opted for as specified in the Product Benefit Table.",
+          "score": 0.7622
+        },
+        {
+          "document": "AccidentCare_Insurance.pdf",
+          "page": 1,
+          "chunk_id": 3,
+          "text": "location worldwide, and while the Policy is in force, We will provide the benefits described below. If a claim gets triggered under Accident Death or Accident Permanent Total Disability for any Insured Person, the coverage shall terminate for the respective Insured Person post payment of the benefit but for the other Insure d Person, the coverage shall continue till the end of the policy period and shall be renewable. 2.1.1 Accident Death If an Insured Person dies solely and directly due to an Accidental Injury within 365 days from occurrence of the Accident we will pay the Sum Insured.",
+          "score": 0.756
+        }
+      ],
+      "retrieved_documents": [
+        "AccidentCare_Insurance.pdf",
+        "Travel_Protection_TATA_AIG.pdf",
+        "Health_Assurance.pdf"
+      ],
+      "average_retrieval_score": 0.7747,
+      "top_retrieval_score": 0.8222,
+      "context_characters": 3120,
+      "status": "success"
+    },
+    {
+      "question_id": "Q09",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "As an insurance policy assistant, I can provide you with information about the benefits that are typically included in an accident insurance policy. However, it is important to note that the specific benefits and coverage amounts may vary depending on the type of policy and the insurance company issuing it.\n\nSome common benefits that are often included in accident insurance policies include:\n\n1. Medical expenses: This benefit covers the cost of medical treatment for injuries or illnesses sustained as a result of an accident.\n2. Property damage: This benefit may cover the cost of repairing or replacing damaged property, such as cars or homes.\n3. Personal injury protection: This benefit provides coverage for injuries that are not necessarily visible, such as whiplash or other hidden injuries.\n4. Uninsured/underinsured motorist coverage: This benefit covers the cost of medical treatment and other expenses if you are involved in an accident with a driver who does not have insurance or has inadequate insurance coverage.\n5. Roadside assistance: Some policies may include roadside assistance, which can provide services such as towing, flat tire changes, and jump starts.\n6. Rental",
+      "latency_seconds": 43.871,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 127,
+      "generated_tokens": 256,
+      "total_tokens": 383,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    },
+    {
+      "question_id": "Q10",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "model": "codellama:7b-instruct",
+      "condition": "RAG",
+      "answer": "Yes, travel insurance typically covers medical emergencies during a trip. The policy context provided includes the following information:\n\n* In general, coverage applies worldwide, but there are exceptions. Restrictions may apply to regions that may be involved in an international or internal conflict, or in those countries and territories where the existing infrastructure is deemed inadequate to guarantee service.\n* The policy provides coverage for Covered Medical Expenses in the event of any Injury or Sickness, which is not due to any Pre-existing disease, and which results in a Medically Necessary treatment on the written advice of a Medical Practitioner outside India while on a Trip.\n* The policy provides coverage for Covered Expenses due to Emergency Medical Evacuation if incurred outside India whilst on Trip.\n* The policy covers any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice.\n\nTherefore, based on the information provided, it appears that travel insurance coverage may include medical emergency expenses during a trip, including medical evacuation and treatment outside India. However, it's important to note that the specific",
+      "latency_seconds": 99.914,
+      "retrieval_latency_seconds": 0.541,
+      "prompt_tokens": 903,
+      "generated_tokens": 256,
+      "total_tokens": 1159,
+      "retrieved_chunks": [
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 23,
+          "chunk_id": 184,
+          "text": "or emergency services requested of the Assistance Department (for example, medical or legal bills). You may be reimbursed for medical related expenses (Please refer to Benefit 2: Travel Medical Cover for additional information). 1. Who is Covered: An Eligible Cardholder. 2. Where the service is available: In general, coverage applies worldwide, but there are exceptions. Restrictions may apply to regions that may be involved in an international or internal conflict, or in those countries and territories where the existing infrastructure is deemed inadequate to guarantee service.",
+          "score": 0.7722
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 8,
+          "chunk_id": 62,
+          "text": "identical or similar services, taking into account the nature of the illness / injury involved. II. Coverage This Benefit provides coverage for Covered Medical Expenses in the event You suffer from any Injury or Sickness, which is not due to any Pre existing disease, and which results in a Medically Necessary treatment on the written advice of a Medical Practitioner outside India while on a Trip. Benefits will be provided for Covered Medical Expenses, subject to a maximum benefit up to the amount as mentioned in the Policy Schedule/ Certificate of Insurance.",
+          "score": 0.77
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 9,
+          "chunk_id": 71,
+          "text": "for Covered Expenses due to Emergency Medical Evacuation if incurred outside India whilst on Trip. Covered Expenses are expenses for Transportation and medical treatment, including medical services and medical supplies necessarily incurred in connection with Your Emergency Medical Evacuation. All Transportation arrangements for evacuating You must be made by the most direct and economical route possible. Expenses for Transportation must be: a. recommended by the attending Physician who certifies that severity or nature of Your Injury warrants evacuation; b.",
+          "score": 0.7661
+        },
+        {
+          "document": "Travel_Protection_TATA_AIG.pdf",
+          "page": 5,
+          "chunk_id": 37,
+          "text": "& hearing) as a result of Injury while travelling on a Common Carrier (flight) during a Trip. • The Principal Benefit provided for Trip as applicable on a Common Carrier (flight) is up to amount as mentioned in the Policy Schedule/ Certificate of Insurance. • For the purposes of this Coverage a Trip commences when the Insured Person boards a Common Carrier(flight) for the purpose of going on such Trip and continues until such time as the Insured Person alights (departs) from the Common Carrier (flight).",
+          "score": 0.7536
+        },
+        {
+          "document": "Travel_Insurance.pdf",
+          "page": 22,
+          "chunk_id": 123,
+          "text": "an Insured Journey is undertaken against the advice of a qualified licensed medical practitioner. 3) any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice. SECTION 7 CONTINGENCY TRAVEL BENEFITS The benefits below will only be insured as part of the Policy if the Assistance Provider Services Section has been purchased and contact has been made with the Assistance Provider. Contact must be made prior to any arrangements being made for such benefits.",
+          "score": 0.7519
+        }
+      ],
+      "retrieved_documents": [
+        "Travel_Protection_TATA_AIG.pdf",
+        "Travel_Insurance.pdf"
+      ],
+      "average_retrieval_score": 0.7628,
+      "top_retrieval_score": 0.7722,
+      "context_characters": 3032,
+      "status": "success"
+    },
+    {
+      "question_id": "Q10",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "model": "codellama:7b-instruct",
+      "condition": "NO_RAG",
+      "answer": "Yes, travel insurance typically covers medical emergencies that occur during the course of a trip. This can include illnesses, injuries, or other health issues that require medical attention while you are abroad. The specifics of what is covered may vary depending on the policy and the provider, but it is generally included as part of the standard coverage for travel insurance. It's important to carefully review your policy to understand exactly what is covered and what is not.",
+      "latency_seconds": 25.353,
+      "retrieval_latency_seconds": 0,
+      "prompt_tokens": 129,
+      "generated_tokens": 98,
+      "total_tokens": 227,
+      "retrieved_chunks": [],
+      "retrieved_documents": [],
+      "average_retrieval_score": null,
+      "top_retrieval_score": null,
+      "context_characters": 0,
+      "status": "success"
+    }
+  ]
+}

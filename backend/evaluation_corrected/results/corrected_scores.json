@@ -1,0 +1,780 @@
+{
+  "title": "InsureMate Corrected Independent Evaluation",
+  "method": "Conservative evidence-based rubric. Manual-review questions are excluded from automatic accuracy.",
+  "input": "/home/student/InsureMate/backend/evaluation/results/independent_evaluation.json",
+  "summary_by_model": {
+    "codellama:7b-instruct": {
+      "correct": 17,
+      "incorrect": 5,
+      "manual_review": 3,
+      "scored_questions": 22,
+      "accuracy_excluding_manual_review": 0.7727
+    },
+    "qwen2.5:1.5b": {
+      "correct": 13,
+      "incorrect": 9,
+      "manual_review": 3,
+      "scored_questions": 22,
+      "accuracy_excluding_manual_review": 0.5909
+    },
+    "phi3:mini": {
+      "correct": 17,
+      "incorrect": 5,
+      "manual_review": 3,
+      "scored_questions": 22,
+      "accuracy_excluding_manual_review": 0.7727
+    }
+  },
+  "question_results": [
+    {
+      "question_id": "Q01",
+      "model": "codellama:7b-instruct",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "verdict": "manual_review",
+      "reason": "48 months in the retrieved text is the definition/look-back period for pre-existing disease, not clearly a waiting period.",
+      "answer": "The waiting period for pre-existing diseases is 48 months.",
+      "latency_seconds": 45.121,
+      "retrieval_latency_seconds": 5.579
+    },
+    {
+      "question_id": "Q01",
+      "model": "qwen2.5:1.5b",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "verdict": "manual_review",
+      "reason": "48 months in the retrieved text is the definition/look-back period for pre-existing disease, not clearly a waiting period.",
+      "answer": "The waiting period for pre-existing diseases under this policy is extended to Pre-existing Diseases and time-bound exclusions as per the existing guidelines of the Insurance Regulatory and Development Authority. The specific duration or exact number are not provided in the given context, so the answer cannot be determined from the available information.",
+      "latency_seconds": 9.571,
+      "retrieval_latency_seconds": 5.579
+    },
+    {
+      "question_id": "Q01",
+      "model": "phi3:mini",
+      "question": "What is the waiting period for pre-existing diseases?",
+      "verdict": "manual_review",
+      "reason": "48 months in the retrieved text is the definition/look-back period for pre-existing disease, not clearly a waiting period.",
+      "answer": "The available insurance documents do not contain enough information to answer this question. The provided context does not specify any particular waiting periods related to pre-existing conditions within policies or guidelines of the Insurance Regulatory and Development Authority.",
+      "latency_seconds": 22.052,
+      "retrieval_latency_seconds": 5.579
+    },
+    {
+      "question_id": "Q02",
+      "model": "codellama:7b-instruct",
+      "question": "What is the waiting period for cataract treatment?",
+      "verdict": "manual_review",
+      "reason": "Retrieved chunks list cataract but do not establish its waiting period.",
+      "answer": "The waiting period for cataract treatment is not mentioned in either context. Therefore, the available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 35.66,
+      "retrieval_latency_seconds": 0.382
+    },
+    {
+      "question_id": "Q02",
+      "model": "qwen2.5:1.5b",
+      "question": "What is the waiting period for cataract treatment?",
+      "verdict": "manual_review",
+      "reason": "Retrieved chunks list cataract but do not establish its waiting period.",
+      "answer": "The waiting period for cataract treatment under this policy is 24 months.",
+      "latency_seconds": 7.263,
+      "retrieval_latency_seconds": 0.382
+    },
+    {
+      "question_id": "Q02",
+      "model": "phi3:mini",
+      "question": "What is the waiting period for cataract treatment?",
+      "verdict": "manual_review",
+      "reason": "Retrieved chunks list cataract but do not establish its waiting period.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 20.348,
+      "retrieval_latency_seconds": 0.382
+    },
+    {
+      "question_id": "Q03",
+      "model": "codellama:7b-instruct",
+      "question": "Are stones in the biliary system covered immediately?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The answer to your question is no, stones in the biliary system are not covered immediately under the policy. The waiting period for the Hospital Cash Benefit is 24 months, and it will be covered from the commencement of the third Policy Year as long as the Insured Person has been insured continuously under the Policy without any break.",
+      "latency_seconds": 45.146,
+      "retrieval_latency_seconds": 0.407
+    },
+    {
+      "question_id": "Q03",
+      "model": "qwen2.5:1.5b",
+      "question": "Are stones in the biliary system covered immediately?",
+      "verdict": "incorrect",
+      "reason": "Missing required evidence concepts.",
+      "answer": "The answer cannot be determined from the provided context.",
+      "latency_seconds": 7.101,
+      "retrieval_latency_seconds": 0.407
+    },
+    {
+      "question_id": "Q03",
+      "model": "phi3:mini",
+      "question": "Are stones in the biliary system covered immediately?",
+      "verdict": "incorrect",
+      "reason": "Missing required evidence concepts.",
+      "answer": "The available insurance documents do not contain enough information to answer this question regarding immediate coverage for stones in the biliary system, as specific waiting periods and conditions are mentioned without explicit details on initial cover.",
+      "latency_seconds": 22.517,
+      "retrieval_latency_seconds": 0.407
+    },
+    {
+      "question_id": "Q04",
+      "model": "codellama:7b-instruct",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The waiting period for stones in the urinary system is 24 months from the date of commencement of coverage for the Insured Person.",
+      "latency_seconds": 38.597,
+      "retrieval_latency_seconds": 0.398
+    },
+    {
+      "question_id": "Q04",
+      "model": "qwen2.5:1.5b",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The waiting period for stones in the urinary system is 24 months.",
+      "latency_seconds": 8.353,
+      "retrieval_latency_seconds": 0.398
+    },
+    {
+      "question_id": "Q04",
+      "model": "phi3:mini",
+      "question": "What is the waiting period for stones in the urinary system?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The disease conditions listed under Contexts 1, 2, and 3 all mention a specific waiting period of 24 months from the commencement date. Therefore, based on these contexts, there is no separate or different specified waiting period for stones in the urinary system; it shares this common waiting period with other conditions mentioned across the documents.",
+      "latency_seconds": 26.068,
+      "retrieval_latency_seconds": 0.398
+    },
+    {
+      "question_id": "Q05",
+      "model": "codellama:7b-instruct",
+      "question": "What medical conditions or treatments are excluded from coverage?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The medical conditions and treatments that are excluded from coverage under the policy are as follows:\n\n1. Medical expenses incurred where an Insured Journey is undertaken against the advice of a qualified licensed medical practitioner.\n2. Any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice.\n3. Any Medical Expenses incurred within the territorial limits that are not stated in the Schedule.\n4. Obesity (including morbid obesity) treatment if excluded in policy unless otherwise specified.\n5. Psychiatric & psychosomatic disorders Exclusion in policy unless otherwise specified.\n6. Corrective surgery for refractive error Exclusion in policy unless otherwise specified.\n7. Treatment of sexually transmitted diseases Exclusion in policy unless otherwise specified.\n8. Donor screening charges Exclusion in policy unless otherwise specified.\n9. Admission/registration charges Exclusion in policy unless otherwise specified.\n10. Hospitalisation for evaluation/diagnostic purpose Exclusion in policy unless otherwise specified.\n11. Expenses for investigation/treatment irrelevant to the disease for",
+      "latency_seconds": 102.888,
+      "retrieval_latency_seconds": 0.392
+    },
+    {
+      "question_id": "Q05",
+      "model": "qwen2.5:1.5b",
+      "question": "What medical conditions or treatments are excluded from coverage?",
+      "verdict": "incorrect",
+      "reason": "Missing required evidence concepts.",
+      "answer": "Specific Exclusions The Company shall not be liable to pay any benefit in respect of any Insured Person for:  \n1) any Medical Expenses incurred where an Insured Journey is undertaken against the advice of a qualified licensed medical practitioner.  \n2) any Medical Expenses incurred when the specific purpose of a journey is to receive medical treatment or advice.  \n3) any Medical Expenses incurred within the territorial limits that are not stated in the Schedule.",
+      "latency_seconds": 14.961,
+      "retrieval_latency_seconds": 0.392
+    },
+    {
+      "question_id": "Q05",
+      "model": "phi3:mini",
+      "question": "What medical conditions or treatments are excluded from coverage?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The policy explicitly states that it does not cover expenses for the treatment of psychiatric and psychosomatic disorders, obesity (including morbid obesity) unless otherwise specified in a different context or document. Additionally, corrective surgery for refractive errors is excluded from coverage except when specifically related to bone marrow transplantation which may be covered by the policy as per Context 2 provided on page 68 of Group Health Insurance Policy Document Page 39 out of 44.",
+      "latency_seconds": 48.777,
+      "retrieval_latency_seconds": 0.392
+    },
+    {
+      "question_id": "Q06",
+      "model": "codellama:7b-instruct",
+      "question": "Does the policy cover hospitalization expenses?",
+      "verdict": "correct",
+      "reason": "Supported positive answer with relevant policy concepts.",
+      "answer": "The answer to the question \"Does the policy cover hospitalization expenses?\" is yes, based on the provided context. The policy document states that it will cover Medical Expenses incurred due to Illness immediately before and after an Insured Person's discharge from a Hospital for the same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Section 2.1 above. This indicates that the policy covers hospitalization expenses.",
+      "latency_seconds": 44.696,
+      "retrieval_latency_seconds": 0.412
+    },
+    {
+      "question_id": "Q06",
+      "model": "qwen2.5:1.5b",
+      "question": "Does the policy cover hospitalization expenses?",
+      "verdict": "correct",
+      "reason": "Supported positive answer with relevant policy concepts.",
+      "answer": "Yes, the policy covers hospitalization expenses. Specifically, it includes coverage for medical expenses incurred immediately before and after an inpatient hospitalization claim is admissible by the insurance company. The policy also provides coverage for post-hospitalization medical expenses up to 60 days following discharge from a hospital for the same illness as long as an inpatient care hospitalization claim has been accepted under Section 2.1 of the policy document.",
+      "latency_seconds": 9.733,
+      "retrieval_latency_seconds": 0.412
+    },
+    {
+      "question_id": "Q06",
+      "model": "phi3:mini",
+      "question": "Does the policy cover hospitalization expenses?",
+      "verdict": "incorrect",
+      "reason": "Expected a supported yes/no answer.",
+      "answer": "The available insurance documents do not contain enough information to answer this question definitively, as they focus on medical expenses rather than direct coverage of hospitalization costs themselves. However, it can be inferred that since post-hospitalization Medical Expenses are covered for up to 60 days after discharge (Contexts 2 and 3), the policy likely covers associated inpatient care claims during this period as well.",
+      "latency_seconds": 25.517,
+      "retrieval_latency_seconds": 0.412
+    },
+    {
+      "question_id": "Q07",
+      "model": "codellama:7b-instruct",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Based on the provided policy context, it appears that pre-hospitalization medical expenses are covered under the group health insurance policy. The policy states that \"We will cover Medical Expenses incurred due to Illness immediately before the Insured Person‟s admission and after the Insured Person‟s discharge from a Hospital, for a period as shown in the Schedule of Insurance Certificate, for t he same Illness as long as We have accepted an Inpatient Care Hospitalisation claim under Clause 2.1.1 above.\" This suggests that pre-hospitalization medical expenses are covered under the policy.\n\nHowever, it is important to note that post-hospitalization medical expenses may not be covered under the same terms as pre-hospitalization medical expenses. The policy states that \"Post-hospitalization Medical Expenses can be claimed as reimbursement only.\" This suggests that post-hospitalization medical expenses may be subject to certain conditions or exclusions, and it is important to consult with an insurance professional to determine the specific terms of coverage for these expenses.",
+      "latency_seconds": 65.326,
+      "retrieval_latency_seconds": 0.384
+    },
+    {
+      "question_id": "Q07",
+      "model": "qwen2.5:1.5b",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Yes, both pre-hospitalization and post-hospitalization medical expenses are covered under the policy as long as they meet the specified conditions for each type of expense. Pre-hospitalization Medical Expenses are covered immediately before the Insured Person's admission to a Hospital, while Post-hospitalization Medical Expenses cover expenses incurred up to 60 days after discharge from the hospital for the same illness as long as an Inpatient Care Hospitalisation claim is accepted under Clause 2.1 of the policy.",
+      "latency_seconds": 10.064,
+      "retrieval_latency_seconds": 0.384
+    },
+    {
+      "question_id": "Q07",
+      "model": "phi3:mini",
+      "question": "Are pre-hospitalization and post-hospitalization expenses covered?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Yes, both Pre-hospitalization Medical Expenses incurred immediately before admission to the hospital for Illness are covered as long as they relate to the same condition that led to Hospitalisation. Similarly, Post-hospitalization Medical Expenses up to 60 days after discharge from a Hospital for the same Illness are also covered provided there is an admissible Inpatient Care Hospitalisation claim under Clause 2.1 above and they meet other conditions as per Definitions 38 and 39 in Context 3 of this policy document.",
+      "latency_seconds": 28.401,
+      "retrieval_latency_seconds": 0.384
+    },
+    {
+      "question_id": "Q08",
+      "model": "codellama:7b-instruct",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The policy states that spondylosis and spondylitis are covered under the policy, specifically in the section on Osteoarthrosis / Arthritis / Gout / Rheumatism.",
+      "latency_seconds": 39.97,
+      "retrieval_latency_seconds": 0.472
+    },
+    {
+      "question_id": "Q08",
+      "model": "qwen2.5:1.5b",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The policy mentions \"Spondylosis\" and \"Spondylitis\" under the category of \"Osteoarthrosis / Arthritis / Gout / Rheumatism / Spondylosis / Spondylitis / Intervertebral Disc Prolapse.\" It does not provide specific coverage details for these conditions.",
+      "latency_seconds": 9.766,
+      "retrieval_latency_seconds": 0.472
+    },
+    {
+      "question_id": "Q08",
+      "model": "phi3:mini",
+      "question": "What does the policy say about spondylosis or spondylitis?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Spondylosis and Spondylitis are conditions listed under Covered Conditions in this Health Companion Health Insurance Plan. However, specific details regarding coverage for these conditions such as waiting periods, exclusions, or any special terms have not been provided within the context given.",
+      "latency_seconds": 25.048,
+      "retrieval_latency_seconds": 0.472
+    },
+    {
+      "question_id": "Q09",
+      "model": "codellama:7b-instruct",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "verdict": "manual_review",
+      "reason": "The retrieved evidence does not clearly support a percentage for eligible medical expenses. Do not accept 100% from unrelated loss-benefit percentages.",
+      "answer": "The answer to this question can be determined from the provided context. The policy provides that the percentage of eligible expenses covered under the policy is 100%. This means that for any eligible expense, the entire amount as mentioned against the eligible cardholder/spouse/child(ren)/domestic helper in the policy schedule/certificate of insurance will be covered. Therefore, the answer to this question is 100%.",
+      "latency_seconds": 44.101,
+      "retrieval_latency_seconds": 1.214
+    },
+    {
+      "question_id": "Q09",
+      "model": "qwen2.5:1.5b",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "verdict": "manual_review",
+      "reason": "The retrieved evidence does not clearly support a percentage for eligible medical expenses. Do not accept 100% from unrelated loss-benefit percentages.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 6.919,
+      "retrieval_latency_seconds": 1.214
+    },
+    {
+      "question_id": "Q09",
+      "model": "phi3:mini",
+      "question": "What percentage of eligible expenses is covered under the policy?",
+      "verdict": "manual_review",
+      "reason": "The retrieved evidence does not clearly support a percentage for eligible medical expenses. Do not accept 100% from unrelated loss-benefit percentages.",
+      "answer": "The provided context does not specify a particular coverage percentage for eligible medical expenses; it only mentions that there are maximum benefits up to an amount as mentioned in the Policy Schedule/Certificate of Insurance. Therefore, without additional information regarding specific percentages or limits on covered expenses within this policy document, I cannot provide an answer based solely on the given context.",
+      "latency_seconds": 24.462,
+      "retrieval_latency_seconds": 1.214
+    },
+    {
+      "question_id": "Q10",
+      "model": "codellama:7b-instruct",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The important waiting periods mentioned in the policy documents are:\n\n1. Initial Waiting Period - 7 days for an Insured Person in a policy year.\n2. Specific Waiting Period - 24 months for the following conditions: stones in biliary and urinary systems, lumps / cysts / nodules / polyps / internal tumours, gastric and Duodenal Ulcers, surgery on tonsils / adenoids.\n3. Portability Benefit - 15 days for applying the portability benefit within the existing guidelines of the Insurance Regulatory and Development Authority.",
+      "latency_seconds": 46.515,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q10",
+      "model": "qwen2.5:1.5b",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The important waiting periods mentioned in the policy documents include:\n\n- An initial waiting period of 24 months for specific conditions (Stones in biliary and urinary systems, Lumps / cysts / nodules / polyps / internal tumours, Gastric and Duodenal Ulcers, Surgery on tonsils / adenoids) that are covered from the commencement of the 3rd Policy Year.\n- A waiting period of 24 months for specific conditions (Stones in biliary and urinary systems, Lumps / cysts / nodules / polyps / internal tumours, Gastric and Duodenal Ulcers, Surgery on tonsils / adenoids) that are covered from the commencement of the 3rd Policy Year.\n- A waiting period of 24 months for specific conditions (Stones in biliary and urinary systems, Lumps / cysts / nodules / polyps / internal tumours, Gastric and Duodenal Ulcers, Surgery on tonsils / adenoids) that are covered from the commencement of the 3rd Policy Year.",
+      "latency_seconds": 14.458,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q10",
+      "model": "phi3:mini",
+      "question": "What are the important waiting periods mentioned in the policy documents?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The insurance document specifies two distinct waiting periods, which include a general initial waiting period and specific conditions that have an extended waiting period of 24 months. The exact duration for these waiting periods is not provided within this context; therefore, the answer to their lengths cannot be determined from the given information alone.",
+      "latency_seconds": 21.863,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q11",
+      "model": "codellama:7b-instruct",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "verdict": "incorrect",
+      "reason": "Missing required evidence concepts.",
+      "answer": "The available insurance documents do not contain enough information to answer this question. The policy contexts provided do not mention any specific waiting periods for different diseases or treatments, and it is not clear how these waiting periods would be applied in practice. Therefore, it is not possible to compare the health insurance policies based on waiting periods.",
+      "latency_seconds": 43.562,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q11",
+      "model": "qwen2.5:1.5b",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "verdict": "incorrect",
+      "reason": "Missing required evidence concepts.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 7.783,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q11",
+      "model": "phi3:mini",
+      "question": "Compare the health insurance policies in the knowledge base based on waiting periods.",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Based on the provided policy contexts, both Group Health Insurance Policy (Context 1) and Personal Health Assurance Plan (Policy Document - Context 2 & 3), have specific waiting periods for certain medical conditions or treatments as follows:\n\n- For urinary stones in the urinary system under the first policy document, there is a standard waiting period of 24 months. This applies to both policies if we consider that they might share similar terms regarding this condition (though it's not explicitly stated). However, for biliary stones and other conditions listed across all documents with explicit mention in Context 3:\n  1. Biliary system - A waiting period of 24 months is mentioned under the third policy document context specifically addressing hospital cash benefit eligibility starting from the commencement of the third Policy Year, provided there has been continuous insurance without a break since the first policy inception for that individual (Contexts 1 and 3).\n  2. Urinary system - A waiting period of 24 months is mentioned under Context 1 as part of general conditions subject to this wait time from coverage commencement, with no specific mention about starting eligibility or exceptions based on",
+      "latency_seconds": 42.848,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q12",
+      "model": "codellama:7b-instruct",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "Both Context 1 and Context 2 mention coverage for hospitalization.",
+      "latency_seconds": 35.847,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q12",
+      "model": "qwen2.5:1.5b",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 7.339,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q12",
+      "model": "phi3:mini",
+      "question": "Which health insurance policy documents mention coverage for hospitalization?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "Both Contexts 1 and 2 from different policies explicitly state that they cover Medical Expenses incurred due to Illness immediately before the Insured Person's admission (pre-hospitalisation) as well as after their discharge from a Hospital (post-hospitalisation), provided certain conditions are met. Context 3 also mentions coverage for pre-hospitalization medical expenses under specific circumstances related to hospital admissibility of claims by the insurance company, but it does not explicitly mention post-hospitalization costs in this context snippet.",
+      "latency_seconds": 29.208,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q13",
+      "model": "codellama:7b-instruct",
+      "question": "What types of situations are covered under the travel insurance policies?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The policy context provided does not provide enough information to answer this question. The policy mentions that coverage is provided for both one-way and round-trip travel, but it does not specify what types of situations are covered under the policy. Therefore, the answer cannot be determined from the provided context.",
+      "latency_seconds": 35.644,
+      "retrieval_latency_seconds": 0.385
+    },
+    {
+      "question_id": "Q13",
+      "model": "qwen2.5:1.5b",
+      "question": "What types of situations are covered under the travel insurance policies?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Coverage is provided for both, one-way and round-trip travel. Covered losses caused by or resulting from Terrorist Act are not excluded.",
+      "latency_seconds": 7.074,
+      "retrieval_latency_seconds": 0.385
+    },
+    {
+      "question_id": "Q13",
+      "model": "phi3:mini",
+      "question": "What types of situations are covered under the travel insurance policies?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "Covered losses caused by Terrorist Acts, as well as one-way and round-trip international trips where prepaid fares for both to and fro tickets have been paid using an Eligible Card or points from a Rewards program. Trips are not limited in number.",
+      "latency_seconds": 21.125,
+      "retrieval_latency_seconds": 0.385
+    },
+    {
+      "question_id": "Q14",
+      "model": "codellama:7b-instruct",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "verdict": "correct",
+      "reason": "Supported positive answer with relevant policy concepts.",
+      "answer": "Yes, travel insurance typically covers medical emergencies during a trip. The policy context you provided mentions that the insurance provides coverage for \"Covered Medical Expenses\" in the event of an injury or sickness while on a trip, and also covers expenses for \"Emergency Medical Evacuation\" if incurred outside India. This suggests that the insurance may cover medical costs related to emergencies such as illnesses or injuries that occur during the trip. However, it's important to note that the specific terms of the policy and any exclusions or limitations may vary depending on the insurance provider and the details of the policy.",
+      "latency_seconds": 51.906,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q14",
+      "model": "qwen2.5:1.5b",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "verdict": "correct",
+      "reason": "Supported positive answer with relevant policy concepts.",
+      "answer": "Yes, travel insurance covers medical emergencies during a trip. The policy provides coverage for Covered Medical Expenses in the event you suffer from any injury or sickness resulting from medically necessary treatment outside India while on a Trip, subject to a maximum benefit up to the amount mentioned in the Policy Schedule/ Certificate of Insurance.",
+      "latency_seconds": 9.813,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q14",
+      "model": "phi3:mini",
+      "question": "Does travel insurance cover medical emergencies during a trip?",
+      "verdict": "correct",
+      "reason": "Supported positive answer with relevant policy concepts.",
+      "answer": "Yes, based on Context 2 and the additional information provided in Benefit 2 of this policy context, Covered Medical Expenses are included for treatments necessary due to an injury or sickness that is not related to any pre-existing disease. This coverage applies when treatment occurs outside India while traveling as per a medical practitioner's advice and includes emergency services requested from the Assistance Department if they relate to covered expenses, such as transportation for Emergency Medical Evacuation (as detailed in Context 3).",
+      "latency_seconds": 30.003,
+      "retrieval_latency_seconds": 0.359
+    },
+    {
+      "question_id": "Q15",
+      "model": "codellama:7b-instruct",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The answer to this question can be determined from the context provided. The benefits provided under the accident insurance policy are as follows:\n\n1. AccidentCare (Individual or Family option) - If any of the Insured Persons dies or sustains any Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below.\n2. Travel Accident – Insured Journey coverage against Accidental death, dismemberment (including Loss of sight, speech & hearing) as a result of Injury during a Trip. The Principal Benefit provided for Coverage under the Trip as applicable is up to amount as mentioned in the Policy Schedule / Certificate of Insurance.\n3. Personal Accident Cover (Individual or Family option) - If any of the Insured Persons dies or sustains any bodily Injury resulting solely and directly from Accident occurring during the Policy Period at any location worldwide, and while the Policy is in force, We will provide the benefits described below:\n4. Accidental Death - If an Ins",
+      "latency_seconds": 72.436,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q15",
+      "model": "qwen2.5:1.5b",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "AccidentCare (Individual or Family option) provides coverage for accidental death and injury resulting solely and directly from an Accident occurring during the Policy Period worldwide. Personal Accident Cover (Individual or Family option) covers accidental bodily injury within 90 days of occurrence, providing benefits up to the amount specified in the Schedule of Insurance Certificate.",
+      "latency_seconds": 9.874,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q15",
+      "model": "phi3:mini",
+      "question": "What benefits are provided under the accident insurance policy?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The accident insurance policy provides coverage for Accidental death and bodily injury resulting solely from an accident occurring during the Policy Period at any location worldwide. In case of accidental death, a specified Sum Assured is paid out within 90 days following the incident. Additionally, there's Travel Accident – Insured Journey coverage against accidental death or dismemberment (including loss of sight, speech & hearing) as an injury during travel if undertaken under specific conditions related to earning points in a Rewards program associated with your Eligible Card and embarking on a trip.",
+      "latency_seconds": 31.884,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q16",
+      "model": "codellama:7b-instruct",
+      "question": "If a person has a pre-existing disease and also requires treatment for cataract, what waiting periods may apply?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The answer cannot be determined from the provided context. The policy does not mention any specific waiting period for pre-existing diseases or treatments for cataracts. However, it is mentioned that there are specific waiting periods for certain conditions such as stones in biliary and urinary systems, lumps/cysts/nodules/polyps/internal tumors, gastric and duodenal ulcers, surgery on tonsils/adenoids, and 30 days waiting period for any treatment taken during the first 30 days since coverage commenced. However, these waiting periods do not apply to subsequent and continuous renewals of the policy. Therefore, it is unclear whether a person with a pre-existing disease and requiring treatment for cataract would be subject to any specific waiting periods under the policy.",
+      "latency_seconds": 53.151,
+      "retrieval_latency_seconds": 0.372
+    },
+    {
+      "question_id": "Q16",
+      "model": "qwen2.5:1.5b",
+      "question": "If a person has a pre-existing disease and also requires treatment for cataract, what waiting periods may apply?",
+      "verdict": "incorrect",
+      "reason": "Question requires refusal/clarification, but model gave a substantive claim.",
+      "answer": "The waiting period for stones in biliary and urinary systems would be 24 months. The waiting period for surgery on tonsils / adenoids is not specified but typically does not exceed the general waiting period of 24 months unless otherwise stated. Therefore, both conditions fall under the 24-month waiting period.",
+      "latency_seconds": 9.235,
+      "retrieval_latency_seconds": 0.372
+    },
+    {
+      "question_id": "Q16",
+      "model": "phi3:mini",
+      "question": "If a person has a pre-existing disease and also requires treatment for cataract, what waiting periods may apply?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question. The specifics of coverage regarding treatments other than those listed under the \"Specific Waiting Period\" are not provided in the context given. Therefore, we cannot determine if a waiting period applies for cataract treatment based on pre-existing conditions from these insurance documents alone.",
+      "latency_seconds": 22.405,
+      "retrieval_latency_seconds": 0.372
+    },
+    {
+      "question_id": "Q17",
+      "model": "codellama:7b-instruct",
+      "question": "Based on the policy documents, what factors could affect whether a hospitalization claim is approved?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The following factors can affect whether a hospitalization claim is approved based on the policy documents provided:\n\n1. Duly filled and signed claim form and KYC documents: The claim form must be duly filled and signed by the patient, and the KYC documents must be authenticated to verify the patient's identity.\n2. Final Hospital Discharge Summary in original / self-attested copies if the originals are submitted with another insurer, if applicable: The hospital discharge summary must be in original or self-attested copies if the originals are submitted with another insurer.\n3. Final Hospital Bill in original / self-attested copies if the originals are submitted with another insurer, if applicable: The final hospital bill must be in original or self-attested copies if the originals are submitted with another insurer.\n4. Consultation notes and/or investigation reports from outside the hospital prior to hospitalization: These documents must be authenticated by a medical board constituted by the Central and/or State Government.\n5. Certificate of Disability issued by a Medical Board duly constituted by the Central and/or State Government: The certificate of disability must be issued",
+      "latency_seconds": 72.148,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q17",
+      "model": "qwen2.5:1.5b",
+      "question": "Based on the policy documents, what factors could affect whether a hospitalization claim is approved?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The factors that could affect whether a hospitalization claim is approved based on the provided policy documents are:\n\n1. **Claim Form and KYC Documents**: The completeness and accuracy of the claim form and the supporting KYC (Know Your Customer) documents.\n2. **Hospital Discharge Summary**: The original or self-attested copies of the discharge summary submitted with another insurer, if applicable.\n3. **Final Hospital Bill**: The original or self-attested copies of the final hospital bill submitted with another insurer, if applicable.\n4. **Consultation Notes and Investigation Reports from Outside the Hospital**: Any consultation notes and investigation reports provided prior to hospitalization that are not part of the claim form.\n5. **Medico Legal Certificate Duly Attested by the Concerned Hospital**: The attestation of a Medico Legal Certificate by the concerned hospital, if applicable.\n6. **Final Hospital Bill with Receipt/Copies attested by Other Insurer**: Any copies of the final hospital bill submitted with another insurer that are attested.\n\nThese factors collectively ensure that all necessary documentation is provided and meets the requirements specified in the policy documents for a claim to be approved.",
+      "latency_seconds": 16.63,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q17",
+      "model": "phi3:mini",
+      "question": "Based on the policy documents, what factors could affect whether a hospitalization claim is approved?",
+      "verdict": "correct",
+      "reason": "Contains required evidence concepts.",
+      "answer": "The approval of a hospitalization claim under this insurance policy may depend on several key elements as outlined in the provided contexts. These include but are not limited to having duly filled and signed KYC documents, obtaining necessary Hospital Discharge Summaries (in original or self-attested copies if submitted with another insurer), providing a copy of the Final Hospital Bill along with receipts/copies attested by other insurers when applicable. Additionally, for Accident Hospitalization claims specifically mentioned in Context 2, an FIR / Panchnama / Inquest report and Medico Legal Certificate may also be required if they are relevant to the claim being made.",
+      "latency_seconds": 33.588,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q18",
+      "model": "codellama:7b-instruct",
+      "question": "Will my treatment be covered?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The answer to the question cannot be determined from the provided context. The policy does not provide enough information to determine whether the treatment will be covered or not.",
+      "latency_seconds": 34.874,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q18",
+      "model": "qwen2.5:1.5b",
+      "question": "Will my treatment be covered?",
+      "verdict": "incorrect",
+      "reason": "Question requires refusal/clarification, but model gave a substantive claim.",
+      "answer": "Yes, your treatment will be covered under the policy as it falls within the scope of Day-Care Treatment as defined in Section 2.6 and is for a continuous period of less than 24 hours.",
+      "latency_seconds": 8.0,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q18",
+      "model": "phi3:mini",
+      "question": "Will my treatment be covered?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question. The provided context does not specify whether the treatments you are referring to fall under inpatient or outpatient (OPD) care, nor does it mention your specific illness type which is crucial for determining coverage based on pre and post-hospitalization expenses as well as day-care treatment.",
+      "latency_seconds": 24.381,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q19",
+      "model": "codellama:7b-instruct",
+      "question": "Can I claim this expense?",
+      "verdict": "incorrect",
+      "reason": "Question requires refusal/clarification, but model gave a substantive claim.",
+      "answer": "The answer to your question is not clear because there are several different contexts and questions that could be asked. However, based on the information provided in the policy context, it appears that you may be asking whether you can claim medical expenses related to a bodily injury or sudden unexpected sickness that occurred during the period of insurance.\n\nThe policy states that if an Insured Person sustains Bodily Injury or sudden unexpected Sickness, the Company will reimburse them for necessary Usual and Reasonable Medical Expenses incurred within two months from the Date of Loss up to the Sum Insured stated in the Schedule. This suggests that if you have a valid claim for medical expenses related to this type of event, you may be able to make a claim under the policy.\n\nHowever, it is important to note that the policy also states that the Company reserves the right to call for additional documentation or information as needed, and that any expenses related to such examination or investigation will be borne by the Company. Therefore, you may need to provide additional information or documentation in order to support your claim.\n\nIt is always a good idea to carefully review the policy terms and conditions before making",
+      "latency_seconds": 63.252,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q19",
+      "model": "qwen2.5:1.5b",
+      "question": "Can I claim this expense?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 6.666,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q19",
+      "model": "phi3:mini",
+      "question": "Can I claim this expense?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer whether you can claim a specific medical expense as reimbursement under your policy's emergency medical expenses provision. Please refer directly to the relevant section of your policy for details on eligibility and coverage limits, or contact our customer service representatives for assistance with understanding how this benefit applies in your situation.",
+      "latency_seconds": 23.209,
+      "retrieval_latency_seconds": 0.37
+    },
+    {
+      "question_id": "Q20",
+      "model": "codellama:7b-instruct",
+      "question": "What is the current price of Bitcoin?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The answer cannot be determined from the provided context. The policy does not mention anything about Bitcoin or its price. Therefore, it is not possible to determine the current price of Bitcoin based on this policy.",
+      "latency_seconds": 32.996,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q20",
+      "model": "qwen2.5:1.5b",
+      "question": "What is the current price of Bitcoin?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 6.663,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q20",
+      "model": "phi3:mini",
+      "question": "What is the current price of Bitcoin?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question about the current price of Bitcoin.",
+      "latency_seconds": 17.22,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q21",
+      "model": "codellama:7b-instruct",
+      "question": "Who will win the next Cricket World Cup?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The answer to this question cannot be determined from the provided context. The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 44.537,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q21",
+      "model": "qwen2.5:1.5b",
+      "question": "Who will win the next Cricket World Cup?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The provided context does not contain any information about the upcoming Cricket World Cup or its winner. Therefore, the answer is:\n\nThe available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 9.582,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q21",
+      "model": "phi3:mini",
+      "question": "Who will win the next Cricket World Cup?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 24.119,
+      "retrieval_latency_seconds": 0.362
+    },
+    {
+      "question_id": "Q22",
+      "model": "codellama:7b-instruct",
+      "question": "Does the insurance policy cover cosmetic surgery?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The answer cannot be determined from the provided context. The policy does not mention cosmetic surgery as a covered expense, and it is not clear whether the policy covers such procedures. It is important to consult with an insurance professional or the insurance company directly for more information about the specific terms and conditions of the policy.",
+      "latency_seconds": 37.978,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q22",
+      "model": "qwen2.5:1.5b",
+      "question": "Does the insurance policy cover cosmetic surgery?",
+      "verdict": "incorrect",
+      "reason": "Question requires refusal/clarification, but model gave a substantive claim.",
+      "answer": "The insurance policy does not explicitly mention cosmetic surgery, but it covers medical treatment related to bariatric and varicose vein surgeries. If cosmetic procedures are considered part of these conditions, they would likely be covered under this coverage. However, without specific information on the scope of cosmetic procedures in the policy, it is difficult to definitively answer whether cosmetic surgery is included.",
+      "latency_seconds": 9.008,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q22",
+      "model": "phi3:mini",
+      "question": "Does the insurance policy cover cosmetic surgery?",
+      "verdict": "correct",
+      "reason": "Appropriate refusal/clarification.",
+      "answer": "The available insurance documents do not contain enough information to answer this question regarding coverage for cosmetic surgery, as it is neither mentioned nor implied in any of the provided contexts. Cosmetic surgeries are typically elective and not medically necessary procedures; therefore, they often fall outside standard health policy coverages unless specifically stated otherwise within a particular plan's benefits table or exclusions list which has not been included herein.",
+      "latency_seconds": 24.103,
+      "retrieval_latency_seconds": 0.36
+    },
+    {
+      "question_id": "Q23",
+      "model": "codellama:7b-instruct",
+      "question": "Does the policy provide unlimited coverage for every medical treatment?",
+      "verdict": "correct",
+      "reason": "Rejects unlimited coverage and/or identifies limits.",
+      "answer": "The answer is no, the policy does not provide unlimited coverage for every medical treatment. The policy states that the coverage is limited to reasonable expenses incurred towards medical treatment taken during the Policy Period for an Illness, Accident or condition described below if this is contracted or sustained by an Insured Person during the Policy Period and subject always to the Sum Insured, any subsidiary limit specified in the Product Benefits Table, the terms, conditions, limitations and exclusions mentioned in the Policy and eligibility as per the insurance plan opted for in the Product Benefits Table and as shown in the Schedule of Insurance Certificate.",
+      "latency_seconds": 51.591,
+      "retrieval_latency_seconds": 0.361
+    },
+    {
+      "question_id": "Q23",
+      "model": "qwen2.5:1.5b",
+      "question": "Does the policy provide unlimited coverage for every medical treatment?",
+      "verdict": "correct",
+      "reason": "Rejects unlimited coverage and/or identifies limits.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 7.357,
+      "retrieval_latency_seconds": 0.361
+    },
+    {
+      "question_id": "Q23",
+      "model": "phi3:mini",
+      "question": "Does the policy provide unlimited coverage for every medical treatment?",
+      "verdict": "correct",
+      "reason": "Rejects unlimited coverage and/or identifies limits.",
+      "answer": "The available insurance documents do not contain enough information to answer this question regarding whether there is an \"unlimited\" or no-limit aspect in their coverage of all types of treatments. The context provided specifies subsidiary limits and conditions, but does not explicitly state that the policy provides unlimited coverage for every medical treatment.",
+      "latency_seconds": 24.475,
+      "retrieval_latency_seconds": 0.361
+    },
+    {
+      "question_id": "Q24",
+      "model": "codellama:7b-instruct",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "The answer is Annexure - V.",
+      "latency_seconds": 88.738,
+      "retrieval_latency_seconds": 0.365
+    },
+    {
+      "question_id": "Q24",
+      "model": "qwen2.5:1.5b",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "The available insurance documents do not contain enough information to answer this question.",
+      "latency_seconds": 18.776,
+      "retrieval_latency_seconds": 0.365
+    },
+    {
+      "question_id": "Q24",
+      "model": "phi3:mini",
+      "question": "Which document contains information about LIC's Jan Suraksha policy?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "The provided context does not contain specific details regarding the benefits or terms of LIC’s Jan Suraksha Policy, hence we cannot determine this from the given documents. The available insurance documents do not contain enough information to answer this question about LIC's Jan Suraksha policy in detail.",
+      "latency_seconds": 57.106,
+      "retrieval_latency_seconds": 0.365
+    },
+    {
+      "question_id": "Q25",
+      "model": "codellama:7b-instruct",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "According to the provided context, the policy document that is most relevant for questions about accidental injury benefits is the Policy Schedule/ Certificate of Insurance. This document contains information on the specific amount set opposite in the Policy Schedule/ Certificate of Insurance for the payment of the premium and in compliance with all applicable provisions of this Policy. The policy provides that the insurance provided under this Policy is only with respect to such and so many of the Benefits as are indicated by a specific amount set opposite in the Policy Schedule/ Certificate of Insurance.",
+      "latency_seconds": 46.307,
+      "retrieval_latency_seconds": 0.363
+    },
+    {
+      "question_id": "Q25",
+      "model": "qwen2.5:1.5b",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "The most relevant policy document for questions about accidental injury benefits is **Part 1: Policy Definitions**. This section defines terms like \"Accident/Accidental\" and provides a specific amount set opposite in the Policy Schedule/ Certificate of Insurance, which is crucial for understanding the coverage details related to accidental injuries under this insurance policy.",
+      "latency_seconds": 8.644,
+      "retrieval_latency_seconds": 0.363
+    },
+    {
+      "question_id": "Q25",
+      "model": "phi3:mini",
+      "question": "Which policy document is most relevant for questions about accidental injury benefits?",
+      "verdict": "incorrect",
+      "reason": "Required document name(s) were not identified precisely.",
+      "answer": "Context 2 provides information on Personal Accident Cover (Individual or Family option), which includes details of coverage in case any Insured Person dies or sustains bodily Injury resulting solely and directly from an Accident occurring during the Policy Period at any location worldwide. This context is most relevant for questions about accidental injury benefits as it specifically addresses this scenario with a defined benefit structure, including payment upon death due to such injuries within 90 days of occurrence.",
+      "latency_seconds": 25.337,
+      "retrieval_latency_seconds": 0.363
+    }
+  ]
+}
