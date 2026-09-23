@@ -6,7 +6,7 @@ from app.services.embedding_service import generate_embeddings
 
 
 OUTPUT_FILE = (
-    Path(__file__).resolve().parents[1]
+    Path(__file__).resolve().parents[2]
     / "data"
     / "embeddings"
     / "embeddings.json"

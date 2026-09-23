@@ -38,6 +38,7 @@ textarea {
   left: 0;
   top: 0;
   bottom: 0;
+  overflow-y: auto;
 }
 
 .brand {
@@ -2878,4 +2879,15 @@ option {
     flex-direction: column;
     gap: 12px;
   }
+}
+
+/* Evaluation Insights - force sidebar visibility */
+.sidebar nav {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 180px) !important;
+  padding-bottom: 20px !important;
+}
+
+.sidebar {
+  overflow: hidden;
 }

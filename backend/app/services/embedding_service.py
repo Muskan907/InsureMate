@@ -1,6 +1,13 @@
 import requests
 
-OLLAMA_EMBED_URL = "http://localhost:11434/api/embed"
+import os
+
+OLLAMA_BASE_URL = os.getenv(
+    "OLLAMA_BASE_URL",
+    "http://localhost:11434/api"
+)
+
+OLLAMA_EMBED_URL = f"{OLLAMA_BASE_URL}/embed"
 EMBEDDING_MODEL = "nomic-embed-text"
 
 

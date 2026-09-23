@@ -1,5 +1,6 @@
 from pathlib import Path
 import tempfile
+import os
 
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from pydantic import BaseModel
@@ -16,7 +17,12 @@ def call_uploaded_ollama(model: str, prompt: str):
     import requests
     import time
 
-    url = "http://localhost:11434/api/generate"
+    OLLAMA_BASE_URL = os.getenv(
+    "OLLAMA_BASE_URL",
+    "http://localhost:11434/api"
+    )
+
+    url = f"{OLLAMA_BASE_URL}/generate"
 
     payload = {
         "model": model,

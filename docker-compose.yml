@@ -5,7 +5,10 @@ services:
       context: .
       dockerfile: docker/Dockerfile.backend
     container_name: insuremate-backend
-    network_mode: host
+    ports:
+      - "8000:8000"
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434/api  
     volumes:
       - ./data:/app/data
     restart: unless-stopped

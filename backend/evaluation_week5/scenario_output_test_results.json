@@ -1,0 +1,82 @@
+[
+  {
+    "id": "OT01",
+    "type": "sufficient",
+    "status": "SUPPORTED",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 55.6,
+    "latency_seconds": 4.03,
+    "validator_reason": ""
+  },
+  {
+    "id": "OT02",
+    "type": "conditional",
+    "status": "CONDITIONAL",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 41.2,
+    "latency_seconds": 3.07,
+    "validator_reason": ""
+  },
+  {
+    "id": "OT03",
+    "type": "sufficient",
+    "status": "SUPPORTED",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 55.6,
+    "latency_seconds": 35.36,
+    "validator_reason": "The candidate output correctly identifies the policy's definition of 'unproven/experimental treatment' and applies it to the scenario of an experimental treatment for a rare disease, which is not covered by the policy as per the provided policy evidence."
+  },
+  {
+    "id": "OT04",
+    "type": "unsupported_claim",
+    "status": "INSUFFICIENT EVIDENCE",
+    "pass": true,
+    "independent_validation_pass": false,
+    "grounding_overlap_percent": 60.0,
+    "latency_seconds": 21.3,
+    "validator_reason": "The candidate output claims unlimited coverage with no exclusions, which is not supported by the policy evidence provided. The policy evidence mentions specific conditions, limitations, and exclusions, but does not guarantee unlimited coverage with no exclusions."
+  },
+  {
+    "id": "OT05",
+    "type": "multi_fact",
+    "status": "SUPPORTED",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 55.6,
+    "latency_seconds": 6.47,
+    "validator_reason": ""
+  },
+  {
+    "id": "OT06",
+    "type": "missing_fact",
+    "status": "CONDITIONAL",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 41.2,
+    "latency_seconds": 2.9,
+    "validator_reason": ""
+  },
+  {
+    "id": "OT07",
+    "type": "conflict_check",
+    "status": "INSUFFICIENT EVIDENCE",
+    "pass": true,
+    "independent_validation_pass": false,
+    "grounding_overlap_percent": 40.0,
+    "latency_seconds": 22.31,
+    "validator_reason": "The candidate output correctly identifies the specific waiting period for surgery as 24 months and acknowledges the policy duration of 36 months. It correctly concludes that the waiting period for the surgery is 36 months, which is within the policy duration."
+  },
+  {
+    "id": "OT08",
+    "type": "format",
+    "status": "SUPPORTED",
+    "pass": true,
+    "independent_validation_pass": true,
+    "grounding_overlap_percent": 53.1,
+    "latency_seconds": 6.23,
+    "validator_reason": ""
+  }
+]

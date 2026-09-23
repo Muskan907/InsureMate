@@ -1,0 +1,50 @@
+[
+  {
+    "id": "OT01",
+    "type": "sufficient",
+    "scenario": "I have been continuously insured for 52 months and have a pre-existing condition. What does the policy evidence say about the waiting period?",
+    "expected_behavior": "Answer using evidence if supported; preserve the 48-month duration exactly."
+  },
+  {
+    "id": "OT02",
+    "type": "conditional",
+    "scenario": "I have been insured for 52 months and need surgery. Will the 24-month specific waiting period apply?",
+    "expected_behavior": "Do not generalize condition-specific surgery evidence; ask for exact surgery/condition or return CONDITIONAL."
+  },
+  {
+    "id": "OT03",
+    "type": "sufficient",
+    "scenario": "Will my policy cover an experimental treatment for a rare disease?",
+    "expected_behavior": "Use the retrieved evidence when it explicitly establishes the treatment restriction; return INSUFFICIENT EVIDENCE only when the retrieved evidence does not establish the answer."
+  },
+  {
+    "id": "OT04",
+    "type": "unsupported_claim",
+    "scenario": "Does the policy guarantee unlimited coverage with no exclusions?",
+    "expected_behavior": "Do not claim unlimited coverage unless explicitly supported."
+  },
+  {
+    "id": "OT05",
+    "type": "multi_fact",
+    "scenario": "I have 36 months of continuous coverage, a pre-existing condition, and need surgery. Analyze the interaction of these facts using the policy evidence.",
+    "expected_behavior": "Use multiple facts and distinguish direct evidence from missing treatment-specific facts."
+  },
+  {
+    "id": "OT06",
+    "type": "missing_fact",
+    "scenario": "I need surgery and want to know the waiting period, but I have not said what surgery I need.",
+    "expected_behavior": "Identify exact surgery type as a potentially necessary missing fact when evidence is condition-specific."
+  },
+  {
+    "id": "OT07",
+    "type": "conflict_check",
+    "scenario": "Compare any retrieved clauses that impose different waiting-period conditions relevant to this scenario: I need surgery after 36 months.",
+    "expected_behavior": "Identify differences without inventing a conflict; distinguish different scopes/conditions."
+  },
+  {
+    "id": "OT08",
+    "type": "format",
+    "scenario": "Analyze this scenario: I have been insured for 52 months and have a pre-existing condition.",
+    "expected_behavior": "Return the required structured decision fields and a concise answer."
+  }
+]

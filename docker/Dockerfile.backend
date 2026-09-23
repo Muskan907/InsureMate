@@ -9,7 +9,8 @@ RUN pip install --no-cache-dir -r /app/backend/requirements.txt \
 
 COPY backend/app /app/backend/app
 COPY documents /app/documents
-
+COPY backend/evaluation_week4 /app/backend/evaluation_week4
+COPY backend/evaluation_week5 /app/backend/evaluation_week5
 RUN mkdir -p /app/data/uploads
 
 EXPOSE 8000
