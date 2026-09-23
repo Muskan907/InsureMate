@@ -1,0 +1,102 @@
+question_id,category,raw_category,model,category_score,hallucination,hallucination_evidence,latency_seconds,prompt_tokens,output_tokens,total_tokens,judge_model,test_environment_status,test_environment_error,affected_component,answer_correctness,behavior_preservation,completeness,correctness,dependency_correctness,exact_retrieval,fix,flow_completeness,groundedness,hallucination_free,readability,reasoning,relevance,retrieval_quality,root_cause,syntax_validity,test_pass_rate
+E01,Explanation,Explanation,codellama:7b-instruct,75.00000000000001,False,,82.552,1810,393,2203,llama3.1:8b,,,,,,50,75,,,,,,100,,,100,,,,
+E02,Explanation,Explanation,codellama:7b-instruct,82.50000000000001,False,,42.429,2077,172,2249,llama3.1:8b,,,,,,75,75,,,,,,100,,,100,,,,
+E03,Explanation,Explanation,codellama:7b-instruct,100.00000000000001,False,,43.375,1959,192,2151,llama3.1:8b,,,,,,100,100,,,,,,100,,,100,,,,
+E04,Explanation,Explanation,codellama:7b-instruct,75.00000000000001,False,,69.076,2024,339,2363,llama3.1:8b,,,,,,50,75,,,,,,100,,,100,,,,
+CR01,Code Retrieval,Code Retrieval,codellama:7b-instruct,100.00000000000001,False,,18.117,2099,27,2126,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR02,Code Retrieval,Code Retrieval,codellama:7b-instruct,100.00000000000001,False,,19.284,1994,42,2036,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR03,Code Retrieval,Code Retrieval,codellama:7b-instruct,27.500000000000004,False,,19.832,1907,38,1945,llama3.1:8b,,,,,,,,,33,,,,100,,,0,,,,
+CR04,Code Retrieval,Code Retrieval,codellama:7b-instruct,45.00000000000001,False,,67.706,1766,327,2093,llama3.1:8b,,,,,,,,,40,,,,100,,,0,,,,
+DU01,Dependency Understanding,Dependency Understanding,codellama:7b-instruct,0.0,True,"The model answer claims that the service that `retrieval_service.py` depends on to create the query embedding is the `embedding_service.py` file, but there is no evidence in the repository to support this claim. The `retrieval_service.py` file is not even mentioned in the repository evidence.",36.028,1820,144,1964,llama3.1:8b,,,,,,,,0,,,0,,0,,0,,,,,
+DU02,Dependency Understanding,Dependency Understanding,codellama:7b-instruct,10.000000000000002,False,,63.217,1882,298,2180,llama3.1:8b,,,,,,,,0,,,0,,100,,0,,,,,
+DU03,Dependency Understanding,Dependency Understanding,codellama:7b-instruct,60.00000000000001,False,,53.164,1658,254,1912,llama3.1:8b,,,,,,,,75,,,50,,100,,25,,,,,
+DU04,Dependency Understanding,dependency_failure,codellama:7b-instruct,0.0,True,"The model answer claims that the retrieval pipeline in retrieval_service.py and evaluation_lab_service.py would be affected, but there is no evidence in the repository to support this claim.",87.257,2021,414,2435,llama3.1:8b,,,,,,,,0,,,0,,0,,0,,,,,
+BA01,Bug Analysis,Bug Analysis,codellama:7b-instruct,41.25,False,,57.518,1782,248,2030,llama3.1:8b,,,0,,,,,,,0,,,100,,50,,,75,,
+BA02,Bug Analysis,dependency_error,codellama:7b-instruct,80.0,False,,43.505,1842,167,2009,llama3.1:8b,,,100,,,,,,,75,,,100,,50,,,75,,
+BA03,Bug Analysis,retrieval_bug,codellama:7b-instruct,0.0,True,The answer mentions 'incorrect implementation of the retrieval system' and 'incorrect input parameters' without any evidence from the repository. The repository only shows the retrieval system's code and does not indicate any issues with the implementation or input parameters.,62.787,1922,290,2212,llama3.1:8b,,,0,,,,,,,0,,,0,,0,,,0,,
+BA04,Bug Analysis,logic_bug,codellama:7b-instruct,10.0,False,,60.144,1989,257,2246,llama3.1:8b,,,0,,,,,,,0,,,100,,0,,,0,,
+CG01,Code Generation,Code Generation,codellama:7b-instruct,40.0,False,,105.4,1938,500,2438,llama3.1:8b,no_code,No code extracted,,,,,100,,,,,,,,,100,,,,0
+CG02,Code Generation,Code Generation,codellama:7b-instruct,33.75,False,,39.529,1601,168,1769,llama3.1:8b,no_function,No candidate function found,,,,,75,,,,,,,,,100,,,,0.0
+CG03,Code Generation,Code Generation,codellama:7b-instruct,0.0,False,,14.908,1762,18,1780,llama3.1:8b,failed,No GET /health route found,,,,,0,,,,,,,,,0,,,,0.0
+CG04,Code Generation,Code Generation,codellama:7b-instruct,0.0,True,"The model answer assumes the implementation of the `cosine_similarity()` function is correct and returns the correct similarity score for the given input vectors, which is not supported by the provided repository evidence.",72.438,1823,347,2170,llama3.1:8b,failed,"Traceback (most recent call last):
+  File ""C:\Users\muska\AppData\Local\Temp\tmp8c0h0klg\cg04_runner.py"", line 20, in <module>
+    test_cosine_similarity()
+  File ""C:\Users\muska\AppData\Local\Temp\tmp8c0h0klg\cg04_runner.py"", line 19, in test_cosine_similarity
+    assert cosine_similarity(a, b) == 0.81
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError",,,,,0,,,,,,,,,0,,,,0.0
+RF01,Refactoring,Refactoring,codellama:7b-instruct,0.0,True,"The model answer describes the RAG as a feature that retrieves relevant policy documents and generates answers to user questions, which is not supported by the provided repository evidence.",81.734,1870,392,2262,llama3.1:8b,,,,,0,,,,,,,,,0,,0,,,0,
+RF02,Refactoring,Refactoring,codellama:7b-instruct,95.0,False,,52.825,1764,239,2003,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF03,Refactoring,Refactoring,codellama:7b-instruct,0.0,True,"The model answer suggests using FastAPI for the Embedding Service and Ollama for the Retrieval Service, but the repository evidence does not provide any information about these frameworks being used in the project.",74.434,1885,352,2237,llama3.1:8b,,,,,0,,,,,,,,,0,,0,,,0,
+RF04,Refactoring,Refactoring,codellama:7b-instruct,78.75,False,,108.424,2087,500,2587,llama3.1:8b,,,,,75,,,,,,,,,50,,100,,,100,
+RAG01,RAG based Question,RAG based Question,codellama:7b-instruct,100.00000000000001,False,,15.574,901,38,939,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,
+RAG02,RAG based Question,RAG based Question,codellama:7b-instruct,100.00000000000001,False,,34.348,929,160,1089,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,
+RAG03,RAG based Question,RAG based Question,codellama:7b-instruct,40.00000000000001,True,"The model's answer claims that Group Health Insurance has a waiting period of 24 months for any subsequent and continuous renewals of the policy, and that Health Companion Insurance has a waiting period credits extended to pre-existing diseases and time-bound exclusions/waiting periods. However, the retrieved evidence does not support these claims.",52.613,915,285,1200,llama3.1:8b,,,,0,,,,,,,,0,,,,100,100,,,
+RAG04,RAG based Question,RAG based Question,codellama:7b-instruct,100.00000000000001,False,,38.635,899,151,1050,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,
+E01,Explanation,Explanation,phi3:mini,75.00000000000001,False,,45.805,1799,478,2277,llama3.1:8b,,,,,,50,75,,,,,,100,,,100,,,,
+E02,Explanation,Explanation,phi3:mini,100.00000000000001,False,,38.626,2066,338,2404,llama3.1:8b,,,,,,100,100,,,,,,100,,,100,,,,
+E03,Explanation,Explanation,phi3:mini,75.00000000000001,False,,35.444,1948,347,2295,llama3.1:8b,,,,,,50,75,,,,,,100,,,100,,,,
+E04,Explanation,Explanation,phi3:mini,82.50000000000001,False,,8.902,2013,21,2034,llama3.1:8b,,,,,,75,75,,,,,,100,,,100,,,,
+CR01,Code Retrieval,Code Retrieval,phi3:mini,100.00000000000001,False,,9.875,2088,28,2116,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR02,Code Retrieval,Code Retrieval,phi3:mini,100.00000000000001,False,,10.138,1983,41,2024,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR03,Code Retrieval,Code Retrieval,phi3:mini,47.50000000000001,False,,12.468,1896,69,1965,llama3.1:8b,,,,,,,,,33,,,,100,,,100,,,,
+CR04,Code Retrieval,Code Retrieval,phi3:mini,62.50000000000001,False,,17.671,1755,144,1899,llama3.1:8b,,,,,,,,,80,,,,100,,,0,,,,
+DU01,Dependency Understanding,Dependency Understanding,phi3:mini,0.0,True,"The model answer claims that the 'retrieval_service.py' file depends on the 'retrieve' function from the 'retrieval_service' module, but the repository evidence does not support this claim. The 'retrieval_service.py' file is not even mentioned in the repository evidence.",23.607,1809,223,2032,llama3.1:8b,,,,,,,,0,,,0,,0,,0,,,,,
+DU02,Dependency Understanding,Dependency Understanding,phi3:mini,0.0,True,"The model answer claims that the 'cosine_similarity()' function is involved in the process, but there is no evidence in the repository that it is used in the process_pdf() function.",35.259,1871,414,2285,llama3.1:8b,,,,,,,,0,,,0,,0,,0,,,,,
+DU03,Dependency Understanding,Dependency Understanding,phi3:mini,65.00000000000001,False,,41.026,1647,500,2147,llama3.1:8b,,,,,,,,75,,,50,,100,,50,,,,,
+DU04,Dependency Understanding,dependency_failure,phi3:mini,70.00000000000001,False,,25.403,2010,269,2279,llama3.1:8b,,,,,,,,75,,,50,,100,,75,,,,,
+BA01,Bug Analysis,Bug Analysis,phi3:mini,41.25,False,,36.463,1771,441,2212,llama3.1:8b,,,0,,,,,,,0,,,100,,50,,,75,,
+BA02,Bug Analysis,dependency_error,phi3:mini,48.75,False,,33.608,1831,396,2227,llama3.1:8b,,,0,,,,,,,50,,,100,,0,,,75,,
+BA03,Bug Analysis,retrieval_bug,phi3:mini,10.0,False,,7.914,1911,15,1926,llama3.1:8b,,,0,,,,,,,0,,,100,,0,,,0,,
+BA04,Bug Analysis,logic_bug,phi3:mini,10.0,False,,42.586,1978,500,2478,llama3.1:8b,,,0,,,,,,,0,,,100,,0,,,0,,
+CG01,Code Generation,Code Generation,phi3:mini,33.75,False,,14.58,1927,125,2052,llama3.1:8b,failed,"Traceback (most recent call last):
+  File ""C:\Users\muska\AppData\Local\Temp\tmp286ilhaz\candidate_test.py"", line 13, in <module>
+    assert abs(cosine_similarity([1,0], [1,0]) - 1.0) < 1e-9
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\muska\AppData\Local\Temp\tmp286ilhaz\candidate_test.py"", line 4, in cosine_similarity
+    magnitude_a = math.sqrt(sum(x * x for x in a))
+                  ^^^^
+NameError: name 'math' is not defined. Did you forget to import 'math'?",,,,,75,,,,,,,,,100,,,,0.0
+CG02,Code Generation,Code Generation,phi3:mini,33.75,False,,11.529,1590,86,1676,llama3.1:8b,no_function,No candidate function found,,,,,75,,,,,,,,,100,,,,0.0
+CG03,Code Generation,Code Generation,phi3:mini,0.0,False,,10.845,1751,71,1822,llama3.1:8b,failed,No GET /health route found,,,,,0,,,,,,,,,0,,,,0.0
+CG04,Code Generation,Code Generation,phi3:mini,93.75,False,,14.731,1812,128,1940,llama3.1:8b,passed,,,,,,75,,,,,,,,,100,,,,100.0
+RF01,Refactoring,Refactoring,phi3:mini,95.0,False,,42.146,1859,500,2359,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF02,Refactoring,Refactoring,phi3:mini,95.0,False,,38.444,1753,464,2217,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF03,Refactoring,Refactoring,phi3:mini,83.75,False,,41.186,1874,500,2374,llama3.1:8b,,,,,75,,,,,,,,,75,,100,,,100,
+RF04,Refactoring,Refactoring,phi3:mini,78.75,False,,29.559,2076,312,2388,llama3.1:8b,,,,,75,,,,,,,,,50,,100,,,100,
+RAG01,RAG based Question,RAG based Question,phi3:mini,30.000000000000004,True,"The model's answer claims 48 months prior to the effective date of the Policy issued by the insurer, which is not supported by the retrieved policy evidence. The correct answer is 48 months of continuous coverage have elapsed from the date of commencement of coverage for the Insured Person.",7.131,890,18,908,llama3.1:8b,,,,0,,,,,,,,0,,,,0,100,,,
+RAG02,RAG based Question,RAG based Question,phi3:mini,40.00000000000001,True,"The model answer claims that the policy covers hospitalization expenses, but the retrieved evidence does not explicitly state this. The closest relevant information is in the text on page 2 of the policy document, which mentions that the insurance company will cover medical expenses incurred due to illness immediately before the insured person's admission and after discharge, but this is not a direct answer to the question.",6.771,918,16,934,llama3.1:8b,,,,0,,,,,,,,0,,,,100,100,,,
+RAG03,RAG based Question,RAG based Question,phi3:mini,91.25000000000001,False,,12.575,904,131,1035,llama3.1:8b,,,,75,,,,,,,,100,,,,100,100,,,
+RAG04,RAG based Question,RAG based Question,phi3:mini,40.00000000000001,True,The model's claim that 'the route is the most direct and economical' is not supported by the policy evidence.,10.541,888,92,980,llama3.1:8b,,,,0,,,,,,,,0,,,,100,100,,,
+E01,Explanation,Explanation,qwen2.5:1.5b,82.50000000000001,False,,7.591,1293,313,1606,llama3.1:8b,,,,,,75,75,,,,,,100,,,100,,,,
+E02,Explanation,Explanation,qwen2.5:1.5b,100.00000000000001,False,,5.262,1460,138,1598,llama3.1:8b,,,,,,100,100,,,,,,100,,,100,,,,
+E03,Explanation,Explanation,qwen2.5:1.5b,82.50000000000001,False,,6.734,1466,261,1727,llama3.1:8b,,,,,,75,75,,,,,,100,,,100,,,,
+E04,Explanation,Explanation,qwen2.5:1.5b,75.00000000000001,False,,4.224,1615,3,1618,llama3.1:8b,,,,,,50,75,,,,,,100,,,100,,,,
+CR01,Code Retrieval,Code Retrieval,qwen2.5:1.5b,100.00000000000001,False,,4.335,1489,21,1510,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR02,Code Retrieval,Code Retrieval,qwen2.5:1.5b,100.00000000000001,False,,4.357,1410,23,1433,llama3.1:8b,,,,,,,,,100,,,,100,,,100,,,,
+CR03,Code Retrieval,Code Retrieval,qwen2.5:1.5b,27.500000000000004,False,,4.399,1384,29,1413,llama3.1:8b,,,,,,,,,33,,,,100,,,0,,,,
+CR04,Code Retrieval,Code Retrieval,qwen2.5:1.5b,27.500000000000004,False,,4.94,1311,83,1394,llama3.1:8b,,,,,,,,,20,,,,100,,,0,,,,
+DU01,Dependency Understanding,Dependency Understanding,qwen2.5:1.5b,10.000000000000002,False,,4.8,1355,69,1424,llama3.1:8b,,,,,,,,0,,,0,,100,,0,,,,,
+DU02,Dependency Understanding,Dependency Understanding,qwen2.5:1.5b,0.0,True,"The model answer lists 'upload_rag_service.py' as a dependency of 'process_pdf()', but the ground truth is empty, indicating no dependencies.",9.159,1310,500,1810,llama3.1:8b,,,,,,,,0,,,0,,0,,0,,,,,
+DU03,Dependency Understanding,Dependency Understanding,qwen2.5:1.5b,65.00000000000001,False,,8.823,1217,470,1687,llama3.1:8b,,,,,,,,75,,,50,,100,,50,,,,,
+DU04,Dependency Understanding,dependency_failure,qwen2.5:1.5b,22.500000000000004,True,"The model answer claims that the retrieval page would display an empty 'Select a document to inspect embeddings' section, but this is not supported by the repository evidence. The repository evidence shows that the retrieval page would show an empty section, but it does not specify that it would be due to the embedding service being unable to generate embeddings.",9.025,1485,500,1985,llama3.1:8b,,,,,,,,0,,,75,,0,,0,,,,,
+BA01,Bug Analysis,Bug Analysis,qwen2.5:1.5b,0.0,True,"The model answer mentions 'Backend Service Unavailability', 'Network Issues', 'Backend Service Failure', 'API Endpoint Issues', 'Data Retrieval Issues', 'Backend Service Configuration', 'Frontend Configuration Issues', 'Backend Service Rate Limiting', 'Backend Service Timeout', and 'Backend Service Authentication Issues' as possible causes. However, the repository evidence does not provide any information about these issues. The model answer also provides steps to diagnose and resolve these issues, but these steps are not supported by the ground truth.",8.769,1313,484,1797,llama3.1:8b,,,0,,,,,,,0,,,0,,0,,,0,,
+BA02,Bug Analysis,dependency_error,qwen2.5:1.5b,100.0,False,,5.052,1385,119,1504,llama3.1:8b,,,100,,,,,,,100,,,100,,100,,,100,,
+BA03,Bug Analysis,retrieval_bug,qwen2.5:1.5b,41.25,False,,9.296,1467,500,1967,llama3.1:8b,,,0,,,,,,,0,,,100,,50,,,75,,
+BA04,Bug Analysis,logic_bug,qwen2.5:1.5b,10.0,False,,14.773,1540,308,1848,llama3.1:8b,,,0,,,,,,,0,,,100,,0,,,0,,
+CG01,Code Generation,Code Generation,qwen2.5:1.5b,100.0,False,,5.076,1378,96,1474,llama3.1:8b,passed,,,,,,100,,,,,,,,,100,,,,100.0
+CG02,Code Generation,Code Generation,qwen2.5:1.5b,33.75,False,,4.291,1244,49,1293,llama3.1:8b,failed,"Traceback (most recent call last):
+  File ""C:\Users\muska\AppData\Local\Temp\tmpu3xc671z\candidate_test.py"", line 18, in <module>
+    assert all(out[i][""score""] >= out[i+1][""score""] for i in range(len(out)-1))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError",,,,,75,,,,,,,,,100,,,,0.0
+CG03,Code Generation,Code Generation,qwen2.5:1.5b,40.0,False,,6.143,1318,225,1543,llama3.1:8b,failed,No GET /health route found,,,,,100,,,,,,,,,100,,,,0.0
+CG04,Code Generation,Code Generation,qwen2.5:1.5b,93.75,False,,5.034,1338,91,1429,llama3.1:8b,passed,,,,,,75,,,,,,,,,100,,,,100.0
+RF01,Refactoring,Refactoring,qwen2.5:1.5b,95.0,False,,7.746,1393,354,1747,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF02,Refactoring,Refactoring,qwen2.5:1.5b,95.0,False,,8.457,1316,450,1766,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF03,Refactoring,Refactoring,qwen2.5:1.5b,95.0,False,,9.312,1425,500,1925,llama3.1:8b,,,,,100,,,,,,,,,75,,100,,,100,
+RF04,Refactoring,Refactoring,qwen2.5:1.5b,83.75,False,,9.351,1520,500,2020,llama3.1:8b,,,,,75,,,,,,,,,75,,100,,,100,
+RAG01,RAG based Question,RAG based Question,qwen2.5:1.5b,91.25000000000001,False,,4.166,729,25,754,llama3.1:8b,,,,75,,,,,,,,100,,,,100,100,,,
+RAG02,RAG based Question,RAG based Question,qwen2.5:1.5b,100.00000000000001,False,,5.002,738,106,844,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,
+RAG03,RAG based Question,RAG based Question,qwen2.5:1.5b,100.00000000000001,False,,4.277,712,38,750,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,
+RAG04,RAG based Question,RAG based Question,qwen2.5:1.5b,100.00000000000001,False,,6.456,724,249,973,llama3.1:8b,,,,100,,,,,,,,100,,,,100,100,,,

@@ -1,0 +1,204 @@
+INSUREMATE WEEK 4 — AUTOMATED MODEL EVALUATION METHODOLOGY
+============================================================
+
+Compared models
+---------------
+codellama:7b-instruct, phi3:mini, qwen2.5:1.5b
+
+Independent evaluator
+---------------------
+llama3.1:8b
+
+The evaluator model is separate from the three compared models.
+Temperature: 0.0
+
+Category-label normalization
+----------------------------
+The official professor category is determined from the question ID (for example,
+BA02 is always Bug Analysis). Raw labels such as "dependency_error" and
+"dependency_failure" are retained as subtypes and never override the official
+question category.
+
+Dataset
+-------
+28 questions total:
+4 Explanation
+4 Code Retrieval
+4 Dependency Understanding
+4 Bug Analysis
+4 Code Generation
+4 Refactoring
+4 RAG based Question
+
+There are 84 model responses (28 questions × 3 models).
+
+SCORING DESIGN
+--------------
+
+A. Semantic criteria
+--------------------
+An independent LLM judge evaluates criterion-level correctness.
+The judge is not allowed to calculate final category/overall scores.
+
+Allowed criterion values:
+0, 25, 50, 75, 100
+
+Meaning:
+0   = incorrect/absent
+25  = mostly incorrect
+50  = partially correct
+75  = mostly correct
+100 = fully correct
+
+Python then applies the fixed professor weights.
+
+B. Category formula
+-------------------
+For a question:
+
+QuestionScore =
+    SUM(criterion_score × criterion_weight)
+
+For a category:
+
+CategoryScore =
+    MEAN(QuestionScore for the 4 questions in that category)
+
+OverallScore =
+    MEAN(7 category scores)
+
+Thus every model is evaluated on the SAME questions and SAME weights.
+
+C. Category weights
+-------------------
+Explanation:
+    correctness       40%
+    completeness      30%
+    relevance         20%
+    hallucination-free 10%
+
+Code Retrieval:
+    exact retrieval   70%
+    relevance         20%
+    hallucination-free 10%
+
+Dependency Understanding:
+    dependency correctness 40%
+    flow completeness      30%
+    reasoning              20%
+    hallucination-free     10%
+
+Bug Analysis:
+    root cause            35%
+    affected component    20%
+    fix                   25%
+    reasoning             10%
+    hallucination-free   10%
+
+Code Generation:
+    test pass rate        60%
+    correctness           25%
+    relevance             15%
+
+Refactoring:
+    behavior preservation 45%
+    syntax validity       20%
+    readability           20%
+    relevance             15%
+
+RAG based Question:
+    retrieval quality     30%
+    answer correctness    35%
+    groundedness          25%
+    relevance             10%
+
+D. Code Retrieval
+-----------------
+Exact retrieval is deterministic because file/function/endpoint retrieval
+is an exact-match requirement.
+
+The evaluator checks the expected InsureMate target identifiers in the answer.
+Semantic relevance and hallucination are still independently judged.
+
+We do NOT cap a correct retrieval merely because unrelated concepts are absent.
+
+E. Code Generation
+------------------
+Test-pass rate is NOT guessed from the text.
+
+For CG01-CG04:
+1. Extract Python code from the model response.
+2. Parse it using Python AST.
+3. Execute benchmark tests in a temporary isolated subprocess.
+4. Apply a timeout.
+5. Record passed/total and calculate:
+
+TestPassRate = passed_tests / total_tests × 100
+
+This value is then inserted into the 60% test-pass component.
+
+If a model does not provide executable code, it receives 0 test pass rate.
+
+F. Refactoring
+--------------
+Behavior preservation is evaluated semantically against the ground-truth
+contract. Syntax validity is additionally checked by Python AST parsing when
+code is present.
+
+A response that merely discusses a refactor without actually satisfying the
+requested refactoring is penalized through the relevance and behavior criteria.
+
+G. RAG
+------
+RAG is evaluated as:
+
+QUESTION
+   ↓
+RETRIEVED CONTEXT
+   ↓
+LLM RESPONSE
+
+Retrieval quality is judged separately from final answer correctness and
+groundedness.
+
+Because the supplied ground truth does not provide gold chunk IDs, retrieval
+quality is reported as evidence relevance/coverage, NOT Precision@K or Recall@K.
+
+H. Hallucination rate
+---------------------
+Hallucination is a binary criterion from the independent judge.
+
+HallucinationRate =
+    hallucinated_responses / evaluated_responses × 100
+
+Hallucination-free criterion:
+    100 if hallucination=false
+    0   if hallucination=true
+
+I. Latency and tokens
+---------------------
+Latency and token counts are reported as performance metrics, not mixed into
+the quality score.
+
+Average latency:
+    SUM(response latency) / number of responses
+
+Average output tokens:
+    SUM(output tokens) / number of responses
+
+Resource benchmark values are preserved from the supplied benchmark file.
+No GPU usage is claimed because the benchmark did not measure GPU.
+
+REPRODUCIBILITY
+---------------
+To reproduce:
+
+PowerShell:
+    $env:WEEK4_JUDGE_MODEL="llama3.1:8b"
+    python evaluation_week4\score_week4_PERFECT_FIXED.py
+
+The raw responses, ground truth, judge model, criterion judgments, formulas,
+test results, category scores and overall scores are saved in the output JSON.
+
+No final model score is hardcoded.
+No manual final score is entered.

@@ -1,0 +1,447 @@
+{
+  "metadata": {
+    "title": "InsureMate Week 4 Ground Truth",
+    "version": "1.0",
+    "purpose": "Category-specific ground truth and evaluation rubric for comparing CodeLlama, Phi-3 Mini and Qwen 2.5 1.5B on the same InsureMate software-engineering tasks."
+  },
+
+  "category_scoring": {
+
+    "Explanation": {
+      "metrics": {
+        "correctness": 0.40,
+        "completeness": 0.30,
+        "relevance": 0.20,
+        "hallucination": 0.10
+      },
+      "method": "Evaluate whether the explanation accurately describes the actual InsureMate implementation, covers the required concepts, stays relevant, and avoids unsupported claims."
+    },
+
+    "Code Retrieval": {
+      "metrics": {
+        "exact_retrieval": 0.70,
+        "relevance": 0.20,
+        "hallucination": 0.10
+      },
+      "method": "Prefer exact identification of the correct file, function, endpoint or module."
+    },
+
+    "Dependency Understanding": {
+      "metrics": {
+        "dependency_correctness": 0.40,
+        "flow_completeness": 0.30,
+        "reasoning": 0.20,
+        "hallucination": 0.10
+      },
+      "method": "Evaluate whether the model correctly understands relationships between services, APIs, processing and embeddings."
+    },
+
+    "Bug Analysis": {
+      "metrics": {
+        "root_cause": 0.35,
+        "affected_component": 0.20,
+        "fix": 0.25,
+        "reasoning": 0.10,
+        "hallucination": 0.10
+      },
+      "method": "Evaluate root-cause identification, affected components, debugging approach and proposed fix."
+    },
+
+    "Code Generation": {
+      "metrics": {
+        "test_pass_rate": 0.60,
+        "correctness": 0.25,
+        "relevance": 0.15
+      },
+      "method": "Generated code should be syntactically valid and satisfy executable tests wherever applicable."
+    },
+
+    "Refactoring": {
+      "metrics": {
+        "behavior_preservation": 0.45,
+        "syntax_validity": 0.20,
+        "readability": 0.20,
+        "relevance": 0.15
+      },
+      "method": "A refactoring is successful only when the intended behavior remains unchanged."
+    },
+
+    "RAG based Question": {
+      "metrics": {
+        "retrieval_quality": 0.30,
+        "answer_correctness": 0.35,
+        "groundedness": 0.25,
+        "relevance": 0.10
+      },
+      "method": "Evaluate retrieved evidence separately from the final answer. Unsupported claims reduce groundedness."
+    }
+  },
+
+  "questions": {
+
+    "E01": {
+      "category": "Explanation",
+      "must_cover": [
+        "document_processor.py processes PDF policy documents",
+        "extract_text_from_pdf uses pypdf PdfReader",
+        "text is extracted page by page",
+        "clean_text removes newlines and normalizes whitespace",
+        "chunk_text creates sentence-aware chunks",
+        "default chunk size is 600 characters",
+        "default overlap is 100 characters",
+        "process_pdf extracts pages and creates chunks",
+        "each chunk contains chunk_id, document, page and text"
+      ],
+      "critical_errors": [
+        "claiming process_pdf generates embeddings",
+        "claiming process_pdf calls the LLM",
+        "claiming a vector database is used by document_processor.py"
+      ]
+    },
+
+    "E02": {
+      "category": "Explanation",
+      "must_cover": [
+        "generate_embedding is in embedding_service.py",
+        "requests.post is used to call Ollama",
+        "endpoint is /api/embed",
+        "embedding model is nomic-embed-text",
+        "input text is sent to Ollama",
+        "response is parsed as JSON",
+        "the first embedding vector is returned",
+        "raise_for_status checks HTTP errors"
+      ],
+      "critical_errors": [
+        "claiming the LLM generation endpoint creates embeddings",
+        "claiming embeddings are generated locally without Ollama"
+      ]
+    },
+
+    "E03": {
+      "category": "Explanation",
+      "must_cover": [
+        "dot product is calculated from corresponding vector elements",
+        "magnitude of vector a is calculated using square root of sum of squares",
+        "magnitude of vector b is calculated using square root of sum of squares",
+        "zero magnitude returns 0.0",
+        "otherwise dot product is divided by both magnitudes"
+      ],
+      "critical_errors": [
+        "describing a different similarity algorithm",
+        "omitting the zero-magnitude protection"
+      ]
+    },
+
+    "E04": {
+      "category": "Explanation",
+      "must_cover": [
+        "user question is received by the backend",
+        "retrieval creates an embedding for the question",
+        "stored document embeddings are compared with the query embedding",
+        "cosine similarity is used",
+        "results are sorted by similarity score",
+        "top-k results are returned",
+        "retrieved policy text is used as evidence for the LLM",
+        "uploaded-document chat builds a policy-evidence prompt"
+      ],
+      "critical_errors": [
+        "claiming frontend directly performs embeddings",
+        "claiming an unsupported vector database",
+        "claiming unsupported validation or ranking components"
+      ]
+    },
+
+    "CR01": {
+      "category": "Code Retrieval",
+      "expected_file": "backend/app/services/embedding_service.py",
+      "expected_symbol": "generate_embedding"
+    },
+
+    "CR02": {
+      "category": "Code Retrieval",
+      "expected_file": "backend/app/services/retrieval_service.py",
+      "expected_symbol": "cosine_similarity"
+    },
+
+    "CR03": {
+      "category": "Code Retrieval",
+      "expected_file": "backend/app/services/retrieval_service.py",
+      "expected_symbol": "retrieve"
+    },
+
+    "CR04": {
+      "category": "Code Retrieval",
+      "expected_file": "backend/app/api/retrieval.py",
+      "expected_endpoint": "POST /search",
+      "expected_handler": "search_documents"
+    },
+
+    "DU01": {
+      "category": "Dependency Understanding",
+      "must_cover": [
+        "retrieval_service.py imports generate_embedding from embedding_service.py",
+        "the dependency is required to convert the user question into an embedding",
+        "the query embedding is compared with stored embeddings",
+        "cosine similarity is used for comparison"
+      ]
+    },
+
+    "DU02": {
+      "category": "Dependency Understanding",
+      "must_cover": [
+        "process_pdf calls extract_text_from_pdf",
+        "process_pdf calls chunk_text",
+        "PDF pages are converted into text",
+        "text is converted into chunks",
+        "chunks contain document/page/chunk metadata",
+        "embedding generation happens after chunk preparation",
+        "embedding_service converts chunk text into vectors",
+        "embedded chunks can then be stored"
+      ]
+    },
+
+    "DU03": {
+      "category": "Dependency Understanding",
+      "must_cover": [
+        "API layer receives the request",
+        "retrieval API calls retrieval_service.retrieve",
+        "document_processor handles PDF extraction and chunking",
+        "embedding_service communicates with Ollama embedding API",
+        "retrieval_service creates the query embedding",
+        "retrieval_service calculates similarity",
+        "retrieval_service sorts and returns top-k results",
+        "upload_rag_service connects document processing and embedding for uploaded documents"
+      ]
+    },
+
+    "DU04": {
+      "category": "Dependency Understanding",
+      "must_cover": [
+        "query embeddings cannot be generated",
+        "retrieval cannot compare the query against stored embeddings",
+        "semantic retrieval therefore fails",
+        "new document embedding/indexing is also affected",
+        "embedding_service is a dependency of retrieval_service"
+      ]
+    },
+
+    "BA01": {
+      "category": "Bug Analysis",
+      "must_cover": [
+        "backend may not be running",
+        "frontend may be using an incorrect backend URL",
+        "wrong host or port can cause connection failure",
+        "CORS configuration can block browser requests",
+        "VM/container/network address mismatch can cause failure",
+        "incorrect API endpoint can cause request failure"
+      ]
+    },
+
+    "BA02": {
+      "category": "Bug Analysis",
+      "must_cover": [
+        "pypdf is missing from the active Python environment",
+        "document_processor imports PdfReader from pypdf",
+        "pypdf must be installed in the environment running the backend",
+        "backend should be restarted after installation"
+      ],
+      "expected_fix": "pip install pypdf"
+    },
+
+    "BA03": {
+      "category": "Bug Analysis",
+      "must_cover": [
+        "query embedding may be incorrect",
+        "stored embeddings may be stale or incorrect",
+        "query and stored embeddings must use compatible embedding models",
+        "chunking can affect retrieval quality",
+        "irrelevant documents can be present in the knowledge base",
+        "large top-k can introduce less relevant chunks",
+        "similarity implementation or input vectors may be incorrect",
+        "debugging should inspect query embedding, scores, documents, chunks and dimensions"
+      ]
+    },
+
+    "BA04": {
+      "category": "Bug Analysis",
+      "must_cover": [
+        "magnitude_a equal to zero causes 0.0",
+        "magnitude_b equal to zero causes 0.0",
+        "zero vectors can therefore produce a score of zero",
+        "vector values and magnitudes should be inspected during debugging",
+        "embedding values should be checked to ensure they are populated and numeric"
+      ]
+    },
+
+    "CG01": {
+      "category": "Code Generation",
+      "requirements": [
+        "function accepts vectors a and b",
+        "calculates dot product",
+        "calculates magnitude of a",
+        "calculates magnitude of b",
+        "returns 0.0 when either magnitude is zero",
+        "otherwise returns dot_product divided by both magnitudes"
+      ],
+      "tests": [
+        {
+          "input": "([1, 0], [1, 0])",
+          "expected": 1.0
+        },
+        {
+          "input": "([1, 0], [0, 1])",
+          "expected": 0.0
+        },
+        {
+          "input": "([0, 0], [1, 2])",
+          "expected": 0.0
+        }
+      ]
+    },
+
+    "CG02": {
+      "category": "Code Generation",
+      "requirements": [
+        "accepts a list of dictionaries",
+        "uses the score field",
+        "sorts from highest score to lowest score",
+        "returns maximum five results"
+      ],
+      "tests": [
+        "descending score order",
+        "only five results returned when more than five are provided",
+        "highest scoring result appears first"
+      ]
+    },
+
+    "CG03": {
+      "category": "Code Generation",
+      "requirements": [
+        "uses FastAPI",
+        "defines a GET endpoint",
+        "endpoint path is /health",
+        "returns status equal to ok"
+      ],
+      "expected_response": {
+        "status": "ok"
+      }
+    },
+
+    "CG04": {
+      "category": "Code Generation",
+      "requirements": [
+        "uses pytest",
+        "tests cosine_similarity",
+        "uses two identical non-zero vectors",
+        "expects approximately 1.0",
+        "uses tolerance such as pytest.approx"
+      ]
+    },
+
+    "RF01": {
+      "category": "Refactoring",
+      "must_preserve": [
+        "same cosine similarity formula",
+        "zero magnitude vectors return 0.0",
+        "same inputs produce equivalent outputs"
+      ],
+      "quality_goals": [
+        "clear variable names",
+        "readable calculations",
+        "less unnecessary nesting",
+        "no unrelated behavior changes"
+      ]
+    },
+
+    "RF02": {
+      "category": "Refactoring",
+      "must_preserve": [
+        "query embedding is generated",
+        "cosine similarity is calculated against stored items",
+        "document field is preserved",
+        "page field is preserved",
+        "chunk_id is preserved",
+        "text is preserved",
+        "score is preserved",
+        "results are sorted descending",
+        "top_k slicing is preserved"
+      ],
+      "quality_goals": [
+        "separate retrieval stages clearly",
+        "make similarity calculation easier to understand",
+        "make result construction easier to understand"
+      ]
+    },
+
+    "RF03": {
+      "category": "Refactoring",
+      "must_preserve": [
+        "embedding_service owns embedding generation",
+        "embedding_service communicates with Ollama",
+        "retrieval_service owns retrieval and ranking",
+        "retrieval_service requests query embeddings from embedding_service",
+        "responsibilities are not unnecessarily duplicated"
+      ]
+    },
+
+    "RF04": {
+      "category": "Refactoring",
+      "must_preserve": [
+        "document processing handles PDF extraction",
+        "document processing handles text cleaning",
+        "document processing handles chunking",
+        "embedding generation remains separate from document processing",
+        "chunk metadata remains available",
+        "uploaded document behavior remains unchanged"
+      ],
+      "quality_goals": [
+        "reduce duplicated embedding loops",
+        "reuse existing embedding service where appropriate",
+        "keep document processing and embedding responsibilities separated",
+        "avoid changing observable behavior"
+      ]
+    },
+
+    "RAG01": {
+      "category": "RAG based Question",
+      "required_behavior": [
+        "answer only from retrieved policy evidence",
+        "do not automatically treat 48 months as the waiting period",
+        "distinguish a pre-existing-disease definition/look-back period from a waiting period",
+        "if the retrieved evidence does not establish the requested waiting period, explicitly say that it is not established by the evidence"
+      ],
+      "critical_hallucination": "Claiming that the waiting period is 48 months solely because the policy defines pre-existing disease using a 48-month look-back period."
+    },
+
+    "RAG02": {
+      "category": "RAG based Question",
+      "required_behavior": [
+        "answer using Group Health Insurance evidence",
+        "identify whether hospitalization expenses are covered",
+        "preserve important conditions or limits from the evidence",
+        "do not assume unlimited hospitalization coverage"
+      ]
+    },
+
+    "RAG03": {
+      "category": "RAG based Question",
+      "must_compare": [
+        "Group Health Insurance specifies a 24-month waiting period for listed specific conditions",
+        "Health Companion Insurance states that waiting-period credits extend to pre-existing diseases and time-bound exclusions according to applicable guidelines",
+        "the retrieved Health Companion evidence does not provide a specific numeric waiting period"
+      ],
+      "critical_hallucination": "Inventing a numeric Health Companion waiting period."
+    },
+
+    "RAG04": {
+      "category": "RAG based Question",
+      "must_cover": [
+        "emergency medical expenses when supported by the policy",
+        "medical evacuation when supported by the policy",
+        "important geographic conditions such as outside India when stated in evidence",
+        "trip-related conditions stated by the policy",
+        "no generic travel-insurance assumptions unsupported by retrieved evidence"
+      ]
+    }
+  }
+}

@@ -1,0 +1,177 @@
+[
+  {
+    "question_id": "CG01",
+    "model": "codellama:7b-instruct",
+    "extracted_code": "",
+    "syntax_score": 0,
+    "syntax_reason": "No executable Python code extracted.",
+    "test_result": {
+      "passed": 0,
+      "total": 0,
+      "pass_rate": null,
+      "status": "no_code",
+      "error": "No code extracted"
+    }
+  },
+  {
+    "question_id": "CG02",
+    "model": "codellama:7b-instruct",
+    "extracted_code": "",
+    "syntax_score": 0,
+    "syntax_reason": "No executable Python code extracted.",
+    "test_result": {
+      "passed": 0,
+      "total": 0,
+      "pass_rate": 0.0,
+      "status": "no_function",
+      "error": "No candidate function found"
+    }
+  },
+  {
+    "question_id": "CG03",
+    "model": "codellama:7b-instruct",
+    "extracted_code": "",
+    "syntax_score": 0,
+    "syntax_reason": "No executable Python code extracted.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "No GET /health route found"
+    }
+  },
+  {
+    "question_id": "CG04",
+    "model": "codellama:7b-instruct",
+    "extracted_code": "import pytest\nfrom backend.app.services.retrieval_service import cosine_similarity\n\ndef test_cosine_similarity():\n    a = [1, 2, 3]\n    b = [4, 5, 6]\n    assert cosine_similarity(a, b) == 0.81",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8c0h0klg\\cg04_runner.py\", line 20, in <module>\n    test_cosine_similarity()\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8c0h0klg\\cg04_runner.py\", line 19, in test_cosine_similarity\n    assert cosine_similarity(a, b) == 0.81\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+      "output": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8c0h0klg\\cg04_runner.py\", line 20, in <module>\n    test_cosine_similarity()\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp8c0h0klg\\cg04_runner.py\", line 19, in test_cosine_similarity\n    assert cosine_similarity(a, b) == 0.81\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError"
+    }
+  },
+  {
+    "question_id": "CG01",
+    "model": "phi3:mini",
+    "extracted_code": "def cosine_similarity(a, b):\n    dot_product = sum(x * y for x, y in zip(a, b))\n\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n    magnitude_b = maths.sqrt(sum(y * y for y in b))\n\n    if magnitude_a == 0 or magnitude_b == 0:\n        return 0.0\n\n    return dot_product / (magnitude_a * magnitude_b)",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp286ilhaz\\candidate_test.py\", line 13, in <module>\n    assert abs(cosine_similarity([1,0], [1,0]) - 1.0) < 1e-9\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp286ilhaz\\candidate_test.py\", line 4, in cosine_similarity\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n                  ^^^^\nNameError: name 'math' is not defined. Did you forget to import 'math'?",
+      "output": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp286ilhaz\\candidate_test.py\", line 13, in <module>\n    assert abs(cosine_similarity([1,0], [1,0]) - 1.0) < 1e-9\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmp286ilhaz\\candidate_test.py\", line 4, in cosine_similarity\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n                  ^^^^\nNameError: name 'math' is not defined. Did you forget to import 'math'?"
+    }
+  },
+  {
+    "question_id": "CG02",
+    "model": "phi3:mini",
+    "extracted_code": "def get_top_results(retrieval_results):\n    # Sort the results by score in descending order and return the top 5\n    return sorted(retrieval0\n\n\n# Assuming 'retrieval_results' is a list of dictionaries with 'score' fields\ntop_results = get_top_results(retrieval_results)",
+    "syntax_score": 0,
+    "syntax_reason": "SyntaxError: '(' was never closed (<unknown>, line 3)",
+    "test_result": {
+      "passed": 0,
+      "total": 0,
+      "pass_rate": 0.0,
+      "status": "no_function",
+      "error": "No candidate function found"
+    }
+  },
+  {
+    "question_id": "CG03",
+    "model": "phi3:mini",
+    "extracted_code": "",
+    "syntax_score": 0,
+    "syntax_reason": "No executable Python code extracted.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "No GET /health route found"
+    }
+  },
+  {
+    "question_id": "CG04",
+    "model": "phi3:mini",
+    "extracted_code": "import pytest\nfrom backend.app.services.retrieval_service import cosine_similarity\n\ndef test_cosine_similarity_identical_vectors():\n    vector_a = [1, 2, 3, 4, 5]\n    vector_b = [1, 2, 3, 4, 5]\n    similarity = cosine_similarity(vector_a, vector_b)\n    assert pytest.approx(similarity, 1e-6) == 1.0",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 1,
+      "total": 1,
+      "pass_rate": 100.0,
+      "status": "passed",
+      "error": "",
+      "output": ""
+    }
+  },
+  {
+    "question_id": "CG01",
+    "model": "qwen2.5:1.5b",
+    "extracted_code": "import math\n\ndef cosine_similarity(a, b):\n    dot_product = sum(x * y for x, y in zip(a, b))\n    magnitude_a = math.sqrt(sum(x * x for x in a))\n    magnitude_b = math.sqrt(sum(y * y for y in b))\n\n    if magnitude_a == 0 or magnitude_b == 0:\n        return 0.0\n\n    return dot_product / (magnitude_a * magnitude_b)",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 1,
+      "total": 1,
+      "pass_rate": 100.0,
+      "status": "passed",
+      "error": "",
+      "output": ""
+    }
+  },
+  {
+    "question_id": "CG02",
+    "model": "qwen2.5:1.5b",
+    "extracted_code": "def top_k_retrieval_results(results):\n    best_score = max(\n        (float(item.get(\"score\", 0)) for item in results),\n        default=0\n    )\n\n    return results[:5]",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpu3xc671z\\candidate_test.py\", line 18, in <module>\n    assert all(out[i][\"score\"] >= out[i+1][\"score\"] for i in range(len(out)-1))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+      "output": "Traceback (most recent call last):\n  File \"C:\\Users\\muska\\AppData\\Local\\Temp\\tmpu3xc671z\\candidate_test.py\", line 18, in <module>\n    assert all(out[i][\"score\"] >= out[i+1][\"score\"] for i in range(len(out)-1))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError",
+      "tested_function": "top_k_retrieval_results"
+    }
+  },
+  {
+    "question_id": "CG03",
+    "model": "qwen2.5:1.5b",
+    "extracted_code": "from fastapi import APIRouter, HTTPException\nfrom pydantic import BaseModel",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 0,
+      "total": 1,
+      "pass_rate": 0.0,
+      "status": "failed",
+      "error": "No GET /health route found"
+    }
+  },
+  {
+    "question_id": "CG04",
+    "model": "qwen2.5:1.5b",
+    "extracted_code": "import pytest\n\ndef test_cosine_similarity_identical_vectors():\n    vector1 = [1, 2, 3, 4, 5]\n    vector2 = [1, 2, 3, 4, 5]\n\n    similarity = cosine_similarity(vector1, vector2)\n\n    assert similarity == 1.0, \"The cosine similarity should be close to 1.0 for identical vectors.\"",
+    "syntax_score": 100,
+    "syntax_reason": "Python AST parse succeeded.",
+    "test_result": {
+      "passed": 1,
+      "total": 1,
+      "pass_rate": 100.0,
+      "status": "passed",
+      "error": "",
+      "output": ""
+    }
+  }
+]

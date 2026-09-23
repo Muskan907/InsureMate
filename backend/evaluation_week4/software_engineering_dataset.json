@@ -1,0 +1,196 @@
+{
+  "title": "InsureMate Week 4 Software Engineering Model Comparison",
+  "description": "Same software-engineering evaluation tasks used across CodeLlama, Phi-3 Mini and Qwen 2.5 1.5B.",
+  "models": [
+    "codellama:7b-instruct",
+    "phi3:mini",
+    "qwen2.5:1.5b"
+  ],
+  "categories": [
+    "Explanation",
+    "Code Retrieval",
+    "Dependency Understanding",
+    "Bug Analysis",
+    "Code Generation",
+    "Refactoring",
+    "RAG based Question"
+  ],
+  "questions": [
+
+    {
+      "id": "E01",
+      "category": "Explanation",
+      "task_type": "code_explanation",
+      "question": "Explain the purpose of backend/app/services/document_processor.py and describe what process_pdf() does."
+    },
+    {
+      "id": "E02",
+      "category": "Explanation",
+      "task_type": "code_explanation",
+      "question": "Explain how backend/app/services/embedding_service.py generates an embedding for a piece of text."
+    },
+    {
+      "id": "E03",
+      "category": "Explanation",
+      "task_type": "code_explanation",
+      "question": "Explain how cosine similarity is calculated in backend/app/services/retrieval_service.py."
+    },
+    {
+      "id": "E04",
+      "category": "Explanation",
+      "task_type": "pipeline_explanation",
+      "question": "Explain the complete flow from a user question to retrieved policy chunks and the final LLM answer in InsureMate."
+    },
+
+    {
+      "id": "CR01",
+      "category": "Code Retrieval",
+      "task_type": "file_retrieval",
+      "question": "Which file contains the function generate_embedding()?"
+    },
+    {
+      "id": "CR02",
+      "category": "Code Retrieval",
+      "task_type": "function_retrieval",
+      "question": "Which file contains the cosine_similarity() function?"
+    },
+    {
+      "id": "CR03",
+      "category": "Code Retrieval",
+      "task_type": "function_retrieval",
+      "question": "Which file contains the retrieve() function that returns the top-k most relevant chunks?"
+    },
+    {
+      "id": "CR04",
+      "category": "Code Retrieval",
+      "task_type": "api_retrieval",
+      "question": "Which backend API module exposes the retrieval endpoint used to search policy evidence?"
+    },
+
+    {
+      "id": "DU01",
+      "category": "Dependency Understanding",
+      "task_type": "dependency_trace",
+      "question": "Which service does retrieval_service.py depend on to create the query embedding, and why is that dependency required?"
+    },
+    {
+      "id": "DU02",
+      "category": "Dependency Understanding",
+      "task_type": "pipeline_trace",
+      "question": "Trace the dependencies involved when process_pdf() is used to prepare a policy document for embedding."
+    },
+    {
+      "id": "DU03",
+      "category": "Dependency Understanding",
+      "task_type": "architecture",
+      "question": "Explain how the API layer, document processing service, embedding service and retrieval service work together in InsureMate."
+    },
+    {
+      "id": "DU04",
+      "category": "dependency_failure",
+      "task_type": "impact_analysis",
+      "question": "If embedding_service.py could no longer generate embeddings, which parts of the retrieval pipeline would be affected and why?"
+    },
+
+    {
+      "id": "BA01",
+      "category": "Bug Analysis",
+      "task_type": "runtime_error",
+      "question": "The frontend displays 'Failed to fetch' when requesting data from the backend. What are the likely causes in this InsureMate architecture?"
+    },
+    {
+      "id": "BA02",
+      "category": "dependency_error",
+      "task_type": "debugging",
+      "question": "The backend raises ModuleNotFoundError: No module named 'pypdf' while processing a policy PDF. Identify the cause and explain how to fix it."
+    },
+    {
+      "id": "BA03",
+      "category": "retrieval_bug",
+      "task_type": "debugging",
+      "question": "The retrieval system returns policy chunks that are unrelated to the user's question. Based on the retrieval implementation, identify possible causes."
+    },
+    {
+      "id": "BA04",
+      "category": "logic_bug",
+      "task_type": "debugging",
+      "question": "A retrieval result always receives a similarity score of 0. Explain which conditions in cosine_similarity() can cause this and how you would debug it."
+    },
+
+    {
+      "id": "CG01",
+      "category": "Code Generation",
+      "task_type": "python_generation",
+      "question": "Write a Python function cosine_similarity(a, b) that calculates cosine similarity between two numeric vectors and safely handles zero-magnitude vectors."
+    },
+    {
+      "id": "CG02",
+      "category": "Code Generation",
+      "task_type": "python_generation",
+      "question": "Write a Python function that takes a list of retrieval result dictionaries containing a 'score' field and returns the top 5 results sorted from highest to lowest score."
+    },
+    {
+      "id": "CG03",
+      "category": "Code Generation",
+      "task_type": "fastapi_generation",
+      "question": "Write a FastAPI GET endpoint /health that returns {'status': 'ok'}."
+    },
+    {
+      "id": "CG04",
+      "category": "Code Generation",
+      "task_type": "testing_generation",
+      "question": "Write a pytest test for cosine_similarity() that verifies two identical non-zero vectors return a similarity close to 1.0."
+    },
+
+    {
+      "id": "RF01",
+      "category": "Refactoring",
+      "task_type": "refactoring",
+      "question": "Refactor the cosine_similarity() implementation to improve readability without changing its behaviour. Explain what you changed."
+    },
+    {
+      "id": "RF02",
+      "category": "Refactoring",
+      "task_type": "refactoring",
+      "question": "Refactor the retrieve() function so that the similarity calculation and result creation are easier to understand while preserving its output."
+    },
+    {
+      "id": "RF03",
+      "category": "Refactoring",
+      "task_type": "refactoring",
+      "question": "Suggest a cleaner structure for separating embedding generation from retrieval logic in InsureMate. Identify which responsibilities should remain in each service."
+    },
+    {
+      "id": "RF04",
+      "category": "Refactoring",
+      "task_type": "refactoring",
+      "question": "Review the document processing and embedding pipeline and suggest refactoring improvements that reduce duplication while preserving the existing behaviour."
+    },
+
+    {
+      "id": "RAG01",
+      "category": "RAG based Question",
+      "task_type": "policy_qa",
+      "question": "According to the Group Health Insurance policy, what is the waiting period mentioned for pre-existing diseases?"
+    },
+    {
+      "id": "RAG02",
+      "category": "RAG based Question",
+      "task_type": "policy_qa",
+      "question": "Does the Group Health Insurance policy cover hospitalization expenses?"
+    },
+    {
+      "id": "RAG03",
+      "category": "RAG based Question",
+      "task_type": "policy_comparison",
+      "question": "Compare the waiting period information available in Group Health Insurance and Health Companion Insurance."
+    },
+    {
+      "id": "RAG04",
+      "category": "RAG based Question",
+      "task_type": "grounded_qa",
+      "question": "What does the Travel Insurance policy say about emergency medical expenses and medical evacuation?"
+    }
+
+  ]
+}

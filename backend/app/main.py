@@ -4,6 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from fastapi import Body
 from typing import Optional, List, Dict
+from app.api.scenario import router as scenario_router
+from app.api.week4 import router as week4_router
+from app.services.guardrail_service import validate_input, validate_output
 import requests
 import re
 
@@ -54,17 +57,25 @@ app.include_router(
 )
 
 app.include_router(
+    week4_router,
+    prefix="/api/week4"
+)
+
+app.include_router(
     upload_router,
     prefix="/api/upload"
 )
 
+app.include_router(
+    scenario_router,
+    prefix="/api/scenario",
+    tags=["Scenario Intelligence"]
+)
 
 # =========================================================
 # OLLAMA
 # =========================================================
-
-OLLAMA_URL = "http://localhost:11434/api/generate"
-
+OLLAMA_URL = "http://host.docker.internal:11434/api/generate"
 MODEL = "codellama:7b-instruct"
 
 
@@ -504,6 +515,31 @@ def chat(
 
     question = (question or "").strip()
 
+    # =====================================================
+    # WEEK-5 INPUT GUARDRAIL
+    # =====================================================
+    input_guardrail = validate_input(question)
+
+    if not input_guardrail["allowed"]:
+        print(f"\nINPUT GUARDRAIL BLOCKED: {input_guardrail['code']}")
+        return {
+            "question": question,
+            "model": None,
+            "complexity": None,
+            "models_used": [],
+            "answer": input_guardrail["message"],
+            "validation": input_guardrail["code"],
+            "sources": [],
+            "retrieved_chunks": [],
+            "guardrails": {
+                "input": input_guardrail,
+                "output": {
+                    "checked": False,
+                    "code": "NOT_RUN"
+                }
+            }
+        }
+
     fallback = (
         "The available insurance documents do not contain enough "
         "information to answer this question."
@@ -858,6 +894,26 @@ FINAL ANSWER:
         }
 
     answer = (answer or "").strip()
+
+    # =====================================================
+    # WEEK-5 OUTPUT GUARDRAIL
+    # =====================================================
+    output_guardrail = validate_output(
+        answer,
+        results,
+        fallback
+    )
+
+    if not output_guardrail["accepted"]:
+        print(
+            f"OUTPUT GUARDRAIL BLOCKED: "
+            f"{output_guardrail.get('code', 'OUTPUT_REJECTED')}"
+        )
+        answer = fallback
+        validation = output_guardrail.get(
+            "code",
+            "OUTPUT_REJECTED"
+        )
 
     print(f"\nGenerated answer from {selected_model}:")
     print(answer)
